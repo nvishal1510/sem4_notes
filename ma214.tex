@@ -1,0 +1,244 @@
+\documentclass{article}
+\title{MA 214 - Introduction to Numerical Analysis}
+\author{Vishal Neeli}
+
+\usepackage[a4paper, total={6in, 11in}]{geometry}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{grffile}
+\usepackage{physics}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\hypersetup{
+	colorlinks=true,
+	urlcolor=blue,
+	linkcolor=cyan,
+	filecolor=red
+}
+\newtheorem*{theorem}{Theorem}
+
+% FOR CODE
+% \usepackage{listings}
+% \usepackage{color}
+
+% \definecolor{dkgreen}{rgb}{0,0.6,0}
+% \definecolor{gray}{rgb}{0.5,0.5,0.5}
+% \definecolor{mauve}{rgb}{0.58,0,0.82}
+
+% \lstset{frame=tb,
+%   language=Java,
+%   aboveskip=3mm,
+%   belowskip=3mm,
+%   showstringspaces=false,
+%   columns=flexible,
+%   basicstyle={\small\ttfamily},
+%   numbers=none,
+%   numberstyle=\tiny\color{gray},
+%   keywordstyle=\color{blue},
+%   commentstyle=\color{dkgreen},
+%   stringstyle=\color{mauve},
+%   breaklines=true,
+%   breakatwhitespace=true,
+%   tabsize=3
+% }
+
+\begin{document}
+\maketitle
+
+\section{Interpolation Theory}
+
+\subsection{Introduction}
+
+\begin{itemize}
+
+	\item Given finite set of points, reconstructing the original curve is interpolation.
+	\item There will be obviously infinitely many curve.
+
+	\item Interpolation problem\\
+	Given n+1 real distinct points: $x_0,x_1,\hdots,x_n$ and real numbers: $y_0,y_1,\hdots,y_n$
+
+	Find a function $f:\mathbb{R} \rightarrow \mathbb{R}$ such that 
+	\[f(x_i)= y_i \qquad \text{for }i=0,1,\hdots,n\]
+	Such a function is called \textbf{interpolant} and points $x_i$ are called \textbf{interpolation points}.\\
+	We attempt to rebuild original function using polynomial functions. This is called polynomial interpolation and function is polynomial interpolant.
+
+	\item A polynomial is function of the form 
+	\[p(x)=a_0 + a_1 x +\hdots + a_n x^n\]
+	\item $\mathbb{P}_n$ is the set of polynomials consisting of all polynomials of degree $\leq n$\\
+\end{itemize}
+
+\subsection{Polynomial Interpolation}
+	\begin{theorem}[Joseph-Louis Lagrange Theorem]
+		Given $n+1$ data points with unique $x_i$s, then there exists a unique polynomial $p_n \in \mathbb{P}_n$ such that 
+		\[p(x_i)=y_i \qquad \text{for } i= 0,1,\hdots,n \]\\
+	\end{theorem}
+	\begin{proof}
+		 (1)  This can be shown by linear algebra. In a $n$ degree polynomial, we substitute the points and get $n+1$ equations in n+1 variables (coeff) and all the rows are unique (since $x_0,x_1,\hdots,x_n$ are unique), hence in $AX=b$, $|A|\neq0$. \\
+	\end{proof}
+
+	\begin{proof}
+		(2)  Part 1: Uniqueness : If there is an interpolant, then the interpolant is unique\\
+		Let there be 2 interpolants, $p_n$ and $q_n$ and let $r(x)=p(x)-q(n)$,\\
+		\[r(x)=0 \text{ for } i=0,1,\hdots,n\] 
+		This contradicts the fundamental theorem of Algebra. (A polynomial of degree n can have at most n real roots). Therefore 
+		\[r(x)=0 \quad \forall x \in \mathbb{R}\]
+		\[p(x)=q(x) \quad \forall x \in \mathbb{R}\]
+
+		\noindent Part 2: Existence (construction):\\
+			Given n+1 data points, build n+1 Langrange polynomials 
+			\[L^n_k (x_i) =
+			\begin{cases}
+			 0 \qquad \text{for } i\neq k \\
+			 1 \qquad \text{for } i=k
+			\end{cases}
+			 \]
+
+		\[L^n_k(x)= \frac{(x-x_0)...(x-x_{k-1})(x-x_{k+1})...(x-x_n)}{(x_k-x_0)...(x_k-x_{k-1})(x_k-x_{k+1})...(x_k-x_n)}\]
+
+		\[p(x) = \sum_{k=0}^n y_k L^n_k(x)\]\\
+	\end{proof}
+
+\subsection{Closeness between functions}
+	Given two continuous functions $f,g:[a,b]\rightarrow \mathbb{R}$, to evaluate how close the functions are consider the following
+	\[max_{x\in [a,b]} |f(x)-g(x)|\]
+
+
+\subsection{Set of continuous Functions}
+	$C[a,b]$ is the set of all continuous functions on [a,b]\\
+	$C[a,b]$ is a infinite dimensional vector space
+	\[f,g \in C \Longrightarrow f+g \in C \text{  and  }\lambda f\in C\]
+	We define norm on $C[a,b]$ as
+	\[||f|| = max_{x\in [a,b]} |f(x)|\]
+	$C^{k}[a,b]$ denotes the set of all functions which are continuously k-times differentiable  
+
+
+
+\subsection{Polynomial Approximation and Error}
+	\begin{theorem}[Weierstrass approximation Theorem]
+		Given a function $f\in C[a,b]$ and given $\epsilon>0$, there exists a polynomial $p(x)$ such that,
+		\[||f(x)-p||<\epsilon\]
+	\end{theorem}
+
+
+	\noindent\textbf{Using Langrange's recipe to approximate}\\
+	Take $n+1$ interpolation points in the [a,b] and collect the function values at all the points. We have $n+1$ data points. Using Lagrange polynomials, find the interpolant\\
+		
+
+	\begin{theorem}[Error equation]
+		Let $f\in C^k[a,b]$, $x_0,x_1,\hdots,x_n \in [a,b]$ and $p\in \mathbb{P}_n$ be the interpolant using these points, then for all $x$, there exists a $\zeta = \zeta(x) \in (a,b)$ such that
+		\[f(x)-p(x) = \frac{1}{(n+1)!}f^{(n+1})(\zeta)\prod_{k=0}^n(x-x_k)\]
+		\textbf{Note}: Here $\zeta$ is dependent on the x, i.e, for every x you choose, $\zeta$ generally changes.\\
+	\end{theorem}
+
+	\begin{proof}
+		Consider the function,
+		\[\psi(t)=(f(t)- p(t))\prod_{k=0}^n(x-x_k) - (f(x)-p(x))\prod_{k=0}^n(t-x_k)\]
+		This $n+2$ roots (n+1 data points and x), applying rolle theorem's gives us that $\phi^{(1)}(t)$ has at least n+1 roots. Applying like this repeatedly on its derivatives, we get that $f^{(n+1)}$ has at least 1 root in $[a,b]$. Assuming the root to be $\zeta$. We have,
+		\[f(x)-p(x) = \frac{1}{(n+1)!}f^{(n+1})(\zeta)\prod_{k=0}^n(x-x_k)\]
+	\end{proof}
+
+
+	\noindent\textbf{Approximating the error}:\\
+	Taking norm on both the sides of error equation, we have,
+	\begin{align}
+		\max_{x\in [a,b]} |f(x)-p(x)| &= \frac{1}{(n+1)!}||f^{(n+1})(\zeta)\prod_{k=0}^n(x-x_k)||\\
+		\max_{x\in [a,b]} |f(x)-p(x)| &\leq \frac{1}{(n+1)!} ||f^{(n+1)}||\text{ }max_{x \in [a,b]}\prod_{k=0}^n(x-x_k)
+	\end{align}
+
+	\noindent\textbf{Chebyshef interpolation points}:
+		\[x_k= \frac{a+b}{2}+\frac{b-a}{2}cos\left(\frac{j\pi}{n}\right)\]
+	\noindent These points minimise $max_{x \in [a,b]}\prod_{k=0}^n(x-x_k)$ and therefore prefered over equally spaced points on real line. These points can be visualised as projections of equally spaced points on the arc of the semicircle with $\frac{a+b}{2}$ as center and $\frac{(b-a)}{2}$ as radius.
+
+
+
+\subsection{Another method for calculating interpolant}
+	This is similar to the linear algebra method (given as proof(1) to Joseph-Louis Lagrange Theorem) for finding the interpolant.\\
+	Consider the polynomial 
+	\[p(x)= a_0 +a_1 (x-x_0) + a_2(x-x_0)(x-x_1)+ \hdots +a_n(x-x_0)...(x-x_{n-1})\]
+	Find the coefficients $a_0, a_1, \hdots, a_n$ by substituting the data points. On substituting $x_0$, we get $a_0$, again on substituting $x_1$ and using $a_0$, we get $a_1$ and so on.
+
+
+\subsection{Divided difference - recursion relation}
+	\begin{itemize}
+		\item \textbf{Divided difference} : It is the coefficient of $x_n$ in the interpolant $p \in \mathbb{P}_n$ and denoted by $f[x_0,x_1\hdots,x_n]$.\\
+		Using Langrange polynomials, we have
+		\[p(x)=\sum_{k=0}^n f(x_k) \prod_{j=0, j\neq k}^n \frac{x-x_j}{x_k-x_j}\]
+		So the divided difference is
+		\[f[x_0,x_1,\hdots,x_n]=\sum_{k=0}^n f(x_k) \prod_{j=0, j\neq k}^n \frac{1}{x_k-x_j}\]
+
+		\item interpolant $p(x)$ of  $x_0,x_1,\hdots,x_n$ can be calculated using interpolants $a(x)$ and $b(x)$ of $x_1,x_2,\hdots,x_n$ and $x_0,x_1,\hdots,x_{n-1}$ respectively as 
+			\[p(x)=\frac{(x-x_0)a(x)-(x-x_n)b(x)}{x_n-x_0}\]
+		Note: If replace the data point $x_n$ in $a(x)$ with $x_0$, we get $b(x)$
+	\end{itemize}
+
+	\begin{theorem}[Divided difference recursion theorem]
+		\[f[x_0,x_1,\hdots,x_{m+1}] = \frac{[f[x_1, x_2,\hdots,x_{m+1}] - f[x_0,x_1,\hdots,x_{m}]}{x_{m+1}-x_0}\]
+	\end{theorem}
+	\begin{proof}
+		Let p(x) be the interpolant for $x_0,x_1,\hdots,x_m$ and q(x) be the interpolant for $x_1,x_2\hdots,x_{m+1}$. Then,
+		\[L(x)= \frac{(x-x_0)q(x)+(x_{m+1}-x)p(x)}{x_{m+1}-x_0}\] is an interpolant.
+		Since, interpolant is unique, considering coeff of $x_{m}$ we have,
+		\[f[x_0,x_1,\hdots, x_m]=  \frac{f[x_1, x_2,\hdots,x_{m+1}] - f[x_0,x_1,\hdots,x_{m}]}{x_{m+1}-x_0}\]
+	\end{proof}
+
+	\begin{theorem}[Interpolant using divided differences]
+		Suppose $x_0,x_1,\hdots,x_n$ be the data points. Then interpolant $p \in \mathbb{P}_n$ is
+		\[p(x)=f[x_0]+f[x_0,x_1](x-x_0)+ \hdots +f[x_0,x_1,\hdots,x_n] \prod_{j=0}^{n-1}(x-x_j)\]
+	\end{theorem}
+
+	\begin{proof}
+		We prove this by induction. Base case $n=0$ is trivially satisfied.
+		Assume that this is satisfied for $p_{k}$,
+		\[p_k(x)=f[x_0]+f[x_0,x_1](x-x_0)+ \hdots +f[x_0,x_1,\hdots,x_k] \prod_{j=0}^{k-1}(x-x_j)\]
+		Consider the polynomial $p_{k+1}(x)-p_k(x) \in \mathbb{P}_{k+1}$ which has $x_0,x_1,\hdots,x_k$ as roots. Hence,
+		\[p_{k+1}(x)-p_k(x) = c\prod_{j=0}^k(x-x_j)\]
+		Comparing leading coefficient on both sides, we have $c=f[x_0,x_1,\hdots,x_k]$. Hence,
+		\[p_{k+1}(x)=f[x_0]+f[x_0,x_1](x-x_0)+ \hdots +f[x_0,x_1,\hdots,x_{k+1}] \prod_{j=0}^{k}(x-x_j)\]
+		By PMI,
+		\[p(x)=f[x_0]+f[x_0,x_1](x-x_0)+ \hdots +f[x_0,x_1,\hdots,x_n] \prod_{j=0}^{n-1}(x-x_j)\]
+
+
+	\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
