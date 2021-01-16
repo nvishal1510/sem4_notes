@@ -1,0 +1,87 @@
+\documentclass{article}
+\title{}
+\author{Vishal Neeli}
+
+\usepackage[a4paper, total={6in, 11in}]{geometry}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{grffile}
+\usepackage{physics}
+\hypersetup{
+	colorlinks=true,
+	urlcolor=blue,
+	linkcolor=cyan,
+	filecolor=red
+}
+\usepackage{amsfonts}
+
+% FOR CODE
+% \usepackage{listings}
+% \usepackage{color}
+
+% \definecolor{dkgreen}{rgb}{0,0.6,0}
+% \definecolor{gray}{rgb}{0.5,0.5,0.5}
+% \definecolor{mauve}{rgb}{0.58,0,0.82}
+
+% \lstset{frame=tb,
+%   language=Java,
+%   aboveskip=3mm,
+%   belowskip=3mm,
+%   showstringspaces=false,
+%   columns=flexible,
+%   basicstyle={\small\ttfamily},
+%   numbers=none,
+%   numberstyle=\tiny\color{gray},
+%   keywordstyle=\color{blue},
+%   commentstyle=\color{dkgreen},
+%   stringstyle=\color{mauve},
+%   breaklines=true,
+%   breakatwhitespace=true,
+%   tabsize=3
+% }
+
+\begin{document}
+\maketitle
+
+\section{Recursion}
+
+\subsection{Design principle}
+\begin{enumerate}
+	\item Reduce the problem of size n to a size n-1
+	\item Figure out the base case (usually n=0 or 1)
+	\item Terminate recursion at the base case. Make sure that every n reaches the base case.
+
+\end{enumerate}
+
+\subsection{Parameterization}
+\begin{itemize}
+	\item It is consumes extra memory if pass a new array (part of old array copied into this) for recursion. Instead we should pass the indices as the parameters.
+	\item In creating recursive methods, it is often useful to define additional functions(or methods) to facilitate recursion.
+
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
