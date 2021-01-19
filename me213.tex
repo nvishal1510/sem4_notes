@@ -1,0 +1,110 @@
+\documentclass{article}
+\title{ME 213L Manufacturing processes Lab}
+\author{Vishal Neeli}
+
+\usepackage[a4paper, total={6in, 11in}]{geometry}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{grffile}
+\usepackage{physics}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\hypersetup{
+	colorlinks=true,
+	urlcolor=blue,
+	linkcolor=cyan,
+	filecolor=red
+}
+\newtheorem*{theorem}{Theorem}
+
+% FOR CODE
+% \usepackage{listings}
+% \usepackage{color}
+
+% \definecolor{dkgreen}{rgb}{0,0.6,0}
+% \definecolor{gray}{rgb}{0.5,0.5,0.5}
+% \definecolor{mauve}{rgb}{0.58,0,0.82}
+
+% \lstset{frame=tb,
+%   language=Java,
+%   aboveskip=3mm,
+%   belowskip=3mm,
+%   showstringspaces=false,
+%   columns=flexible,
+%   basicstyle={\small\ttfamily},
+%   numbers=none,
+%   numberstyle=\tiny\color{gray},
+%   keywordstyle=\color{blue},
+%   commentstyle=\color{dkgreen},
+%   stringstyle=\color{mauve},
+%   breaklines=true,
+%   breakatwhitespace=true,
+%   tabsize=3
+% }
+
+\begin{document}
+\maketitle
+
+\section{Machine codes}
+\begin{tabular}{|c|c|}
+	\hline
+	Syntax & Function\\
+	\hline
+	G54 & workpiece coordinate system\\
+	G90 & absolute coordinate system\\
+	G91 & moving coordinate system(attached to tool)\\
+	\hline
+	G00 X$x_f$ Z$z_f$ & The tool goes from current position to $x_f$ and $z_f$\\
+	G01 X$x_f$ Z$z_f$ Ff & tool moves from current position to $x_f$ and $z_f$ at feed rate f.\\
+	G28 Uu Vv & Moves to home (\emph{addition req})\\
+	\hline
+	M03 Ss & Spindle rotates clockwise at s rpm\\
+	M04 Ss & Spindle rotates anticlockwise at s rpm\\
+	M05 & Spindle stops\\
+	M06 Tt & Tool changes to tool t\\
+	M30 & Program ends\\
+	\hline
+	
+\end{tabular}
+
+
+\section{Lab 1}
+
+\begin{itemize}
+
+	\item Machining parameters:
+	\begin{itemize}
+	\item Feed rate : Rate at which tool is removing the workpiece.(mm/rev)
+	\item Depth of cut
+	\item Rotational speed
+	\end{itemize}
+
+	\item Facing : It is the reduction of length of workpiece (along z) - Use tool 5
+	\item Turning : Reducing the diameter - use tool 5
+	\item Grooving : Make a cavity into the workpiece - use tool 98
+
+
+
+
+
+
+
+
+
+
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

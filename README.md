@@ -7,11 +7,13 @@ Course | Section
 -------|----------
 MA 214 | S2
 ME 206 | S1
+ME 213 | -
 CS 213 | -
 
 
 These notes have not been thoroughly proofread (may do it during exams), so you can expect some typos and grammar mistakes. 
 There also might be some errors in the theory. I would highly appreciate it, if you could point them out to me. 
+
 You can contact me at nvishal1510@gmail.com or ~~whatsapp~~ signal me. 
 
 A request to the reader - If you see any notes lagging too far behind the course content, hit me with a firm message to study (please be gentle :sweat_smile:).
