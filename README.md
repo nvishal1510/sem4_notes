@@ -3,12 +3,16 @@
 This repo consists of notes for the courses that I am taking as Mech sophomore at IIT Bombay. Part of it is running notes during the classes. Other part is the gist that I understand when I read the topic.
 Free to use them to your liking. Also I suggest you to check the sections of the courses to avoid any confusion.
 
-Course | Section
--------|----------
-MA 214 | S2
-ME 206 | S1
-ME 213 | -
-CS 213 | -
+| Course | Section | Comment |
+|--------|---------|----------
+|MA 214  | S2	   | This is the most organised and well written of all.|
+|ME 202  | S1      |            |
+|ME 206  | S1	   | This course is simply mugging stuff, so is my notes.|
+|ME 226  | S2	   |           |
+|ME 213L | S1	   | Not much to write here. You can find the table of machine codes.|
+|ME 766  | -       | 			|
+|CS 213  | -       | The notes only contain pointers, actual learning is by practise.|
+
 
 
 These notes have not been thoroughly proofread (may do it during exams), so you can expect some typos and grammar mistakes. 
