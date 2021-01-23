@@ -47,20 +47,65 @@
 
 \section{Recursion}
 
-\subsection{Design principle}
-\begin{enumerate}
-	\item Reduce the problem of size n to a size n-1
-	\item Figure out the base case (usually n=0 or 1)
-	\item Terminate recursion at the base case. Make sure that every n reaches the base case.
+	\subsection{Design principle}
+	\begin{enumerate}
+		\item Reduce the problem of size n to a size n-1
+		\item Figure out the base case (usually n=0 or 1)
+		\item Terminate recursion at the base case. Make sure that every n reaches the base case.
 
-\end{enumerate}
+	\end{enumerate}
 
-\subsection{Parameterization}
-\begin{itemize}
-	\item It is consumes extra memory if pass a new array (part of old array copied into this) for recursion. Instead we should pass the indices as the parameters.
-	\item In creating recursive methods, it is often useful to define additional functions(or methods) to facilitate recursion.
+	\subsection{Parameterization}
+	\begin{itemize}
+		\item It is consumes extra memory if pass a new array (part of old array copied into this) for recursion. Instead we should pass the indices as the parameters.
+		\item In creating recursive methods, it is often useful to define additional functions(or methods) to facilitate recursion.
 
-\end{itemize}
+	\end{itemize}
+
+	\subsection{Tail Recursion}
+	\begin{itemize}
+		\item Recursion has to maintain function calls on stack that makes it more expensive than iterative methods.
+		\item To reduce this extra usage of resources, we can write a algorithm in a tail recursive way i.e, the function should directly return the function call (without any other operations on the result returned by the function call).
+	\end{itemize}
+
+\section{Algorithm analysis}
+	We primarily compare running time in this course. To analyse algorithms, runtime should be machine independent for which we use 'RAM' model of computation.
+	\subsection{RAM model}
+	\begin{itemize}
+		\item Generic single processor model
+		\item Computer supports simple constant time instructions
+		\begin{itemize}
+			\item Arithmetic ($+,-,\times,/,floor,..$)
+			\item Data movement (load, store, copy)
+			\item Control (branch, function call)
+		\end{itemize}
+		\item We assume that the cost (runtime) of all simple instructions is 1
+		\item Sequential execution - No concurrent execution
+		\item Flat memory model and accessing a memory costs 1 unit.
+	\end{itemize}
+	\subsection{Asymptotic Notation}
+	\begin{itemize}
+		\item $\Theta$ notation: Given functions g, we define
+		\[\Theta(g(n)) = \{f(n) : \exists \text{ positive constants } c_1,c_2,n_0 \text{ such that } c_1g(n) \leq f(n) \leq c_2g(n), \forall n\geq n_0 \}\]
+		g(n) is a asymptotic tight bound for f(n).
+		\item O notation: Given functions g, we define
+		\[O(g(n)) = \{f(n) : \exists\text{ positive constants }c,n_0 \text{ 	such that }  f(n)\leq cg(n), \forall n\geq n_0 \}\]
+		g(n) is a asymptotic upper bound for f(n).
+		\item $\Omega$ notation: Given functions g, we define
+		\[\Omega(g(n)) = \{f(n) : \exists\text{ positive constants }c,n_0 \text{ such that } cg(n)\leq f(n), \forall n\geq n_0\} \]
+		g(n) is a asymptotic lower bound for f(n).
+
+
+
+
+
+
+
+
+
+
+
+	\end{itemize}
 
 
 
