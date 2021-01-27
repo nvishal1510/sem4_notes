@@ -170,7 +170,6 @@
 
 		\item interpolant $p(x)$ of  $x_0,x_1,\hdots,x_n$ can be calculated using interpolants $a(x)$ and $b(x)$ of $x_1,x_2,\hdots,x_n$ and $x_0,x_1,\hdots,x_{n-1}$ respectively as 
 			\[p(x)=\frac{(x-x_0)a(x)-(x-x_n)b(x)}{x_n-x_0}\]
-		Note: If replace the data point $x_n$ in $a(x)$ with $x_0$, we get $b(x)$
 	\end{itemize}
 
 	\begin{theorem}[Divided difference recursion theorem]
@@ -201,6 +200,77 @@
 
 
 	\end{proof}
+
+
+\subsection{Time complexity of the algorithms}
+	(Slide is useless)
+	\begin{itemize}
+		\item Langrange's method - $O(n^2)$ : Computing each Langrange polynomial can be done in $O(n)$ (Finding the coefficients given roots can be done in \href{https://cs.stackexchange.com/questions/116643/what-is-the-most-efficient-algorithm-to-compute-polynomial-coefficients-from-its}{$O(n log^2(n))$}). We need to do to this n times. So, $O(n)$.
+		\item Divided differences - $O(n^2)$ : Summing operations in each stage - $n+(n-1)+ (n-2)+\hdots+ 1$. Hence, $O(n^2)$.
+		\item Divided difference can be considered better because we can extend from n to n+1 and so on without discarding previous computation.
+	\end{itemize}
+
+
+\subsection{Weierstrass theorem consequences}
+\begin{itemize}
+	\item For Weierstrass theorem, take $\epsilon_n = \frac{1}{n}$. Then weirstrass theorem proves the existence of sequence of polynomials $p^{(1)}, p^{(2)}, \hdots$ such that 
+		\[\lim_{n\rightarrow \infty} ||f-p^{(n)}||=0\]
+	\item If \textbf{f in not a polynomial}, then 
+		\[\lim_{n\rightarrow \infty} \text{degree of }p{(n)} = 0\]
+		To prove (crude) this, assume that there exist a non-polynomial function f such that $||f-p^{(n)}||=0$, then $f=p^(n)$ which contradicts the assumtion that f is not a polynomial.
+\end{itemize}
+
+
+
+\subsection{Spline Interpolation}
+\begin{itemize}
+	\item \textbf{Piece wise polynomial}: $\phi \in C[a,b]$ is a piecewise polynomial function, if there exists $a=x_0<x_1<\hdots<x_n=b$ such that $\phi \in \mathbb{P}_m$ when $x \in [x_i,x_{i+1}]$ for all $i=0,1,\hdots,n$ and some $m>0$.
+
+
+	\item Piece wise polynomial $\phi$ need not be polynomial in whole domain.
+
+	\item Splines interpolation for $f \in C[a,b]$
+	\begin{itemize}
+		\item Pick some data points $x_0,x_1,\hdots,x_n$ such that $a=x_0<x_1<\hdots<x_n=b$
+		\item Fix $m\leq n$
+		\item Build $\phi$ in each subinterval $[x_i,x_{i+1}]$ using the following conditions:
+			\[\phi(x_i)= f_i \qquad \text{for } i=0,1,\hdots,n\]
+			\[\lim_{h\rightarrow 0+} \phi(x_i-h) = \lim_{h\rightarrow 0+} \phi(x_i+h) \qquad \text{for } i=1,2,\hdots,n-1\]
+			\[\lim_{h\rightarrow 0+} \dv{\phi(x_i-h)}{x} = \lim_{h\rightarrow 0+} \dv{\phi(x_i+h)}{x} \qquad \text{for } i=1,2,\hdots,n-1\]
+			\[\lim_{h\rightarrow 0+} \dv[2]{\phi(x_i-h)}{x} = \lim_{h\rightarrow 0+} \dv[2]{\phi(x_i+h)}{x} \qquad \text{for } i=1,2,\hdots,n-1\]
+			\[\vdots\]
+			\[\lim_{h\rightarrow 0+} \dv[n-1]{\phi(x_i-h)}{x} = \lim_{h\rightarrow 0+} \dv[n-1]{\phi(x_i+h)}{x} \qquad \text{for } i=1,2,\hdots,n-1\]
+		\item We have $(n+1)+m(n-1)=n(m+1)-(m-1)$ conditions. We need $m-1$ more conditions.
+	\end{itemize}
+
+	\begin{theorem}[Error - Linear Splines]
+		Let $f\in C^2[a,b]$ and $s_L(x)$ be the interpolating \textbf{linear spline} at (n+1) knots $a=x_0<x_1<\hdots<x_n=b$ and let $h$ be the maximum subinterval length, then
+			\[||f-s_L|| \leq \frac{h^2}{8} ||f''||\] 
+	\end{theorem}
+	\begin{proof}
+		Consider the interval $[x_i,x_{i+1}]$, $\phi(x)$ is the interpolating polynomial in this interval, using the error equation for interpolating polynomials,
+		\[f(x)-s_L(x)=\frac{1}{2} f''(\zeta) (x-x_i)(x-x_{i+1})\]
+		Taking absolute value on both the sides,
+		\begin{align*}
+			|f(x)-s_L(x)| &= \frac{1}{2} |f''(\zeta)| |(x-x_i)(x-x_{i+1})|\\
+						&\leq \frac{1}{2} ||f''|| \frac{h_i^2}{4} \qquad \text{where $h_i = \frac{x_{i+1}-x_i}{2}$ }\\
+						&\leq \frac{h_i^2}{8} ||f''||
+		\end{align*}
+		Considering $h=max (h_i)$, then for $x\in [a,b]$
+			\[max_{x\in [a,b]}|f(x)-s_L(x)| \leq \frac{1}{8} h^2||f''||\]
+
+	\end{proof}
+
+
+		
+
+
+
+
+
+
+	\end{itemize}
+
 
 
 
