@@ -1,0 +1,299 @@
+\documentclass{article}
+\title{ME 202 - Strength of Materials}
+\author{Vishal Neeli}
+\date{}
+
+\usepackage[a4paper, total={6in, 11in}]{geometry}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{grffile}
+\usepackage{physics}
+\hypersetup{
+	colorlinks=true,
+	urlcolor=blue,
+	linkcolor=cyan,
+	filecolor=red
+}
+\usepackage{amsfonts}
+
+% FOR CODE
+% \usepackage{listings}
+% \usepackage{color}
+
+% \definecolor{dkgreen}{rgb}{0,0.6,0}
+% \definecolor{gray}{rgb}{0.5,0.5,0.5}
+% \definecolor{mauve}{rgb}{0.58,0,0.82}
+
+% \lstset{frame=tb,
+%   language=Java,
+%   aboveskip=3mm,
+%   belowskip=3mm,
+%   showstringspaces=false,
+%   columns=flexible,
+%   basicstyle={\small\ttfamily},
+%   numbers=none,
+%   numberstyle=\tiny\color{gray},
+%   keywordstyle=\color{blue},
+%   commentstyle=\color{dkgreen},
+%   stringstyle=\color{mauve},
+%   breaklines=true,
+%   breakatwhitespace=true,
+%   tabsize=3
+% }
+
+\begin{document}
+\maketitle
+
+\section{Review}
+	\subsection{Strain Energy}
+	\begin{align*}
+		u = \frac{1}{2} E \epsilon^2 = \frac{1}{2} \sigma \epsilon = \frac{1}{2} \frac{\sigma^2}{E}
+	\end{align*}
+
+	\subsection{Poison's Ratio}
+
+	$\epsilon_{axial}= \frac{\delta}{L}$, $\delta$ is the change in longitudinal length\\
+	$\epsilon_{radial}= \frac{\delta'}{r}$, $\delta'$ is the change in radius\\
+
+	Poisson's ratio -
+	\[\nu = -\frac{\epsilon_{radial}}{\epsilon_{axial}}\]
+	\[0\leq \nu \leq 0.5\]
+
+	Shear stress and strain
+	\[\tau = G \gamma\]
+	Relation between G, E and $\nu$ - 
+	\[G= \frac{E}{2(1+\nu)}\]
+
+	For a axial load, 
+	\[d\delta = \frac{N(x) dx}{A(x) E(x)}\]
+
+
+\section{Torsion}
+	\subsection{Uniform Torsion}
+	\begin{itemize}
+		\item \textbf{Angle of twist} : It is the angle by which one end of the rod is displaced wrt the other end of the rod under the effect of some torsion (twisting).
+		\item Consider a small cylidrical section which has length $dx$, one end has been displaced wrt another by an angle of $d\phi$. Consider a line $ab$ on the circumference along the length of the cylinder which has be changed to $ab'$. Then shear strain 
+		\begin{equation*}
+			\gamma_{max} = \frac{bb'}{ab} \qquad (\text{bb' can be assumed to be a straight line})\\
+		\end{equation*}
+			\[\boxed{\gamma_{max} = \frac{r d\phi}{dx}}\]
+
+
+		\item Rate of twist or angle of twist per unit length
+		\[\theta = \dv{\phi}{x}\]
+		\[\gamma_{max} = r \theta\]
+		If $\theta$ is constant, then
+		\[\gamma_{max}= \frac{r \phi}{L}\] 
+		This is called as $\gamma_{max}$ because we are measuring the shear strain at the outer end i.e, with maximum radius and hence, maximum shear strain.
+		\[\boxed{\gamma = \rho \theta = \rho \dv{\phi}{x}}\]
+		where $\rho$ is the perpendicular distance of the point from the axis (radius) we are considering.
+		\[\boxed{\gamma = \frac{\rho}{r} \gamma_{max} }\]
+
+	\end{itemize}
+	\subsection{Hooke's Law}
+		Hooke' law for shear stress and shear strain
+		\begin{align*}
+			\tau = G \gamma
+				 = G \frac{\rho}{r}\gamma_{max}
+				 = \frac{\rho}{r}\tau_{max}
+		\end{align*}
+		\[\tau_{max} = G \gamma_{max}\]
+
+
+	\subsection{Torsion Formula}
+	\begin{itemize}
+		\item Polar moment of inertia (this is integral over area - double integral)-
+		\[\boxed{I_P = \int_A \rho^2 dA}\]
+		where $\rho$ is the distance at which area element $dA$ is located.
+		\item For a circle of radius r, 
+		\[I_P = \int_A \rho^2 dA = \int_{\theta = 0}^{2\pi}\int_{\rho = 0}^r \rho^2 (\rho d\theta d\rho) = \frac{\pi r^4}{2} \]
+		\[I_{Pcircle} = \frac{\pi r^4}{2}\]
+		\item Consider a cross-section of any shape, we are trying to sum all the small torques and equate it to the torque applied on this
+		\begin{align*}
+			T = \int_A dM &= \int_A \rho \tau dA\\
+						  &= \int_A \frac{\rho^2}{r}\tau_{max} dA\\
+						  &= \frac{\tau_{max}}{r} \int_A \rho^2 dA\\
+						T &= \frac{\tau_{max}}{r} I_P
+		\end{align*}
+		Or,
+		\[\tau_{max} = \frac{Tr}{I_P}\]
+		item The shear stress at distance $\rho$ from the center of the bar with polar moment of inertia $I_P$ is
+		\[\boxed{\tau = \frac{T\rho}{I_P}}\]
+		For a rod of circular cross section of radius r,
+		\[\boxed{\tau_{max} = \frac{2T}{\pi r^3} = \frac{16T}{\pi d^3 }}\]
+
+		\item Rate of twist
+		\[\boxed{\theta = \frac{T}{GI_P}}\]
+		Hence, $GI_P$ is also known as \textbf{Torsional Rigidity}
+		\item For a bar in pure torsion ($\theta = const$), the total angle of twist
+		\[\boxed{\phi = \frac{TL}{GI_P}}\]
+		The quantity $\frac{G I_P}{L}$ is also known as \textbf{torsional stiffness} of the bar.
+
+		\item For a thin circular tube, $I_P = 2 \pi r^3 t$
+	\end{itemize}
+
+	\subsection{Non-uniform Torsion}
+		For a bar with non-uniform cross-section, tension  :
+		\[\boxed{\phi = \int_0^L \frac{T(x) dx}{G I_P(x)}}\]
+
+	\subsection{Stresses in a Plane and Mohr's Circle}
+	Using physical equations or using cauchy's stress tensor with rotation matrix, we get
+	\begin{gather}
+		\sigma_{x'} = \frac{\sigma_x + \sigma_y}{2} + \frac{\sigma_x - \sigma_y}{2} cos2\theta + \tau_{xy} sin2\theta \\
+		\tau_{xy'} = -\frac{\sigma_x - \sigma_y}{2} sin2\theta + \tau_{xy} cos2\theta \\
+		\sigma_{y'} = \frac{\sigma_x + \sigma_y}{2} - \frac{\sigma_x - \sigma_y}{2} cos2\theta - \tau_{xy} sin2\theta
+	\end{gather}
+
+	The above equations can be viewed as parametric equations to a circle.
+
+	On squaring and adding, we get Mohr's circle
+
+	\[\left(\sigma_{x'} -\frac{\sigma_x+\sigma_y}{2} \right)^2 + \tau_{xy'}^2 = \left(\frac{\sigma_x - \sigma_y}{2}\right)^2 + \tau_{xy}^2 \] 
+
+	Center = $(\frac{\sigma_x+\sigma_y}{2},0)$ and 
+	Radius = $\sqrt{\left(\frac{\sigma_x - \sigma_y}{2}\right)^2 + \tau_{xy}^2}$\\
+
+	\begin{itemize}
+		\item This is plotted by taking $\sigma_{x'}$ on x axis and $\tau{xy'}$ on \textbf{negative} y-axis and angle $2\theta$ anticlockwise as positive.\\
+		\item $\tau{xy}$ is taken as positive if it tends to rotate in the anticlockwise direction, negative otherwise.
+		\item $\sigma_x$ is taken as positive if it is tensile and negative for compressive.
+		\item A rotation of angle $\theta$ in the plane corresponds to a rotation of $2\theta$ on the Mohr's circle.
+	\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	% \subsection{Torsion Formula for non-prismatic bars}
+	% - For elliptical cross section, maximum shear stress
+	% \[\tau_{max} = \frac{2T}{\pi ab^2}\]
+	% \[\phi = \frac{TL}{GJ_e}\]
+	% \[J_e = \frac{num}{den}\]
+
+	% - For triangular cross section
+
+	% - For rectangular cross section
+	% \[\tau_{max} = \frac{T}{k_1 b t^2}\]
+	% \[\phi = \frac{TL}{(k_2bt^3)G}= \frac{TL}{J_rG}\]
+	% $k_1$ and $k_2$ are emphirically determined
+
+	% - Thin walled cross sections
+
+
+
+
+
+
+	% - Thin walled tubes- 
+	% Consider a small element of length of $dx$, then shear stresses are $\tau_a$,$\tau_b$, $\tau_c$ and $\tau_d$. Then the shear stresses on opposite wall should be equal (to satisfy Newton's second law). Hence,
+	% \begin{align*}
+	% 	F_b &= F_c\\
+	% 	\tau_b t_b dx &= \tau_c t_c dx\\
+	% 	\tau_b t_b &= \tau_c t_c
+	% \end{align*}
+
+	% Shear flow f,
+	% \[\boxed{f = \tau t = const}\]
+
+	% Deriving torsion formula for the thin walled tubes- 
+
+	% \begin{align*}
+	% 	T &= \int_0^{L_m} rfds\\
+	% 	  &= f \int_0^{L_m} rds\\
+	% 	  &= 2 f A_m
+	% \end{align*}
+	% where $A_m$ is the area enclosed by the median line.
+
+	% \[\boxed{\tau= \frac{T}{2A_mt}}\]
+
+
+
+
+
+
+
+
+
+	% \end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% \item Non uniform Torsion
+% 	\item For a rod of length on which multiple torsions are applied, angle of twist can be found as
+% 	\[\phi= \phi_1 + \phi_2 + \hdots + \phi_n\]
+% 	where $\phi_1$ is the angle of twist in 1 part of rod, $\phi_2$ is the angle of twist in 2nd part...
+
+% 	\item For bar with continuously varying cross section,
+% 	\[d\phi = \frac{num}{den}\]
+
+% \item Stresses on inclined plane
+% 	-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
