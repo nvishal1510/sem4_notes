@@ -1,21 +1,26 @@
 \documentclass{article}
-\title{}
+\title{CS 213 - Data Structures and Algorithms}
 \author{Vishal Neeli}
+\date{}
 
 \usepackage[a4paper, total={6in, 11in}]{geometry}
 \usepackage{textcomp}
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{xcolor}
+\usepackage{graphicx}
 \usepackage{grffile}
 \usepackage{physics}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{mathtools}
 \hypersetup{
 	colorlinks=true,
 	urlcolor=blue,
 	linkcolor=cyan,
 	filecolor=red
 }
-\usepackage{amsfonts}
+\newtheorem*{theorem}{Theorem}
 
 % FOR CODE
 % \usepackage{listings}
@@ -94,23 +99,58 @@
 		\item $\Omega$ notation: Given functions g, we define
 		\[\Omega(g(n)) = \{f(n) : \exists\text{ positive constants }c,n_0 \text{ such that } cg(n)\leq f(n), \forall n\geq n_0\} \]
 		g(n) is a asymptotic lower bound for f(n).
+	\end{itemize}
 
+\section{Divide and Conquer}
+\begin{itemize}
+	\item Divide and conquer algorithm is recursive in nature. Basically, we divide a problem into smaller problems (untill we hit the base case) and combine them to get the solution for larger problem.
+	\item  For the time complexity of a divide and conquer algorithm, we can write a recurrence relation
+	\begin{equation*}
+		T(n) = aT(\frac{n}{b}) + C(n) + D(n)		
+	\end{equation*}
+	where a = no of subproblems a problem is divided, b = factor by which n is reduced, C(n) and D(n) are the time taken in combine and divide step.
+\end{itemize}
 
+\section{Recurrence Relation}
+	The recurrence relations of type $T(n) = aT(\frac{n}{b}) + f(n)$ can be solved using the following methods:\\
+	\begin{itemize}
+	\item Plug and chuck : Keep on substituting in the value of $T(\frac{n}{b})$ in terms of smaller n untill we see a pattern. Pattern can be used to easily get the solution
+	\item Substitution method : (This is more like check for your solution) In this method, we first guess the solution and prove that using induction, i.e, substitute the solution for $T(\frac{n}{b})$ and check whether it you can arrive at the proposed relation for $T(n)$
+	\item Recursion-tree method: We draw the recursion tree for this method. In the recursion tree, leaves contain the cost for the base case and each node contains the cost for the merge and divide process. We sum all of them to get a solution for the recurrence relation. 
 
+	\begin{theorem}[The master theorem]
+	Let $a\geq 1$, $b>1$ and $f(n)$ be a function, then let $T(n)$ be defined on non-negative integers, then the recurrence relation
+	\[T(n) = aT(\frac{n}{b}) + f(n) \] is bound assymptotically in three cases.(If possible, let $f(n)= \Theta(n^d)$)
+	\begin{align*}
+		T(n) &= \sum_{k=0}^{log_bn} a^k f(\frac{n}{b^k})\\
+			&= \sum_{k=0}^{log_bn} a^k (\frac{n}{b^k})^d\\ 
+			&= 
+		\begin{cases}
+		O(n) \qquad\text{ if } a<b^d\text{ or }f(n)= \Omega(n^{log_ba+\epsilon})\\
+		O(n^d logn) \qquad \text{ if } a=b^d\text{ or }f(n)= \Theta(n^{log_ba})\\
+		O(n^log_ba) \qquad \text{ if } a>b^d\text{ or }f(n)= O(n^{log_ba-\epsilon})\\
+		\end{cases}	
+	\end{align*}
+	\end{theorem}
 
-
-
-
-
-
-
-
+	\begin{itemize}
+	\item In the first case ($a<b^d\text{ or }f(n)= \Omega(n^{log_ba+\epsilon})$), the work done at the first node dominates the time taken. Hence, total time taken = time taken at first node. Also this means that as the depth increases, the work done at each level decreases. 
+	\item In the second case ($a=b^d\text{ or }f(n)= \Theta(n^{log_ba})$), the work done at all levels is equal. Hence, the total time taken = time at initial node $\times$ no of levels.
+	\item In the third case ($a>b^d\text{ or }f(n)= O(n^{log_ba-\epsilon})$), the work done at the deepest level dominates the time taken. Hence, total time taken = time taken at the lowest level
 	\end{itemize}
 
 
+	\item Solving the recurrence relation $T_n = T_{n-1} + c_n$:
+	\begin{align*}
+		a_n T_n &= b_n T_{n-1} + c_n\\
+		\mathclap{\text{Select $\sigma_n$ such that } \sigma_n b_n = \sigma_{n-1} a_{n-1}}\\
+		\sigma_n a_n T_n &= \sigma_n b_n T_{n-1} + \sigma_n c_n \\
+		\sigma_n a_n T_n &= \sigma_{n-1} b_{n-1} T_{n-1}\\
+		\sigma_n a_n T_n &= \sigma_0 a_0 T_0 + \sum_{k=1}^n c_n \sigma_n\\
+				T_n &= \frac{ a_0 \sigma_0 T_0 + \sum_{k=1}^n c_n \sigma_n}{\sigma_n a_n} 
+	\end{align*}
 
-
-
+	\end{itemize}
 
 
 
