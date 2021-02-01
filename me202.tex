@@ -138,6 +138,8 @@
 		For a bar with non-uniform cross-section, tension  :
 		\[\boxed{\phi = \int_0^L \frac{T(x) dx}{G I_P(x)}}\]
 
+\section{Hooke's Law}
+
 	\subsection{Stresses in a Plane and Mohr's Circle}
 	Using physical equations or using cauchy's stress tensor with rotation matrix, we get
 	\begin{gather}
@@ -163,65 +165,137 @@
 	\end{itemize}
 
 
+	\subsection{Hooke's law for plane stresses }
+	For a point (isotropic material) under planar stresses ($\sigma_{xz}=\sigma_{yz}=\sigma_{zz} =0$), we have
+	\begin{gather*}
+		\epsilon_x = \frac{1}{E} (\sigma_x - \nu \sigma_y)\\
+		\epsilon_y = \frac{1}{E} (\sigma_y - \nu \sigma_x)\\
+		\gamma_{xy} = \frac{\tau_{xy}}{G}\\
+		% \left{\text{Using these,}}
+		\sigma_x = \frac{E}{1-\nu^2} (1+\nu \epsilon_x)\\
+		\sigma_y = \frac{E}{1-\nu^2} (1+\nu \epsilon_y)\\
+		\tau_{xy} = G \gamma_{xy}
+	\end{gather*}
 
 
 
+	\subsection{Volume change and Strain-energy density}
+		Let a cuboid of sides a,b and c be under stresses. 
+		\[V_0 = abc\]
+		\begin{align*}
+		V &= (a+a\epsilon_x) (b+b\epsilon_y)  (c+c\epsilon_z)\\
+		  &= abc(1+\epsilon_x) (1+\epsilon_y)  (1+\epsilon_z)\\ 
+		  &= V_0 (1+\epsilon_x +\epsilon_y + \epsilon_z ) &\text{ignoring the $\epsilon_x\epsilon_y$ terms}
+		\end{align*}
+
+		Unit volume change e, also known as \textbf{dialatation}\\
+		\[e=\frac{\Delta V}{V_0} = (1+\epsilon_x) (1+\epsilon_y)  (1+\epsilon_z)\]
+
+		Strain-energy density in plane stress,
+		\begin{align*}
+			u &= \frac{1}{2}(\sigma_x\epsilon_x + \sigma_y \sigma_y + \tau_{xy} \gamma_{xy})\\
+			u &= \frac{1}{2E} (\sigma_x^2 +\sigma_y^2 - 2 \nu \sigma_x \sigma_y +\frac{\tau_{xy}^2}{2G})\\
+			u &= \frac{E}{2(1-\nu^2)}(\epsilon_x^2 +\epsilon_y^2 +2\nu\epsilon_x \epsilon_y)+\frac{G\gamma_{xy}^2}{2}
+		\end{align*}
+	\subsection{Hooke's law for triaxial stresses}
+	($\sigma_z=\tau_{xz}=\tau_{yz}=0$)
+	\begin{gather*}
+		\epsilon_x = \frac{1}{E}(\sigma_x -\nu \sigma_y -\nu \sigma_z)\\
+		\sigma_x = \frac{E}{(1+\nu)(1-2\nu)}[(1-\nu)\epsilon_x + \nu (\epsilon_y+\epsilon_z)]
+	\end{gather*}
 
 
+	\subsection{Strain Energy in Torsion}
+	\begin{gather*}
+		d\phi = \frac{T dx}{GJ}
+	\end{gather*}
+	\begin{align*}
+		\text{Energy stored due to torsion, } U &= \int_0^L \frac{1}{2} T d\phi\\
+											    &= \int_0^L \frac{T^2 dx}{2GJ} \\
+	\end{align*}
 
 
+\section{Torsion formula}
+	\subsection{Torsion Formula for non-prismatic bars}
+	\begin{itemize}
+	\item For elliptical cross section, maximum shear stress
+		\[\tau_{max} = \frac{2T}{\pi ab^2}\]
+		\[\phi = \frac{TL}{GJ_e}\]
+		\[J_e = \frac{\pi a^3 b^3}{a^2 + b^2}\]
 
 
+	\item For triangular cross section
+		\[\tau_{max} = \frac{T \frac{h}{2}}{J_t}\]
+		\[\phi = \frac{TL}{GJ_t}\]
+		\[J_e = \frac{h_t}{15\sqrt{3}}\]
+
+	\item For rectangular cross section
+		\[\tau_{max} = \frac{T}{k_1 b t^2}\]
+		\[\phi = \frac{TL}{(k_2bt^3)G}= \frac{TL}{J_rG}\]
+		\[J_r = k_2 b t^3\]
+		$k_1$ and $k_2$ are emphirically determined and are dependent on $\frac{b}{t}$
+
+	\item Thin walled open cross sections
+	We treat flange and web as seperate rectangles.
+		\[J = J_w + 2J_f\]
+		\begin{gather*}
+		J_f = k_1 b_f t_f^3 \\
+		J_w = k_1 (b_w-2t_f) t_w^3\\
+		\tau_max = \frac{2T (\frac{t}{2})}{J}\\
+		\phi = \frac{TL}{GJ}
+		\end{gather*}
+	\end{itemize}
+
+	\subsection{Thin walled tubes}
+		Consider a small element of length of $dx$, then shear stresses are $\tau_a$,$\tau_b$, $\tau_c$ and $\tau_d$. Then the shear stresses on opposite wall should be equal (to satisfy Newton's second law). Hence,
+		\begin{align*}
+			F_b &= F_c\\
+			\tau_b t_b dx &= \tau_c t_c dx\\
+			\tau_b t_b &= \tau_c t_c
+		\end{align*}
+
+		Shear flow f,
+		\[\boxed{f = \tau t = const}\]
+
+	Deriving torsion formula for the thin walled tubes- 
+
+	\begin{align*}
+		T &= \int_0^{L_m} \tau dA \rho\\
+		  &= \int_0^{L_m} frds\\
+		  &= 2 f A_m 	& \text{where $A_m$ is the area enclosed by the median line.}
+	\end{align*}
+
+	\[\boxed{\tau= \frac{T}{2tA_m}}\]
+
+	Using shear stress, we get $J$ -\\
+	Shear energy density of a solid under pure shear stress is $\frac{\tau^2}{2G}$. 
+	\begin{align*}
+		\text{Total shear energy }U &= \int\int \frac{\tau^2}{2G} t dx ds\\
+								   &= \int \int \frac{f^2}{2Gt} dx ds\\
+								   &= \frac{f^2}{2G} \int_0^L dx \int_0^{L_m} ds\\
+								   &= \frac{T^2 L}{2G A_m^2} \int_0^{L_m} ds
+	\end{align*}
+	Also, $U = \frac{T^2 L}{2G J}$.
+	Hence, 
+		\[\boxed{J = \frac{4A_m^2}{\int_0^{L_m}\frac{dS}{t}}}\]
+	For tube with \textbf{constant thickness},
+		\[\boxed{J = \frac{4A_m^2t}{L_m}}\]
+
+	For circular tube,
+		\[J= 2\pi r^3 t\]
+
+	For rectangular tube, 
+		\[J = \frac{2b^2 h^2 t_1 t_2}{bt_1 + ht_2}\]\\
+
+	Angle of twist,
+	\begin{align*}
+		\phi &= \frac{TL}{GJ}\\
+			 &= \frac{TL}{4GA_m^2}\int_0^{L_m} \frac{ds}{t}
+	\end{align*}
+
+	\[\boxed{\phi = \frac{TL}{4GA_m^2}\int_0^{L_m} \frac{ds}{t}}\]
 
 
-
-
-
-
-
-
-
-	% \subsection{Torsion Formula for non-prismatic bars}
-	% - For elliptical cross section, maximum shear stress
-	% \[\tau_{max} = \frac{2T}{\pi ab^2}\]
-	% \[\phi = \frac{TL}{GJ_e}\]
-	% \[J_e = \frac{num}{den}\]
-
-	% - For triangular cross section
-
-	% - For rectangular cross section
-	% \[\tau_{max} = \frac{T}{k_1 b t^2}\]
-	% \[\phi = \frac{TL}{(k_2bt^3)G}= \frac{TL}{J_rG}\]
-	% $k_1$ and $k_2$ are emphirically determined
-
-	% - Thin walled cross sections
-
-
-
-
-
-
-	% - Thin walled tubes- 
-	% Consider a small element of length of $dx$, then shear stresses are $\tau_a$,$\tau_b$, $\tau_c$ and $\tau_d$. Then the shear stresses on opposite wall should be equal (to satisfy Newton's second law). Hence,
-	% \begin{align*}
-	% 	F_b &= F_c\\
-	% 	\tau_b t_b dx &= \tau_c t_c dx\\
-	% 	\tau_b t_b &= \tau_c t_c
-	% \end{align*}
-
-	% Shear flow f,
-	% \[\boxed{f = \tau t = const}\]
-
-	% Deriving torsion formula for the thin walled tubes- 
-
-	% \begin{align*}
-	% 	T &= \int_0^{L_m} rfds\\
-	% 	  &= f \int_0^{L_m} rds\\
-	% 	  &= 2 f A_m
-	% \end{align*}
-	% where $A_m$ is the area enclosed by the median line.
-
-	% \[\boxed{\tau= \frac{T}{2A_mt}}\]
 
 
 
