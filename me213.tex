@@ -11,6 +11,7 @@
 \usepackage{physics}
 \usepackage{amsfonts}
 \usepackage{amsthm}
+\usepackage{array}
 \hypersetup{
 	colorlinks=true,
 	urlcolor=blue,
@@ -48,22 +49,36 @@
 \maketitle
 
 \section{Machine codes}
-\begin{tabular}{|c|c|}
+\begin{tabular}{|m{12em}|m{30em}|}
 	\hline
-	Syntax & Function\\
+	\textbf{Syntax} & \textbf{Function}\\
+	\hline
 	\hline
 	G54 & workpiece coordinate system\\
+	\hline
 	G90 & absolute coordinate system\\
+	\hline
 	G91 & moving coordinate system(attached to tool)\\
 	\hline
 	G00 X$x_f$ Z$z_f$ & The tool goes from current position to $x_f$ and $z_f$\\
+	\hline
 	G01 X$x_f$ Z$z_f$ Ff & tool moves from current position to $x_f$ and $z_f$ at feed rate f.\\
-	G28 Uu Vv & Moves to home (\emph{addition req})\\
+	\hline
+	G02 X$x_f$ Z$z_f$ R$r$ Ff & Circular interpolation - the tool moves to $x_f,z_f$ along the arc of radius $r$ at feed rate $f$ in clockwise sense\\
+	\hline
+	G03 X$x_f$ Z$z_f$ R$r$ Ff & Circular interpolation - the tool moves to $x_f,z_f$ along the arc of radius $r$ at feed rate $f$ in anticlockwise sense\\
+	\hline
+	G32 X$x_{minor}$ Z$z_f$ F$p$ & Threading - Execute this command from $X=x_{minor}$ and Z outside the work piece. Here, $z_f$ is the min diameter point of the last thread\\
+	\hline
+	G28 U00 V00 & Moves to home \\%(// todo: addition req)
 	\hline
 	M03 Ss & Spindle rotates clockwise at s rpm\\
+	\hline
 	M04 Ss & Spindle rotates anticlockwise at s rpm\\
 	M05 & Spindle stops\\
+	\hline
 	M06 Tt & Tool changes to tool t\\
+	\hline
 	M30 & Program ends\\
 	\hline
 	
@@ -81,9 +96,12 @@
 	\item Rotational speed
 	\end{itemize}
 
-	\item Facing : It is the reduction of length of workpiece (along z) - Use tool 5
-	\item Turning : Reducing the diameter - use tool 5
-	\item Grooving : Make a cavity into the workpiece - use tool 98
+	\item Facing: It is the reduction of length of workpiece (along z) - Use tool 5
+	\item Turning: Reducing the diameter - use tool 5
+	\item Grooving: Make a cavity into the workpiece - use tool 98
+	\item Circular interpolation: use tool 5
+	\item Threading: use tool 103
+
 
 
 
