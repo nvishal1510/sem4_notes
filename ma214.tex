@@ -88,7 +88,7 @@
 
 		\noindent Part 2: Existence (construction):\\
 			Given n+1 data points, build n+1 Langrange polynomials 
-			\[L^n_k (x_i) =
+			\[L^n_k (x) =
 			\begin{cases}
 			 0 \qquad \text{for } i\neq k \\
 			 1 \qquad \text{for } i=k
@@ -117,6 +117,7 @@
 
 \subsection{Polynomial Approximation and Error}
 	\begin{theorem}[Weierstrass approximation Theorem]
+	\label{weierstrass}
 		Given a function $f\in C[a,b]$ and given $\epsilon>0$, there exists a polynomial $p(x)$ such that,
 		\[||f(x)-p||<\epsilon\]
 	\end{theorem}
@@ -153,12 +154,16 @@
 
 
 
-\subsection{Another method for calculating interpolant}
-	This is similar to the linear algebra method (given as proof(1) to Joseph-Louis Lagrange Theorem) for finding the interpolant.\\
-	Consider the polynomial 
-	\[p(x)= a_0 +a_1 (x-x_0) + a_2(x-x_0)(x-x_1)+ \hdots +a_n(x-x_0)...(x-x_{n-1})\]
-	Find the coefficients $a_0, a_1, \hdots, a_n$ by substituting the data points. On substituting $x_0$, we get $a_0$, again on substituting $x_1$ and using $a_0$, we get $a_1$ and so on.
+\subsection{Some more methods for calculating interpolant}
+	\begin{itemize}
+		\item This is similar to the linear algebra method (given as proof(1) to Joseph-Louis Lagrange Theorem) for finding the interpolant.\\
+		Consider the polynomial 
+		\[p(x)= a_0 +a_1 (x-x_0) + a_2(x-x_0)(x-x_1)+ \hdots +a_n(x-x_0)...(x-x_{n-1})\]
+		Find the coefficients $a_0, a_1, \hdots, a_n$ by substituting the data points. On substituting $x_0$, we get $a_0$, again on substituting $x_1$ and using $a_0$, we get $a_1$ and so on.
 
+		\item Interpolant $p(x)$ of  $x_0,x_1,\hdots,x_n$ can be calculated using interpolants $a(x)$ and $b(x)$ of $x_1,x_2,\hdots,x_n$ and $x_0,x_1,\hdots,x_{n-1}$ respectively as 
+			\[p(x)=\frac{(x-x_0)a(x)-(x-x_n)b(x)}{x_n-x_0}\]
+	\end{itemize}
 
 \subsection{Divided difference - recursion relation}
 	\begin{itemize}
@@ -168,8 +173,6 @@
 		So the divided difference is
 		\[f[x_0,x_1,\hdots,x_n]=\sum_{k=0}^n f(x_k) \prod_{j=0, j\neq k}^n \frac{1}{x_k-x_j}\]
 
-		\item interpolant $p(x)$ of  $x_0,x_1,\hdots,x_n$ can be calculated using interpolants $a(x)$ and $b(x)$ of $x_1,x_2,\hdots,x_n$ and $x_0,x_1,\hdots,x_{n-1}$ respectively as 
-			\[p(x)=\frac{(x-x_0)a(x)-(x-x_n)b(x)}{x_n-x_0}\]
 	\end{itemize}
 
 	\begin{theorem}[Divided difference recursion theorem]
@@ -203,9 +206,9 @@
 
 
 \subsection{Time complexity of the algorithms}
-	(Slide is useless)
+	% (Slide is useless)
 	\begin{itemize}
-		\item Langrange's method - $O(n^2)$ : Computing each Langrange polynomial can be done in $O(n)$ (Finding the coefficients given roots can be done in \href{https://cs.stackexchange.com/questions/116643/what-is-the-most-efficient-algorithm-to-compute-polynomial-coefficients-from-its}{$O(n log^2(n))$}). We need to do to this n times. So, $O(n)$.
+		\item Langrange's method - $O(n^2)$ : Computing each Langrange polynomial can be done in $O(n)$ (Finding the coefficients given roots can be done in \href{https://cs.stackexchange.com/questions/116643/what-is-the-most-efficient-algorithm-to-compute-polynomial-coefficients-from-its}{$O(n log^2(n))$}). We need to do to this n times. So, $O(n^2)$.
 		\item Divided differences - $O(n^2)$ : Summing operations in each stage - $n+(n-1)+ (n-2)+\hdots+ 1$. Hence, $O(n^2)$.
 		\item Divided difference can be considered better because we can extend from n to n+1 and so on without discarding previous computation.
 	\end{itemize}
@@ -213,11 +216,11 @@
 
 \subsection{Weierstrass theorem consequences}
 \begin{itemize}
-	\item For Weierstrass theorem, take $\epsilon_n = \frac{1}{n}$. Then weirstrass theorem proves the existence of sequence of polynomials $p^{(1)}, p^{(2)}, \hdots$ such that 
+	\item In \nameref{weierstrass}, take $\epsilon_n = \frac{1}{n}$. Then weierstrass theorem proves the existence of sequence of polynomials $p^{(1)}, p^{(2)}, \hdots$ such that 
 		\[\lim_{n\rightarrow \infty} ||f-p^{(n)}||=0\]
 	\item If \textbf{f in not a polynomial}, then 
 		\[\lim_{n\rightarrow \infty} \text{degree of }p{(n)} = 0\]
-		To prove (crude) this, assume that there exist a non-polynomial function f such that $||f-p^{(n)}||=0$, then $f=p^(n)$ which contradicts the assumtion that f is not a polynomial.
+		% To prove this (crudely), assume that there exist a non-polynomial function f such that $||f-p^{(n)}||=0$, then $f=p^{(n)}$ which contradicts the assumtion that f is not a polynomial.
 \end{itemize}
 
 
@@ -265,7 +268,7 @@
 			\[\boxed{||f-s_L|| \leq \frac{h^2}{8} ||f''||}\] 
 	\end{theorem}
 	\begin{proof}
-		Consider the interval $[x_i,x_{i+1}]$, $\phi(x)$ is the interpolating polynomial in this interval, using the error equation for interpolating polynomials,
+		Consider the interval $[x_i,x_{i+1}]$, then $s_L (x)$ is the interpolating polynomial in this interval. Using the error equation for interpolating polynomials,
 		\[f(x)-s_L(x)=\frac{1}{2} f''(\zeta) (x-x_i)(x-x_{i+1})\]
 		Taking absolute value on both the sides,
 		\begin{align*}
@@ -292,7 +295,7 @@
 	\[s_i(x) = a_i(x-x_i)^3 + b_i(x-x_i)^2 + c_i(x-x_i) +d_i \qquad \text{for }i=0,1,\hdots,n-1\]
 	We will work only with \textbf{equally spaced knots}, i.e, $x_{i+1}-x_{i} = const$ for $i = 0, 1,\hdots,n-1$.
 	We also define 
-	\[\sigma_i = s''(x_i) \qquad for i=0,1,\hdots,n\]
+	\[\sigma_i = s''(x_i) \qquad \text{for }i=0,1,\hdots,n\]
 	After doing a lot of simplification, we get 
 	\begin{gather*}
 		\boxed{a_i = \frac{\sigma_{i+1}-\sigma_i}{6h}}\\
@@ -300,7 +303,7 @@
 		\boxed{c_i = \frac{f_{i+1}-f_i}{h} - \frac{h}{6}(2\sigma_i+\sigma_{i+1})}\\
 		\boxed{d_i = f_i}
 	\end{gather*}
-	$\sigma_i$s can be obtained by solving these equations
+	$\sigma_i$ s can be obtained by solving these equations
 	\[\boxed{\sigma_{i-1} + 4 \sigma_i + \sigma_{i+1} = \frac{6}{h^2}(f_{i-1} - 2f_i + f_{i+1} )}\]
 	This can be put in matrix form as
 	\begin{equation*}
@@ -336,7 +339,7 @@
 
 
 	\begin{theorem}[Error - Cubic Splines (equispaced knots)]
-		Let $f\in C^4[a,b]$ and $s(x)$ be the interpolating \textbf{cubic spline} at (n+1) \textbf{equispaced knots} $a=x_0<x_1<\hdots<x_n=b$ and let $h$ be the subinterval length ($h=x_{i+1}-x_i$), then
+		Let $f\in C^4[a,b]$ and $s(x) \in C^2[a,b]$ be the interpolating \textbf{natural cubic spline} at (n+1) \textbf{equispaced knots} $a=x_0<x_1<\hdots<x_n=b$ and let $h$ be the subinterval length ($h=x_{i+1}-x_i$), then
 			\[\boxed{||f-s|| \leq C||f^{(4)}|| h^4 \qquad \text{for some } C>0 }\] 
 	\end{theorem}
 	\begin{proof}
