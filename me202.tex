@@ -354,27 +354,30 @@
 	\end{itemize}
 
 
-% \section{Bending}
+\section{Bending}
 
-% 	\subsection{Sign Convention}
-% 		Sign convention that prof is following in this course:
-% 		- On rightward end, anticlockwise moment and downward shear force is taken as positive
+	\subsection{Sign Convention}
+		Sign convention that prof is following in this course: On rightward end, anticlockwise moment and downward shear force is taken as positive
 
 
-% 	\subsection{Relation between V, M and q}
-% 		Consider a rod under stress. Let the distributed load on it be q(x) (upwards is +ve), shear force V(x) and bending moment M(x). Consider a small element of length $dx$ at a distance x. \\
-% 		\begin{gather*}
-% 			\sum F_y = 0\\
-% 			V(x) + q(x) dx - V(x+dx) =0 \qquad(\text{distributed load can be considered constant})
-% 			\boxed{\dv{V}{x} = q(x)}
-% 		\end{gather*}
+	\subsection{Relation between V, M and q}
+		Consider a rod under stress. Let the distributed load on it be q(x) (upwards is +ve), shear force V(x) and bending moment M(x). Consider a small element of length $dx$ at a distance x. \\
 
-% 		(//todo: complete this)
-% 		\begin{gather*}
-% 			\sum M = 0 \qquad \text{(left end)}\\
-% 			M(x+dx) - M(x) + q(x)dx (\frac{dx}{2}) - V(x+dx)dx =0
-% 		\end{gather*}
+		\noindent \textbf{Shear force}
+		\begin{gather*}
+			\sum F_y = 0\\
+			V + q dx - (V+dV) =0 \\ %\qquad(\text{distributed load can be considered constant})
+			\boxed{\dv{V}{x} = - q}
+		\end{gather*}
 
+		\noindent \textbf{Bending Moment}
+		\begin{gather*}
+			\sum M = 0 \\
+			(M + dM) - M + qdx (\frac{dx}{2}) - Vdx =0\\
+			\dv{M}{x} = V \text{      (since dx dx term = 0 )}
+		\end{gather*}
+
+		\[\boxed{\dv{M}{x} = V}\]
 
 
 
