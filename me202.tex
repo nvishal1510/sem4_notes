@@ -70,76 +70,6 @@
 	\[d\delta = \frac{N(x) dx}{A(x) E(x)}\]
 
 
-\section{Torsion}
-	\subsection{Uniform Torsion}
-	\begin{itemize}
-		\item \textbf{Angle of twist} : It is the angle by which one end of the rod is displaced wrt the other end of the rod under the effect of some torsion (twisting).
-		\item Consider a small cylidrical section which has length $dx$, one end has been displaced wrt another by an angle of $d\phi$. Consider a line $ab$ on the circumference along the length of the cylinder which has be changed to $ab'$. Then shear strain 
-		\begin{equation*}
-			\gamma_{max} = \frac{bb'}{ab} \qquad (\text{bb' can be assumed to be a straight line})\\
-		\end{equation*}
-			\[\boxed{\gamma_{max} = \frac{r d\phi}{dx}}\]
-
-
-		\item Rate of twist or angle of twist per unit length
-		\[\theta = \dv{\phi}{x}\]
-		\[\gamma_{max} = r \theta\]
-		If $\theta$ is constant, then
-		\[\gamma_{max}= \frac{r \phi}{L}\] 
-		This is called as $\gamma_{max}$ because we are measuring the shear strain at the outer end i.e, with maximum radius and hence, maximum shear strain.
-		\[\boxed{\gamma = \rho \theta = \rho \dv{\phi}{x}}\]
-		where $\rho$ is the perpendicular distance of the point from the axis (radius) we are considering.
-		\[\boxed{\gamma = \frac{\rho}{r} \gamma_{max} }\]
-
-	\end{itemize}
-	\subsection{Hooke's Law}
-		Hooke' law for shear stress and shear strain
-		\begin{align*}
-			\tau = G \gamma
-				 = G \frac{\rho}{r}\gamma_{max}
-				 = \frac{\rho}{r}\tau_{max}
-		\end{align*}
-		\[\tau_{max} = G \gamma_{max}\]
-
-
-	\subsection{Torsion Formula}
-	\begin{itemize}
-		\item Polar moment of inertia (this is integral over area - double integral)-
-		\[\boxed{I_P = \int_A \rho^2 dA}\]
-		where $\rho$ is the distance at which area element $dA$ is located.
-		\item For a circle of radius r, 
-		\[I_P = \int_A \rho^2 dA = \int_{\theta = 0}^{2\pi}\int_{\rho = 0}^r \rho^2 (\rho d\theta d\rho) = \frac{\pi r^4}{2} \]
-		\[I_{Pcircle} = \frac{\pi r^4}{2}\]
-		\item Consider a cross-section of any shape, we are trying to sum all the small torques and equate it to the torque applied on this
-		\begin{align*}
-			T = \int_A dM &= \int_A \rho \tau dA\\
-						  &= \int_A \frac{\rho^2}{r}\tau_{max} dA\\
-						  &= \frac{\tau_{max}}{r} \int_A \rho^2 dA\\
-						T &= \frac{\tau_{max}}{r} I_P
-		\end{align*}
-		Or,
-		\[\tau_{max} = \frac{Tr}{I_P}\]
-		item The shear stress at distance $\rho$ from the center of the bar with polar moment of inertia $I_P$ is
-		\[\boxed{\tau = \frac{T\rho}{I_P}}\]
-		For a rod of circular cross section of radius r,
-		\[\boxed{\tau_{max} = \frac{2T}{\pi r^3} = \frac{16T}{\pi d^3 }}\]
-
-		\item Rate of twist
-		\[\boxed{\theta = \frac{T}{GI_P}}\]
-		Hence, $GI_P$ is also known as \textbf{Torsional Rigidity}
-		\item For a bar in pure torsion ($\theta = const$), the total angle of twist
-		\[\boxed{\phi = \frac{TL}{GI_P}}\]
-		The quantity $\frac{G I_P}{L}$ is also known as \textbf{torsional stiffness} of the bar.
-
-		\item For a thin circular tube, $I_P = 2 \pi r^3 t$
-	\end{itemize}
-
-	\subsection{Non-uniform Torsion}
-		For a bar with non-uniform cross-section, tension  :
-		\[\boxed{\phi = \int_0^L \frac{T(x) dx}{G I_P(x)}}\]
-
-\section{Hooke's Law}
-
 	\subsection{Stresses in a Plane and Mohr's Circle}
 	Using physical equations or using cauchy's stress tensor with rotation matrix, we get
 	\begin{gather}
@@ -215,7 +145,77 @@
 	\end{align*}
 
 
-\section{Torsion formula}
+\section{Torsion}
+\label{torsion}
+	\begin{itemize}
+		\item \textbf{Angle of twist} : It is the angle by which one end of the rod is displaced wrt the other end of the rod under the effect of some torsion (twisting).
+		\item Consider a small cylidrical section which has length $dx$, one end has been displaced wrt another by an angle of $d\phi$. Consider a line $ab$ on the circumference along the length of the cylinder which has be changed to $ab'$. Then shear strain 
+		\begin{equation*}
+			\gamma_{max} = \frac{bb'}{ab} \qquad (\text{bb' can be assumed to be a straight line})\\
+		\end{equation*}
+			\[\boxed{\gamma_{max} = \frac{r d\phi}{dx}}\]
+
+
+		\item Rate of twist or angle of twist per unit length
+		\[\theta = \dv{\phi}{x}\]
+		\[\gamma_{max} = r \theta\]
+		If $\theta$ is constant, then
+		\[\gamma_{max}= \frac{r \phi}{L}\] 
+		This is called as $\gamma_{max}$ because we are measuring the shear strain at the outer end i.e, with maximum radius and hence, maximum shear strain.
+		\[\boxed{\gamma = \rho \theta = \rho \dv{\phi}{x}}\]
+		where $\rho$ is the perpendicular distance of the point from the axis (radius) we are considering.
+		\[\boxed{\gamma = \frac{\rho}{r} \gamma_{max} }\]
+
+	\end{itemize}
+	\subsection{Hooke's Law}
+		Hooke' law for shear stress and shear strain
+		\begin{align*}
+			\tau = G \gamma
+				 = G \frac{\rho}{r}\gamma_{max}
+				 = \frac{\rho}{r}\tau_{max}
+		\end{align*}
+		\[\tau_{max} = G \gamma_{max}\]
+
+
+	\subsection{Torsion Formula}
+	\begin{itemize}
+		\item Polar moment of inertia (this is integral over area - double integral)-
+		\[\boxed{I_P = \int_A \rho^2 dA}\]
+		where $\rho$ is the distance at which area element $dA$ is located.
+		\item For a circle of radius r, 
+		\[I_P = \int_A \rho^2 dA = \int_{\theta = 0}^{2\pi}\int_{\rho = 0}^r \rho^2 (\rho d\theta d\rho) = \frac{\pi r^4}{2} \]
+		\[I_{Pcircle} = \frac{\pi r^4}{2}\]
+		\item Consider a cross-section of any shape, we are trying to sum all the small torques and equate it to the torque applied on this
+		\begin{align*}
+			T = \int_A dM &= \int_A \rho \tau dA\\
+						  &= \int_A \frac{\rho^2}{r}\tau_{max} dA\\
+						  &= \frac{\tau_{max}}{r} \int_A \rho^2 dA\\
+						T &= \frac{\tau_{max}}{r} I_P
+		\end{align*}
+		Or,
+		\[\tau_{max} = \frac{Tr}{I_P}\]
+		\item The shear stress at distance $\rho$ from the center of the bar with polar moment of inertia $I_P$ is
+		\[\boxed{\tau = \frac{T\rho}{I_P}}\]
+		So, $I_P$ represents the resistance to change in twist angle (or shear stress) by virtue of its cross section.\\
+		\emph{Note}: Here, the $I_P$ is constant for any distance $\rho$.\\
+		For a rod of \textbf{circular cross section} of radius r,
+		\[\boxed{\tau_{max} = \frac{2T}{\pi r^3} = \frac{16T}{\pi d^3 }}\]
+
+		\item Rate of twist
+		\[\boxed{\theta = \frac{T}{GI_P}}\]
+		Hence, $GI_P$ is also known as \textbf{Torsional Rigidity}
+		\item For a bar in pure torsion ($\theta = const$), the total angle of twist
+		\[\boxed{\phi = \frac{TL}{GI_P}}\]
+		The quantity $\frac{G I_P}{L}$ is also known as \textbf{torsional stiffness} of the bar.
+
+		\item For a thin circular tube, $I_P = 2 \pi r^3 t$
+	\end{itemize}
+
+	\subsection{Non-uniform Torsion}
+		For a bar with non-uniform cross-section, tension  :
+		\[\boxed{\phi = \int_0^L \frac{T(x) dx}{G I_P(x)}}\]
+
+
 	\subsection{Torsion Formula for non-prismatic bars}
 	\begin{itemize}
 	\item For elliptical cross section, maximum shear stress
@@ -239,9 +239,9 @@
 	We treat flange and web as seperate rectangles.
 		\[J = J_w + 2J_f\]
 		\begin{gather*}
-		J_f = k_1 b_f t_f^3 \\
-		J_w = k_1 (b_w-2t_f) t_w^3\\
-		\tau_max = \frac{2T (\frac{t}{2})}{J}\\
+		J_f = k_2 b_f t_f^3 \\
+		J_w = k_2 (b_w-2t_f) t_w^3\\
+		\tau_{max} = \frac{2T (\frac{t}{2})}{J}\\
 		\phi = \frac{TL}{GJ}
 		\end{gather*}
 	\end{itemize}
@@ -249,20 +249,21 @@
 	\subsection{Thin walled tubes}
 		Consider a small element of length of $dx$, then shear stresses are $\tau_a$,$\tau_b$, $\tau_c$ and $\tau_d$. Then the shear stresses on opposite wall should be equal (to satisfy Newton's second law). Hence,
 		\begin{align*}
-			F_b &= F_c\\
-			\tau_b t_b dx &= \tau_c t_c dx\\
-			\tau_b t_b &= \tau_c t_c
+			F_a &= F_c\\
+			\tau_a t_a dx &= \tau_c t_c dx\\
+			\tau_a t_a &= \tau_c t_c
 		\end{align*}
 
 		Shear flow f,
 		\[\boxed{f = \tau t = const}\]
 
-	Deriving torsion formula for the thin walled tubes- 
+	Deriving torsion formula for the thin walled tubes- \\
+	($L_m$ is the total circumferencial length, $A_m$ is the area enclosed by the median line, r is the distance of the element to the center)
 
 	\begin{align*}
-		T &= \int_0^{L_m} \tau dA \rho\\
+		T &= \int \tau dA r\\
 		  &= \int_0^{L_m} frds\\
-		  &= 2 f A_m 	& \text{where $A_m$ is the area enclosed by the median line.}
+		  &= 2 f A_m 
 	\end{align*}
 
 	\[\boxed{\tau= \frac{T}{2tA_m}}\]
@@ -272,12 +273,12 @@
 	\begin{align*}
 		\text{Total shear energy }U &= \int\int \frac{\tau^2}{2G} t dx ds\\
 								   &= \int \int \frac{f^2}{2Gt} dx ds\\
-								   &= \frac{f^2}{2G} \int_0^L dx \int_0^{L_m} ds\\
-								   &= \frac{T^2 L}{2G A_m^2} \int_0^{L_m} ds
+								   &= \frac{f^2}{2G} \int_0^L dx \int_0^{L_m} \frac{ds}{t}\\
+								   &= \frac{T^2 L}{2G A_m^2} \oint \frac{ds}{t}
 	\end{align*}
 	Also, $U = \frac{T^2 L}{2G J}$.
 	Hence, 
-		\[\boxed{J = \frac{4A_m^2}{\int_0^{L_m}\frac{dS}{t}}}\]
+		\[\boxed{J = \frac{4A_m^2}{\oint\frac{dS}{t}}}\]
 	For tube with \textbf{constant thickness},
 		\[\boxed{J = \frac{4A_m^2t}{L_m}}\]
 
@@ -290,12 +291,89 @@
 	Angle of twist,
 	\begin{align*}
 		\phi &= \frac{TL}{GJ}\\
-			 &= \frac{TL}{4GA_m^2}\int_0^{L_m} \frac{ds}{t}
+			 &= \frac{TL}{4GA_m^2}\oint \frac{ds}{t}
 	\end{align*}
 
 	\[\boxed{\phi = \frac{TL}{4GA_m^2}\int_0^{L_m} \frac{ds}{t}}\]
 
 
+	\subsection{Torsional stress concentration}
+	\begin{itemize}
+		\item If there is a sudden discontinuity in the cross section such as holes, , then local torsional stresses will develop and usual torsional formula cannot be applied.
+		\item The maximum stress found near the discontinuity can be found using
+		\[\tau_{max} = K \frac{Tr}{J}\]
+		where K is the torsional stress concentration factor.
+		\item K values for various values of $\frac{r}{d}$ and $\frac{D}{d}$ are empirically (or using advaced theory) are determined and tabulated, where r is the fillet radius, d is the smaller diameter and D is the larger diameter
+		\item Ref: \href{https://classes.mst.edu/civeng110/concepts/06/concentration/index.html#:~:text=The%20ratio%20of%20the%20true,of%20stress%20raiser%20in%20question.}{Torsion Stress Concentrations in Circular Shafts}
+	\end{itemize}
+
+
+	\subsection{Inelastic Torsion}
+	\begin{itemize}
+		\item If the applied torque is more than a certain threshold (yielding torque), the hooke's law ($\tau = G \gamma$) is no longer valid. But the strain still varies linearly across the cross section i.e, $\gamma = r\dv{\phi}{x}$ since in the derivation of this(\ref{torsion}), we only used basic geometry.
+
+		\item This is valid for inelastic torsion
+		\[T = \int \rho \tau dA = 2 \pi \int_0^r \tau \rho^2 d\rho\]
+
+
+	\end{itemize}
+
+	\subsection{Elasto plastic Torque}
+	\begin{itemize}
+		\item Consider a bar with circular cross section made up of elastic plastic material with torque applied along its axis.
+
+		\item If we keep increasing torque, at yielding torque ($T_Y$), the outer boundary of the bar yields while the rest of the circular cross section is still in the linear region. As we keep increasing torque, the material yield further toward the center.
+
+		\item At limiting torque $T_P$, the bar completely yields.
+
+		\item The shear stress in the yielded part of the bar is constant and equal to the yielding shear stress $\tau_Y$.
+
+		\item We can calculate T in terms of $\tau$ at any point after yielding. (Here, $\rho_Y$ is the radius of the material which has not yielded)
+		\begin{align*}
+			T &= \int \rho \tau dA\\
+			  &= 2\pi \int_0^r \tau \rho^2 d\rho\\
+			  &= 2\pi \left(\int_0^{\rho_Y} (\frac{\tau_Y}{\rho_Y} \rho) \rho^2 d\rho + \int_{\rho_Y}^r \tau_Y \rho^2 d\rho \right)\\
+			  &= \frac{\pi \tau_Y}{6} (4r^3 - \rho^3_Y)
+		\end{align*}
+		\[\boxed{T=\frac{\pi \tau_Y}{6} (4r^3 - \rho^3_Y)}\]
+
+		\item After the material has completed yielded $\rho_Y = r$, substituting in above equation
+			\[T_P = \frac{2\pi}{3}\tau_Y r^3 = \frac{4}{3}T_Y\]
+			\[\boxed{T_P = \frac{4}{3} T_Y}\]
+
+		\item Ref: \href{https://classes.mst.edu/civeng2211/lessons/torsion/theory_full/index.html}{Torsion Loading}
+
+	\end{itemize}
+
+
+	\subsection{Power due to torque}
+	\begin{itemize}
+		\item Power due to applied torque,
+		\[P = \dv{W}{t} = \frac{Td\theta}{dt} = T\omega\]
+
+	\end{itemize}
+
+
+% \section{Bending}
+
+% 	\subsection{Sign Convention}
+% 		Sign convention that prof is following in this course:
+% 		- On rightward end, anticlockwise moment and downward shear force is taken as positive
+
+
+% 	\subsection{Relation between V, M and q}
+% 		Consider a rod under stress. Let the distributed load on it be q(x) (upwards is +ve), shear force V(x) and bending moment M(x). Consider a small element of length $dx$ at a distance x. \\
+% 		\begin{gather*}
+% 			\sum F_y = 0\\
+% 			V(x) + q(x) dx - V(x+dx) =0 \qquad(\text{distributed load can be considered constant})
+% 			\boxed{\dv{V}{x} = q(x)}
+% 		\end{gather*}
+
+% 		(//todo: complete this)
+% 		\begin{gather*}
+% 			\sum M = 0 \qquad \text{(left end)}\\
+% 			M(x+dx) - M(x) + q(x)dx (\frac{dx}{2}) - V(x+dx)dx =0
+% 		\end{gather*}
 
 
 
@@ -305,7 +383,6 @@
 
 
 
-	% \end{itemize}
 
 
 
@@ -319,29 +396,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-% \item Non uniform Torsion
-% 	\item For a rod of length on which multiple torsions are applied, angle of twist can be found as
-% 	\[\phi= \phi_1 + \phi_2 + \hdots + \phi_n\]
-% 	where $\phi_1$ is the angle of twist in 1 part of rod, $\phi_2$ is the angle of twist in 2nd part...
-
-% 	\item For bar with continuously varying cross section,
-% 	\[d\phi = \frac{num}{den}\]
-
-% \item Stresses on inclined plane
-% 	-
 
 
 
