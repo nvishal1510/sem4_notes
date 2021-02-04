@@ -1,6 +1,7 @@
 \documentclass{article}
 \title{MA 214 - Introduction to Numerical Analysis}
 \author{Vishal Neeli}
+\date{}
 
 \usepackage[a4paper, total={6in, 11in}]{geometry}
 \usepackage{textcomp}
@@ -18,6 +19,7 @@
 	filecolor=red
 }
 \newtheorem*{theorem}{Theorem}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
 
 % FOR CODE
 % \usepackage{listings}
@@ -354,7 +356,65 @@
 		\[||f-s|| \leq C h^4 ||f^{(4)}|| \qquad \text{for some } C> 0\]
 		
 	\end{proof}
-		
+
+	\pagebreak
+
+
+
+
+
+\section{Numerical Integration}
+	\subsection{Introduction}
+		\begin{itemize}
+			\item Given f be a real valued function, we want to evaluate 
+			\[\int_a^b f(x) dx\]
+
+			\item If we can find its antiderivative $F(x)$, then we can use the fundamental theorem of calculus and evaluate it. But finding antiderivate is not so straightforward.
+			\[\int_a^b f(x) dx = F(b) - F(a)\]
+		\end{itemize}
+
+	\subsection{Newton-Cotes Formula}
+		Let $f(x):[a,b]\rightarrow \mathbb{R}$ and $p(x) \in \mathbb{P}_n$ be the polynomial interpolant using the data points $a=x_1<x_2<\hdots<x_n=b$, then the definite integral $\int_a^b f(x) dx$ can be approximated as 
+
+		\begin{align*}
+			\int_a^b f(x) dx &\approx \int_a^b p(x) dx\\
+							 &= \int_a^b \sum_{i=0}^n f(x_i) L_i(x) dx\\
+							 &= \sum_{i=0}^n f(x_i) \int_a^b L_i(x) dx
+		\end{align*}
+		Let $x_i = a+ih$ for $i=0,1,\hdots,n$ and $x= a + th$ for $t\in [0,n]$, then  we have,
+		\[\int_a^b L_i(x) dx= \int_a^b \prod_{k=0, k\neq i}^n \frac{x-x_k}{x_i-x_k} dx = \int_a^b  \prod_{k=0, k\neq i}^n \frac{t-k}{i-k} h dt = h\int_a^b \varphi_i(t) dt = h w_i\]
+		\[\text{where }w_i = \int_a^b \varphi_i(t) dt\text{    and   }\varphi_i(t) = \prod_{k=0, k\neq i}^n \frac{t-k}{i-k}\]
+		\noindent Then,
+		\[\boxed{\int_a^b f(x)dx = h \sum_{i=0}^n w_i f(x_i)} \]
+
+
+
+		\noindent \textbf{Trapezium rule} ($n=1$):
+			\[\int_a^b f(x)dx \approx \frac{b-a}{2} (f(a)+f(b))\]
+		\textbf{Simpson's rule} ($n=2$):
+			\[\int_a^b f(x)dx \approx \frac{h}{3} \left(f(a) + 4f\left(\frac{a+b}{2}\right)+ f(b)\right)\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
