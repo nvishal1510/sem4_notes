@@ -130,6 +130,7 @@
 		
 
 	\begin{theorem}[Error equation]
+	\label{error}
 		Let $f\in C^k[a,b]$, $x_0,x_1,\hdots,x_n \in [a,b]$ and $p\in \mathbb{P}_n$ be the interpolant using these points, then for all $x$, there exists a $\zeta = \zeta(x) \in (a,b)$ such that
 		\[\boxed{f(x)-p(x) = \frac{1}{(n+1)!}f^{(n+1})(\zeta)\prod_{k=0}^n(x-x_k)}\]
 		\textbf{Note}: Here $\zeta$ is dependent on the x, i.e, for every x you choose, $\zeta$ generally changes.\\
@@ -207,13 +208,13 @@
 	\end{proof}
 
 
-\subsection{Time complexity of the algorithms}
-	% (Slide is useless)
-	\begin{itemize}
-		\item Langrange's method - $O(n^2)$ : Computing each Langrange polynomial can be done in $O(n)$ (Finding the coefficients given roots can be done in \href{https://cs.stackexchange.com/questions/116643/what-is-the-most-efficient-algorithm-to-compute-polynomial-coefficients-from-its}{$O(n log^2(n))$}). We need to do to this n times. So, $O(n^2)$.
-		\item Divided differences - $O(n^2)$ : Summing operations in each stage - $n+(n-1)+ (n-2)+\hdots+ 1$. Hence, $O(n^2)$.
-		\item Divided difference can be considered better because we can extend from n to n+1 and so on without discarding previous computation.
-	\end{itemize}
+% \subsection{Time complexity of the algorithms}
+% 	% (Slide is useless)
+% 	\begin{itemize}
+% 		\item Langrange's method - $O(n^2)$ : Computing each Langrange polynomial can be done in $O(n)$ (Finding the coefficients given roots can be done in \href{https://cs.stackexchange.com/questions/116643/what-is-the-most-efficient-algorithm-to-compute-polynomial-coefficients-from-its}{$O(n log^2(n))$}). We need to do to this n times. So, $O(n^2)$.
+% 		\item Divided differences - $O(n^2)$ : Summing operations in each stage - $n+(n-1)+ (n-2)+\hdots+ 1$. Hence, $O(n^2)$.
+% 		\item Divided difference can be considered better because we can extend from n to n+1 and so on without discarding previous computation.
+% 	\end{itemize}
 
 
 \subsection{Weierstrass theorem consequences}
@@ -357,7 +358,6 @@
 		
 	\end{proof}
 
-	\pagebreak
 
 
 
@@ -382,17 +382,37 @@
 							 &= \sum_{i=0}^n f(x_i) \int_a^b L_i(x) dx
 		\end{align*}
 		Let $x_i = a+ih$ for $i=0,1,\hdots,n$ and $x= a + th$ for $t\in [0,n]$, then  we have,
-		\[\int_a^b L_i(x) dx= \int_a^b \prod_{k=0, k\neq i}^n \frac{x-x_k}{x_i-x_k} dx = \int_a^b  \prod_{k=0, k\neq i}^n \frac{t-k}{i-k} h dt = h\int_a^b \varphi_i(t) dt = h w_i\]
-		\[\text{where }w_i = \int_a^b \varphi_i(t) dt\text{    and   }\varphi_i(t) = \prod_{k=0, k\neq i}^n \frac{t-k}{i-k}\]
+		\[\int_a^b L_i(x) dx= \int_a^b \prod_{k=0, k\neq i}^n \frac{x-x_k}{x_i-x_k} dx = \int_0^n  \prod_{k=0, k\neq i}^n \frac{t-k}{i-k} h dt = h\int_0^n \varphi_i(t) dt = h w_i\]
+		\[\text{where }w_i = \int_0^n \varphi_i(t) dt\text{    and   }\varphi_i(t) = \prod_{k=0, k\neq i}^n \frac{t-k}{i-k}\]
+		% \noindent $w_i$ is also known as \textbf{quadrature weights}.
 		\noindent Then,
-		\[\boxed{\int_a^b f(x)dx = h \sum_{i=0}^n w_i f(x_i)} \]
-
-
+		\[\boxed{\int_a^b f(x)dx \approx h \sum_{i=0}^n w_i f(x_i)} \]
 
 		\noindent \textbf{Trapezium rule} ($n=1$):
 			\[\int_a^b f(x)dx \approx \frac{b-a}{2} (f(a)+f(b))\]
 		\textbf{Simpson's rule} ($n=2$):
 			\[\int_a^b f(x)dx \approx \frac{h}{3} \left(f(a) + 4f\left(\frac{a+b}{2}\right)+ f(b)\right)\]
+
+
+	\subsection{Newton-Cones formula error}
+	We use the \nameref{error}, for interpolation polynomial to calculate the error in Newton-Cotes formula.
+		\begin{align*}
+			|I_f - I_P|  &= \left|\int_a^b f(x)-p(x) dx \right|\\
+						 &\leq \int_a^b |f(x)-p(x)|dx\\
+			\end{align*}
+		 \[\boxed{|I_f - I_P|  \leq \frac{1}{(n+1)!} ||f^{(n+1)}|| \int_a^b \prod_{i=0}^n |x-x_i| dx}\]
+
+		For trapezium rule (n=1)
+		\begin{align*}
+		|I_f - I_P|  &\leq \frac{1}{2} ||f''|| \int_a^b |(x-a)(x-b)|dx\\
+							&= \frac{1}{2} ||f''|| \frac{(b-a)^3}{6}
+		\end{align*}
+
+
+		% (//todo : analogy with riemann sum)\\
+		(//todo: stricter bound for siemsons rule)
+
+
 
 
 
