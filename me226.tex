@@ -1,0 +1,212 @@
+\documentclass{article}
+\title{ME 226 - Mechanical Measurements (S2)}
+\author{Vishal Neeli}
+
+\usepackage[a4paper, total={6in, 11in}]{geometry}
+\usepackage{textcomp}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{grffile}
+\usepackage{physics}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\hypersetup{
+	colorlinks=true,
+	urlcolor=blue,
+	linkcolor=cyan,
+	filecolor=red
+}
+\newtheorem*{theorem}{Theorem}
+
+% FOR CODE
+% \usepackage{listings}
+% \usepackage{color}
+
+% \definecolor{dkgreen}{rgb}{0,0.6,0}
+% \definecolor{gray}{rgb}{0.5,0.5,0.5}
+% \definecolor{mauve}{rgb}{0.58,0,0.82}
+
+% \lstset{frame=tb,
+%   language=Java,
+%   aboveskip=3mm,
+%   belowskip=3mm,
+%   showstringspaces=false,
+%   columns=flexible,
+%   basicstyle={\small\ttfamily},
+%   numbers=none,
+%   numberstyle=\tiny\color{gray},
+%   keywordstyle=\color{blue},
+%   commentstyle=\color{dkgreen},
+%   stringstyle=\color{mauve},
+%   breaklines=true,
+%   breakatwhitespace=true,
+%   tabsize=3
+% }
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+	\subsection{Why experiments?}
+		\begin{itemize}
+			\item Test hypothesis, theories and models - We need to test the theory or model before it can be used to predict things. We test these by doing experiments.
+			\item Exploratory reasearch - Experiments are also used to explore the domains which we are not very well familiar.
+			\item Measurement of properties - For example, if we are working with new material, we will need to use the material properties which can be found out by experiments.
+			\item Field scale measurements - Non destructive testing. We want to know measure some properties without destroying the sample.
+			\item Design of control systems - To design any thing, we need to measure somethings to behaviour of the system at those conditions.
+		\end{itemize}
+
+	\subsection{Complexities in designing experiments}
+		\begin{itemize}
+			\item Sound knowledge of engineering principles is required
+			\item Should have a knowledge of governing principles
+			\item Should have keen insight into the physical principles of the processes being investigated
+		\end{itemize}
+
+
+\section{Intrusive and Non intrusive based measurement techiques}
+Measurement techniques can be classified into intrusive and non intrusive.
+\begin{itemize}
+	\item \textbf{Thermal inertia}: 
+	\begin{itemize}
+		\item Intrusive techniques have thermal inertia, i.e, the probe takes some time to give the actual reading of the measurements. 
+		\item For example, a thermocouple used to measure the room temperature takes some time to near real temperature.
+		\item Non-intrusive techniques are inertia free, i.e, they give near real value readings. 
+		\item For example, light based/radiation based techniques take negligible time to give reading. It still takes finite time since speed of light is finite but this can be neglected.
+	\end{itemize}
+
+	\item \textbf{Point measurement / Field measurement}:
+	\begin{itemize}
+		\item Intrusive techniques give point measurements, i.e, they take the measurement from a small region.
+		\item For example, a thermocouple inserted in a water bath only measures temperature at which it is inserted. To measure temperatures at different points, we either need to change the position of the thermocouple or insert more number of thermocouples. 
+		\item Non intrusive based techniques give field measurement, i.e, they give the measurement of whole region in a single shot.
+	\end{itemize}
+
+	\item \textbf{Representative Elementary Volume (REV)}:
+	\begin{itemize}
+		\item Intrusive based techniques give the volume averaged reading of small finite region. This region is generally called representative elementary volume (REV).
+		\item Non instrusive based techniques' REV is dependent on the resolution of the detector and lesser compared to intrusive based techniques.
+	\end{itemize}
+
+	\item \textbf{Temporal and Frequency Response}:
+	\begin{itemize}
+		\item As intrusive based techniques have thermal inertia, they have a poor temporal and frequency response, i.e, the rate at which they record data is low.
+		\item In the case of non intrusive based techniques, temporal and frequency response is only limited by the detector or camera.
+	\end{itemize}
+
+	\item \textbf{Cost}:
+	\begin{itemize}
+		\item Non intrusive based technique apparatus are generally costlier than intrusive based techniques.
+		\item Also non intrusive based techniques' data processing is also a bit difficult.
+	\end{itemize}
+
+\end{itemize}
+
+\section{Transducers}
+	\begin{itemize}
+		\item Transducers are devices that converts one physical effect to another by transforming one type of energy to another.
+		\item Most used transducers are electrical transducers, i.e, devices which convert non-eletrical effects (quantities to be measured) into electrical effects. This is because of the electrical signals can be easily measured and also that we can extract useful information from these signals using computers.
+
+		\item Requirements of transuders:
+		\begin{itemize}
+			\item \textbf{Linearity}: It is desired that the input signal and the output signal maintain linearity.
+			\item \textbf{Ruggedness}: Transducers are required to have high electrical and mechanical strength, so that when it gets overloaded it should not deterioate.
+			\item \textbf{Repeatability}: If we perform same experiment under same conditions multiple times, the results should be identical.
+			\item \textbf{High Signal to Noise Ratio}: The transducer should possess high SNR.
+			\item \textbf{Reliability}: It should be reliable.
+			\item \textbf{No hysteresis}: There should be no changes in output due to hysteris, i.e, if we move from point A to point B or the other way around, there should be no change in the output. Hysteresis can occurr due to thermal effects, magnetic effects etc.
+		\end{itemize} 
+
+		\item They can be classified into - \\
+
+		\textbf{Active transducers}: 
+		\begin{itemize}
+			\item These do not require any external power source. 
+			\item They generate analog voltag or current when stimulated by some form of energy. 
+			\item For instance, thermocouples outputs an voltage that is related to temperature being measured without any external power source. 
+			\item Further amplification is required for active transducers.
+		\end{itemize}
+		\textbf{Passive transducers}:
+		\begin{itemize}
+			\item These are extenally powered.
+			\item They provide output in the form of some variation in resistance, capacitance or any other electrical parameter which has to being converted into equivalent electrical current or voltage using external energy. 
+			\item Passive transducers are complex than active transducers for getting required parameters. 
+		\end{itemize}
+
+	\end{itemize}
+
+\section{Definitions in measurement}
+
+	\begin{itemize}
+		\item \textbf{Validity}: It is the degree to which a measuring strategy (instrument, machine, or test) measures what is to be measured. A measurement is valid if it measures the required quantity accurately.
+		\item \textbf{Reliability}: A measuring instrument is reliable if it is consistently gives same result for same experiment performed under identical conditions.
+		\item \textbf{Readability}: Readability is the smallest difference between values that can be read from the instrument. % It is the precision with which a instrument measures a quantity.
+		\item \textbf{Least Count}: It is the smallest difference between indications that can be detected on the instrument scale.
+		\item \textbf{Sensitivity}: It is the ratio of the linear movement of the pointer on an analog instrument to the change in the measured variable causing this motion
+		\item \textbf{Hysteresis}: The system is said to exhibit hysteresis if there is a difference in reading depending on whether it is approached from above or below.
+		\item \textbf{Accuracy}: Indicates the deviation of the reading from a known input. Accuracy is frequently expressed as a percentage of fullscale reading.
+		\item \textbf{Precision}: Indicates its ability to reproduce a certain reading with a given accuracy.
+
+	\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% - Analysis of Experimental Data -
+% 	- Gross blunders : The apparatus or instrument contruction invalidates the data, i.e, wrong construction.
+% 	- Fixed errors : This will cause error to be shifted by a approximately same amount. This is called as bias error and systematic error. We can model these types of errors and correct the measured values.
+% 	- Random erros : Human errors, random electronic fluctutations in instruments. This \emph{generally} (not always) a statistical distribution.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
