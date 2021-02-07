@@ -71,8 +71,8 @@ Measurement techniques can be classified into intrusive and non intrusive.
 	\item \textbf{Thermal inertia}: 
 	\begin{itemize}
 		\item Intrusive techniques have thermal inertia, i.e, the probe takes some time to give the actual reading of the measurements. 
-		\item For example, a thermocouple used to measure the room temperature takes some time to near real temperature.
-		\item Non-intrusive techniques are inertia free, i.e, they give near real value readings. 
+		\item For example, a thermocouple used to measure the room temperature takes some time to give values near real temperature.
+		\item Non-intrusive techniques are inertia free, i.e, they give near real value readings within negligible time.
 		\item For example, light based/radiation based techniques take negligible time to give reading. It still takes finite time since speed of light is finite but this can be neglected.
 	\end{itemize}
 
@@ -106,7 +106,7 @@ Measurement techniques can be classified into intrusive and non intrusive.
 \section{Transducers}
 	\begin{itemize}
 		\item Transducers are devices that converts one physical effect to another by transforming one type of energy to another.
-		\item Most used transducers are electrical transducers, i.e, devices which convert non-eletrical effects (quantities to be measured) into electrical effects. This is because of the electrical signals can be easily measured and also that we can extract useful information from these signals using computers.
+		\item Most used transducers are electrical transducers, i.e, devices which convert non-eletrical effects (quantities to be measured) into electrical effects. These types of transducers are prefered because the electrical signals can be easily measured and also that we can extract useful information from these signals using computers.
 
 		\item Requirements of transuders:
 		\begin{itemize}
@@ -115,17 +115,17 @@ Measurement techniques can be classified into intrusive and non intrusive.
 			\item \textbf{Repeatability}: If we perform same experiment under same conditions multiple times, the results should be identical.
 			\item \textbf{High Signal to Noise Ratio}: The transducer should possess high SNR.
 			\item \textbf{Reliability}: It should be reliable.
-			\item \textbf{No hysteresis}: There should be no changes in output due to hysteris, i.e, if we move from point A to point B or the other way around, there should be no change in the output. Hysteresis can occurr due to thermal effects, magnetic effects etc.
+			\item \textbf{No hysteresis}: There should be no changes in output due to hysteresis, i.e, if we move from point A to point B or the other way around, there should be no change in the output. Hysteresis can occurr due to thermal effects, magnetic effects etc.
 		\end{itemize} 
 
-		\item They can be classified into - \\
+		\item These can be classified into - \\
 
 		\textbf{Active transducers}: 
 		\begin{itemize}
 			\item These do not require any external power source. 
-			\item They generate analog voltag or current when stimulated by some form of energy. 
+			\item They generate analog voltage or current when stimulated by some form of energy. 
 			\item For instance, thermocouples outputs an voltage that is related to temperature being measured without any external power source. 
-			\item Further amplification is required for active transducers.
+			\item Further amplification is required for active transducers as the output is usually low.
 		\end{itemize}
 		\textbf{Passive transducers}:
 		\begin{itemize}
@@ -151,39 +151,44 @@ Measurement techniques can be classified into intrusive and non intrusive.
 	\end{itemize}
 
 
+\section{Errors}
+	\begin{itemize}
+	\item \textbf{Error in measurement}: It refers to difference between the measurement we obtain and true value of the variable.
+	\item {Sources of Error}:
+		\begin{itemize}
+			\item \textbf{Spacial resolution}: Probe is never a point, so the value we get is the volume averaged over some volume.
+			\item \textbf{Temporal error}: The reading is not measured instantaneously by the instrument, it requires some finite some time. This can lead to error. 
+			\item \textbf{Dynamic errors}: Working with high frequency lead to this type of error. (//todo: complete this)
+			\item \textbf{Systematic and operational errors}: It is the difference between actual reading and the reading that instrument is showing.
+			\item \textbf{Hardware errors}
+			\item \textbf{Software errors}: Errors during data analysis using computer.
+		\end{itemize}
+
+	\item If true value is possible to calculate, then error can be found using
+		\[Error = x_{measured}- x_{true}\]
+
+	\item \textbf{Scatter} : If the values recorded from the a no of runs are taken, then the values deviate from the their mean, this is called scatter. The extent of scatter (standard deviation of the readings) is called uncertainity.
+	\item \textbf{Confidence interval} is the percentage of the readings that lie in the range $mean \pm 2 \sigma$ (or whatever we specify).
+	\item Types of experimental errors
+		\begin{itemize}
+		\item \textbf{Gross blunders} : The apparatus or instrument contruction invalidates the data, i.e, wrong construction.
+		\item \textbf{Fixed errors} : This will cause error to be shifted by a approximately same amount. This are also called as bias error or systematic error. We can model these types of errors and correct the measured values.
+		\item \textbf{Random errors} : Human errors, random electronic fluctuations in instruments. This \emph{generally} a statistical distribution.
+		\end{itemize}
+	\end{itemize}
+
+\section{Uncertainity analysis}
+Let $x_1, x_2, \hdots, x_n$ be independent variables and they are used calculate $R(x_1,x_2,\hdots,x_n)$. Let the uncertainties in the variables be $w_1,w_2,\hdots,w_n$. Then the uncertainity in the calcuated result is given by
+	\[\boxed{w_R = \sqrt{\left(\pdv{R}{x_1} w_1 \right)^2 + \left(\pdv{R}{x_2} w_2 \right)^2 + \hdots + \left(\pdv{R}{x_n} w_\nu \right)^2 }}\]
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-% - Analysis of Experimental Data -
-% 	- Gross blunders : The apparatus or instrument contruction invalidates the data, i.e, wrong construction.
-% 	- Fixed errors : This will cause error to be shifted by a approximately same amount. This is called as bias error and systematic error. We can model these types of errors and correct the measured values.
-% 	- Random erros : Human errors, random electronic fluctutations in instruments. This \emph{generally} (not always) a statistical distribution.
-
-
-
-
-
-
-
-
-
-
-
-
-
+\noindent If R is of the form $R = x_1^{a_1} x_2^{a_2} \hdots x_n^{a_n}$, then 
+	\begin{align*}
+		\pdv{R}{x_i} &= x_1^{a_1} x_2^{a_2} \hdots (a_i x_i^{a_i -1}) \hdots x_n^{a_n}\\
+		\frac{1}{R}\pdv{R}{x_i} &= \frac{a_i}{x_i}
+	\end{align*}
+	Using this, 
+	\[\frac{w_R}{R} = \sqrt{\sum_{i=1}^n \left(\frac{a_i w_i}{x_i} \right)^2}\]
 
 
 
