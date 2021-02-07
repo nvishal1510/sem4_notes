@@ -5,11 +5,11 @@ Feel free to use them to your liking. Also I suggest you to check the sections o
 
 | Course | Section | Comment |
 |--------|---------|----------
-|MA 214  | S2	   | This is the most organised and well written of all.|
+|MA 214  | S2      | This is the most organised and well written of all.|
 |ME 202  | S1      | This mostly contains derivations and formulas. |
-|ME 206  | S1	   | This course is simply mugging up stuff, so is my notes.|
-|ME 226  | S2	   |           |
-|ME 213L | S1	   | Not much to write here. You can find the table of machine codes.|
+|ME 206  | S1      | This course is simply mugging up stuff, so is my notes.|
+|ME 226  | S2      | The course content (that is being taught) to me is mostly philosophical,</br>so it mostly contains definitions and some philosophy. |
+|ME 213L | S1      | Not much to write here. You can find the table of machine codes.|
 |ME 766  | -       | 			|
 |CS 213  | -       | The notes only contain pointers, actual learning is by practise.|
 
