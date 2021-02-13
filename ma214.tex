@@ -387,6 +387,9 @@
 		% \noindent $w_i$ is also known as \textbf{quadrature weights}.
 		\noindent Then,
 		\[\boxed{\int_a^b f(x)dx \approx h \sum_{i=0}^n w_i f(x_i)} \]
+		\textbf{Note}: $w_i$s are independent of f, end points a and b and h. $w_i$s are dependent on only dependent on n.
+		\textbf{Note}: $w_i$s are symmetric i.e, 
+		\[w_k = w_{n-k}\]
 
 		\noindent \textbf{Trapezium rule} ($n=1$):
 			\[\int_a^b f(x)dx \approx \frac{b-a}{2} (f(a)+f(b))\]
@@ -404,13 +407,94 @@
 
 		For trapezium rule (n=1)
 		\begin{align*}
-		|I_f - I_P|  &\leq \frac{1}{2} ||f''|| \int_a^b |(x-a)(x-b)|dx\\
-							&= \frac{1}{2} ||f''|| \frac{(b-a)^3}{6}
+		|I_f - I_{P_1}|  &\leq \frac{1}{2} ||f''|| \int_a^b |(x-a)(x-b)|dx\\
+							&= \frac{1}{12} ||f''||{(b-a)^3}
+		\end{align*}
+		For simpson's rule (n=2)
+		\begin{align*}
+		|I_f - I_{P_2}|  &\leq \frac{1}{6} ||f'''|| \int_a^b |(x-a)(x-\frac{a+b}{2})(x-b)|dx\\
+							&= \frac{1}{192} ||f''||{(b-a)^4}
 		\end{align*}
 
-
-		% (//todo : analogy with riemann sum)\\
 		(//todo: stricter bound for siemsons rule)
+
+	\subsection{Convergence of the approximation}
+	\begin{itemize}
+	\item The difference $|I_f - I_{P_n}|$ \textbf{does not converge} to 0 as we increase n. This is (crudely) because the weights sometimes takes negative values.
+	\item A similar approximation which converges as n increases is Gaussian quadratures.
+		\[G_n(f)= \sum_{i=0}^n W_i f(x_i)\]
+	where weights $W_i$ are
+		\[W_i = \int_a^b (L_i(x))^2dx = \int_a^b \left[\prod_{k=0,k\neq i}^n \frac{x-x_k}{x_i - x_k} \right]^2 dx\]
+	Here, the points $x_k$s are \textbf{not} equally spaces.\\
+	$x_k$s are the roots of Legendre Polynomials
+	\end{itemize}
+
+
+	\subsection{Composites Rule} 
+	Similar to the splines case, we approximate the integral using Newton-Cotes formula in each subinterval.
+	\begin{itemize}
+		\item \textbf{Composite Trapezoidal Rule}: We divide the interval $[a,b]$ into m subintervals and apply trapezoidal rule in each subinterval.
+		\begin{align*}
+			\int_a^b f(x)dx &\approx \int_a^b C_{p_1} dx\\
+					&= h(\frac{1}{2} f(a) + \frac{1}{2} f(a+h)) + h(\frac{1}{2} f(a+h) + \frac{1}{2} f(a+2h))+\hdots + h(\frac{1}{2} f(a+(m-1)h) + \frac{1}{2} f(b))\\	
+				&= h(\frac{1}{2}f(a) + f(a+h) +f(a+2h)+ \hdots + f(a+(m-1)h) + \frac{1}{2} f(b))
+		\end{align*}
+		\item \textbf{Composite Simpson's Rule}: We divide the interval $[a,b]$ into 2m subintervals and apply simpons' rule.
+		\begin{align*}
+			\int_a^b f(x)dx &\approx \int_a^b C_{p_2}dx\\
+			&= h(\frac{1}{3} f(a) + \frac{4}{3} f(a+h) + \frac{1}{3} f(a+2h)) + h(\frac{1}{3} f(a+2h) + \frac{4}{3} f(a+3h) + \frac{1}{3}f(a+4h))\\
+			&+\hdots + h(\frac{1}{3} f(a+(2m-2)h) + \frac{4}{3} f(a+(2m-1)h) + \frac{1}{3} f(b))\\
+				&= h(\frac{1}{3}f(a) + \frac{4}{3}f(a+h) + \frac{2}{3}f(a+2h) + \frac{4}{3}f(a+3h) +\frac{2}{3}f(a+4h) + \hdots \\
+				&+\frac{2}{3}f(a+(2m-2)h) +\frac{4}{3}f(a+(2m-1)h) + \frac{1}{3} f(b))
+		\end{align*}
+
+	\end{itemize}
+
+	\subsection{Error - Composites Rule}
+	\begin{itemize}
+	\item To get an estimate of the error $|I_f - C_{p_n}|$, we sum the error in each subinterval. 
+	\item For composite trapezoid rule, 
+	\begin{align*}
+		|I_f - C_{p_1}| &\leq \sum_{i=0}^m \frac{1}{12}||f''||h^3\\
+						&= \frac{1}{12} ||f''|| h^2 (b-a)
+	\end{align*}
+	\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Ordinary Differential Equation}
+	
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
