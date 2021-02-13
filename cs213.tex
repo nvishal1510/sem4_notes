@@ -113,6 +113,33 @@
 
 \section{Recurrence Relation}
 	The recurrence relations of type $T(n) = aT(\frac{n}{b}) + f(n)$ can be solved using the following methods:\\
+<<<<<<< Updated upstream
+	\begin{enumerate}
+		\item \textbf{Plug and chuck} : Keep on substituting in the value of $T(\frac{n}{b})$ in terms of smaller n untill we see a pattern. Pattern can be used to easily get the solution
+		\item \textbf{Substitution method} : (This is more like check for your solution) In this method, we first guess the solution and prove that using induction, i.e, substitute the solution for $T(\frac{n}{b})$ and check whether it you can arrive at the proposed relation for $T(n)$
+		\item \textbf{Recursion-tree method}: We draw the recursion tree for this method. In the recursion tree, leaves contain the cost for the base case and each node contains the cost for the merge and divide process. We sum all of them to get a solution for the recurrence relation. 
+		\item \textbf{Using master theorem}: Some of the recurrence relations encountered while working with algorithms can be solved using -
+		\begin{theorem}[The master theorem]
+		Let $a\geq 1$, $b>1$ and $f(n)$ be a function, then let $T(n)$ be defined on non-negative integers, then the recurrence relation
+		\[T(n) = aT(\frac{n}{b}) + f(n) \] is bound assymptotically in three cases.(If possible, let $f(n)= \Theta(n^d)$)
+		\begin{align*}
+			T(n) &= \sum_{k=0}^{log_bn} a^k f(\frac{n}{b^k})\\
+				&= \sum_{k=0}^{log_bn} a^k (\frac{n}{b^k})^d\\ 
+				&= 
+			\begin{cases}
+			O(n^d) \qquad\text{ if } a<b^d\text{ or }f(n)= \Omega(n^{log_ba+\epsilon})\\
+			O(n^d logn) \qquad \text{ if } a=b^d\text{ or }f(n)= \Theta(n^{log_ba})\\
+			O(n^{log_ba}) \qquad \text{ if } a>b^d\text{ or }f(n)= O(n^{log_ba-\epsilon})\\
+			\end{cases}	
+		\end{align*}
+		\end{theorem}
+
+		\begin{itemize}
+		\item In the first case ($a<b^d\text{ or }f(n)= \Omega(n^{log_ba+\epsilon})$), the work done at the first node dominates the time taken. Hence, total time taken = time taken at first node. Also this means that as the depth increases, the work done at each level decreases. 
+		\item In the second case ($a=b^d\text{ or }f(n)= \Theta(n^{log_ba})$), the work done at all levels is equal. Hence, the total time taken = time at initial node $\times$ no of levels.
+		\item In the third case ($a>b^d\text{ or }f(n)= O(n^{log_ba-\epsilon})$), the work done at the deepest level dominates the time taken. Hence, total time taken = time taken at the lowest level
+		\end{itemize}
+=======
 	\begin{itemize}
 	\item Plug and chuck : Keep on substituting in the value of $T(\frac{n}{b})$ in terms of smaller n untill we see a pattern. Pattern can be used to easily get the solution
 	\item Substitution method : (This is more like check for your solution) In this method, we first guess the solution and prove that using induction, i.e, substitute the solution for $T(\frac{n}{b})$ and check whether it you can arrive at the proposed relation for $T(n)$
@@ -124,33 +151,60 @@
 	\begin{align*}
 		T(n) &= \sum_{k=0}^{log_bn} a^k f(\frac{n}{b^k})\\
 			&= \sum_{k=0}^{log_bn} a^k (\frac{n}{b^k})^d\\ 
-			&= 
-		\begin{cases}
-		O(n) \qquad\text{ if } a<b^d\text{ or }f(n)= \Omega(n^{log_ba+\epsilon})\\
-		O(n^d logn) \qquad \text{ if } a=b^d\text{ or }f(n)= \Theta(n^{log_ba})\\
-		O(n^log_ba) \qquad \text{ if } a>b^d\text{ or }f(n)= O(n^{log_ba-\epsilon})\\
-		\end{cases}	
 	\end{align*}
+			\[\boxed{{T(n)= 
+					\begin{cases}
+					\Theta(n^{log_ba}) \qquad \text{ if } a>b^d\text{ or }f(n)= O(n^{log_ba-\epsilon})\\
+					\Theta(n^d logn) \qquad \text{ if } a=b^d\text{ or }f(n)= \Theta(n^{log_ba})\\
+					\Theta(n^d) \qquad\text{ if } a<b^d\text{ or }f(n)= \Omega(n^{log_ba+\epsilon})\\
+					\end{cases}}}	\]
 	\end{theorem}
 
 	\begin{itemize}
-	\item In the first case ($a<b^d\text{ or }f(n)= \Omega(n^{log_ba+\epsilon})$), the work done at the first node dominates the time taken. Hence, total time taken = time taken at first node. Also this means that as the depth increases, the work done at each level decreases. 
+	\item In the first case ($a>b^d\text{ or }f(n)= O(n^{log_ba-\epsilon})$), the work done at the deepest level dominates the time taken. Hence, total time taken = time taken at the lowest level
 	\item In the second case ($a=b^d\text{ or }f(n)= \Theta(n^{log_ba})$), the work done at all levels is equal. Hence, the total time taken = time at initial node $\times$ no of levels.
-	\item In the third case ($a>b^d\text{ or }f(n)= O(n^{log_ba-\epsilon})$), the work done at the deepest level dominates the time taken. Hence, total time taken = time taken at the lowest level
+	\item In the third case ($a<b^d\text{ or }f(n)= \Omega(n^{log_ba+\epsilon})$), the work done at the first node dominates the time taken. Hence, total time taken = time taken at first node. Also this means that as the depth increases, the work done at each level decreases. 
 	\end{itemize}
+>>>>>>> Stashed changes
 
 
-	\item Solving the recurrence relation $T_n = T_{n-1} + c_n$:
-	\begin{align*}
-		a_n T_n &= b_n T_{n-1} + c_n\\
-		\mathclap{\text{Select $\sigma_n$ such that } \sigma_n b_n = \sigma_{n-1} a_{n-1}}\\
-		\sigma_n a_n T_n &= \sigma_n b_n T_{n-1} + \sigma_n c_n \\
-		\sigma_n a_n T_n &= \sigma_{n-1} b_{n-1} T_{n-1}\\
-		\sigma_n a_n T_n &= \sigma_0 a_0 T_0 + \sum_{k=1}^n c_n \sigma_n\\
-				T_n &= \frac{ a_0 \sigma_0 T_0 + \sum_{k=1}^n c_n \sigma_n}{\sigma_n a_n} 
-	\end{align*}
+		\item \textbf{Solving Recurrence relation  of type}:
+			\[a_n T_n = b_n T_{n-1} + c_n\]
+		Our goal here is make the above equation in the form $T_n - T_{n-1} = c_n$, so that we can solve this by summing all the terms
+		\begin{enumerate}
+			\item We multiply both the sides by a factor $\sigma_n$ which has the property $\sigma_n b_n = \sigma_{n-1} a_{n-1}$, so $\frac{\sigma_n}{\sigma_{n-1}}= \frac{a_{n-1}}{b_n}$
+			\[\sigma_n a_n T_n = \sigma_n b_n T_{n-1} + \sigma_n c_n \]
+			\[\sigma_n a_n T_n - \sigma_{n-1} b_{n-1} T_{n-1} = \sigma_n c_n\]
+			\item Now we sum all the terms to get,
+		\end{enumerate}
+		\begin{align*}
+			\sigma_n a_n T_n &= \sigma_0 a_0 T_0 + \sum_{k=1}^n c_n \sigma_n\\
+					T_n &= \frac{ a_0 \sigma_0 T_0 + \sum_{k=1}^n c_n \sigma_n}{\sigma_n a_n} 
+		\end{align*}
 
-	\end{itemize}
+		\item \textbf{Solving by generating functions}:
+		We will use this technique to get a closed form solution for fibonacci series.
+		\begin{enumerate}
+		\item Write a single recurrence equation for $g_n$.\\
+		In the case of Fibannaci series, it is
+			\[g_n = g_{n-1} + g_{n-2} + \delta_1\]
+		where $\delta_1$ is the dirac delta function. This is used because we can assume $g_n=0$ for all non positive numbers and still satisfy this for $n=1$.
+		\item Multiply both sides by $z^n$ and z transform LHS and RHS.\\
+		For fibanacci series, 
+		\begin{equation*}
+			G(z)= zG(z)+z^2G(z) + z 
+		\end{equation*}
+		where $G(z)$ is the z transform of $g(z)$
+		\item Solve for $G(z)$ in the z domain\\
+		For fibanacci series
+		\[G(z) = \frac{z}{1-z-z^2}\]
+		\item Inverse transform $G(z)$ to get $g(z)$
+		\[g_n = \frac{1}{\sqrt{5}}(\phi^n - \bar{\phi}^n)\]
+		\end{enumerate}
+
+
+	\end{enumerate}
+
 
 
 
