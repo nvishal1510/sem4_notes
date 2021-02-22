@@ -468,25 +468,85 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 \section{Ordinary Differential Equation}
-	
+	\subsection{Uniqueness and Existence Theorem}
+	\begin{theorem}[Cauchy-Lipschitz-Picard]
+		Consider the initial value problem 
+		\[y' = f(t,y) \qquad y(t_0) = y_0 \]
+		\begin{enumerate}
+			\item If the function f is continuous for $t_0\leq t \leq T$ and $y_0 -C \leq y \leq y_0 +C$ for some constants T, $C>0$.
+			\item If the function f satisfies lipschitz condition. \\
+			\textbf{Lipschitz condition }: There exists a constant $L>0$ such that 
+			\[|f(t,u)-f(t,v)|\leq L|u-v| \]
+			for all $t\in [t_0, T]$ and $u,v \in [y_0 - C, y_0 + C]$
+		\end{enumerate}
+		Then there exists a unique solution $y(t) \in C^1[t_0,T]$ such that 
+		\[y' = f(t,y) \qquad y(t_0) = y_0\]
+	\end{theorem}
+	Lipschitz condition imposes the condition that the slope of the function f (with t treated as constant) is bounded. 
 
 
+	\subsection{Integral Formula}
+		Consider the initial value problem
+		\[y' = f(t,y) \qquad y(t_0) = y_0 \]
+		Interating with y from $y_0$ to y and t from $t_0$ to t
+		\[y = y_0 + \int_{t_0}^t f(s,y(s))ds \]
 
+	\subsection{Order of Numerical Method}
+		Consider a numerical method given by the recurrence relation
+		\[y_{i+1} = F(t,f, y_0, y_1,\hdots,y_i, y_{i+1})\]
+		Order of the numerical method is said to be p if
+		\[y(t_{i+1}) - F(t,f,y(t_0), y(t_1), \hdots, y(t_i),y(t_{i+1})) = O(h^{p+1})\] 
 
+	This in some sense represents order of error that is included while approximating from $y_i$ to $y_{i+1}$ since we use exact values while computing $y_{i+1}$ and get the difference between $y(t_{i+1})$ and $t_{i+1}$. \\
+	Order can also be intepreted as the highest degree of polynomial which is exactly recovered after approximating the solution using the numerical method. (Here, order is the degree of the polynomial and not function f)
+
+	\subsection{Global error}
+		In an interval [0,T] for a given $h>0$, there are $\left[\frac{T}{h} \right]+1$ are equally spaced mesh points. Let 
+		\[e_{n,h} = y_{n,h} - y(t_n)\]
+
+	\subsection{Convergence of Numerical Method}
+		A numerical method is said to be convergent if 
+		\[\lim_{h\rightarrow0^+} max_{i=0,1,\hdots,[\frac{T}{h}]} |e_{i,h}| = 0\]
+
+	\subsection{Euler Method}
+		To approximate the solution, we divide the interval [0,T] into n mesh points, i.e, $t_i = i h$, where $h= \frac{T}{n}$
+		At the mesh point $t_i$, we find approximations $y_i$ for exact solution $y(t_i) = y(t_{i-1}) + \int_{t_{i-1}}^{t_{i}} f(s,y(s)) ds$ using
+		\[y_i = y_{i-1} + h f(t_{i-1},y_{i-1}) \qquad \text{for i} = 1,2,\hdots,n \]
+
+		\textbf{Order}:
+		\begin{align*}
+			&y(t_{i+1}) - F(t,f,y(t_0), y(t_1), \hdots, y(t_n),y(t_{n+1})) \\
+			&= y(t_{i+1}) -( y(t_i) + h f(t_i, y(t_i)) )\\
+			&= y(t_i) + h y'(t_i) + \frac{h^2}{2} y''(\zeta) - (y(t_i) + h f(t_i, y(t_i) )) \qquad \text{using taylor's expansion}\\
+			&= \frac{y''(\zeta)}{2} h^2\\
+			&= O(h^2)
+		\end{align*}
+		Hence, the order of Euler's method is 1.
+
+		Using the above result and lipschitz condition, we can prove that 
+		\[|e_{i,h}| \leq \frac{Ch}{\lambda}((1+\lambda h)^i -1) \qquad \text{for i } = 0,1,\hdots,[\frac{T}{h}] \]
+
+		Since, $|e_{i,h}| = O(h)$, so $\lim_{h\rightarrow} |e_{i,h}| =0$ and hence euler's method is convergent. Since the global error converges to zero at the rate of $h^1$, the order of convergence of Euler method is said to be 1.
+
+	\subsection{Trapezoidal Rule}
+		The recurrence relation for trapezoidal rule is implicit.
+		\[y_i = y_{i-1} + \frac{h}{2} (f(t_{i-1}, y_{i-1})+ f(t_i, y_i)) \]
+
+		\textbf{Order}:
+		\begin{align*}
+			&y(t_{i+1}) - F(t,f,y(t_0), y(t_1), \hdots, y(t_n),y(t_{n+1})) \\
+			&= y(t_{i+1}) - (y(t_i) + \frac{h}{2} (y'(t_i)+ y'(t_{i+1})))\\
+			&= y(t_i)+hy'(t_i)+\frac{h^2}{2}y''(t_i) + \frac{h^3}{6} y'''(\zeta_1) - (y(t_i)+ \frac{h}{2}(y'(t_i) + y'(t_i) + h y''(t_i) + \frac{h^2}{2} y'''(\zeta_2)))\\
+			&= (\frac{y'''(\zeta_1)}{6} - \frac{y'''(\zeta_2)}{4})h^3\\
+			&= O(h^3)
+		\end{align*}
+		Hence, the order of Trapezoidal Rule is 2.
+
+		Using the above result and lipschitz condition, we can prove that
+		\[|e_{i,h}| \leq \frac{Ch^2}{\lambda} \left( \left( \frac{1 + \frac{\lambda h}{2}}{1 - \frac{\lambda h}{2}}\right)^i -1 \right) \qquad \text{for i } = 0,1,\hdots, [\frac{T}{h}]\]
+
+		Since, $|e_{i,h}| = O(h^2)$, so $\lim_{h\rightarrow} |e_{i,h}| =0$ and hence trapezoidal method is convergent. Since the global error converges to zero at the rate of $h^2$, the order of convergence of trapezoidal method is said to be 2.
 
 
 

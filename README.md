@@ -1,5 +1,7 @@
 # Sem 4 Notes 
 
+Update: MA 214 is up to date (22-02-2021). 
+
 This repo consists of notes for the courses that I am taking as Mech sophomore at IIT Bombay. Part of it is running notes during the classes. Other part is the gist that I understand when I read the topic.
 Feel free to use them to your liking. Also I suggest you to check the sections of the courses to avoid any confusion.
 
