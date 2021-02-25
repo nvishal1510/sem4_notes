@@ -153,7 +153,7 @@
 		\begin{equation*}
 			\gamma_{max} = \frac{bb'}{ab} \qquad (\text{bb' can be assumed to be a straight line})\\
 		\end{equation*}
-			\[\boxed{\gamma_{max} = \frac{r d\phi}{dx}}\]
+			\[\gamma_{max} = \frac{r d\phi}{dx}\]
 
 
 		\item Rate of twist or angle of twist per unit length
@@ -184,7 +184,7 @@
 		where $\rho$ is the distance at which area element $dA$ is located.
 		\item For a circle of radius r, 
 		\[I_P = \int_A \rho^2 dA = \int_{\theta = 0}^{2\pi}\int_{\rho = 0}^r \rho^2 (\rho d\theta d\rho) = \frac{\pi r^4}{2} \]
-		\[I_{Pcircle} = \frac{\pi r^4}{2}\]
+		\[\boxed{I_{Pcircle} = \frac{\pi r^4}{2}}\]
 		\item Consider a cross-section of any shape, we are trying to sum all the small torques and equate it to the torque applied on this
 		\begin{align*}
 			T = \int_A dM &= \int_A \rho \tau dA\\
@@ -199,10 +199,10 @@
 		So, $I_P$ represents the resistance to change in twist angle (or shear stress) by virtue of its cross section.\\
 		\emph{Note}: Here, the $I_P$ is constant for any distance $\rho$.\\
 		For a rod of \textbf{circular cross section} of radius r,
-		\[\boxed{\tau_{max} = \frac{2T}{\pi r^3} = \frac{16T}{\pi d^3 }}\]
+		\[\tau_{max} = \frac{2T}{\pi r^3} = \frac{16T}{\pi d^3 }\]
 
 		\item Rate of twist
-		\[\boxed{\theta = \frac{T}{GI_P}}\]
+		\[\theta = \frac{T}{GI_P}\]
 		Hence, $GI_P$ is also known as \textbf{Torsional Rigidity}
 		\item For a bar in pure torsion ($\theta = const$), the total angle of twist
 		\[\boxed{\phi = \frac{TL}{GI_P}}\]
@@ -268,7 +268,7 @@
 
 	\[\boxed{\tau= \frac{T}{2tA_m}}\]
 
-	Using shear stress, we get $J$ -\\
+	% Using shear stress, we get $J$ -\\
 	Shear energy density of a solid under pure shear stress is $\frac{\tau^2}{2G}$. 
 	\begin{align*}
 		\text{Total shear energy }U &= \int\int \frac{\tau^2}{2G} t dx ds\\
@@ -301,8 +301,8 @@
 	\begin{itemize}
 		\item If there is a sudden discontinuity in the cross section such as holes, , then local torsional stresses will develop and usual torsional formula cannot be applied.
 		\item The maximum stress found near the discontinuity can be found using
-		\[\tau_{max} = K \frac{Tr}{J}\]
-		where K is the torsional stress concentration factor.
+		\[\tau_{max} = K \frac{Tc}{J}\]
+		where K is the torsional stress concentration factor, r is the fillet radius and c is the radius of the smaller section at the shaft.
 		\item K values for various values of $\frac{r}{d}$ and $\frac{D}{d}$ are empirically (or using advaced theory) are determined and tabulated, where r is the fillet radius, d is the smaller diameter and D is the larger diameter
 		\item Ref: \href{https://classes.mst.edu/civeng110/concepts/06/concentration/index.html#:~:text=The%20ratio%20of%20the%20true,of%20stress%20raiser%20in%20question.}{Torsion Stress Concentrations in Circular Shafts}
 	\end{itemize}
@@ -380,13 +380,82 @@
 		\[\boxed{\dv{M}{x} = V}\]
 
 
+	\subsection{Pure bending}
+		Ref: \href{https://www.youtube.com/watch?v=f08Y39UiC-o}{Youtube video}\\
+		Let a beam be under bending moment having a radius of curvature $\rho$. Then curvature $\kappa$ is defined as
+		\[\kappa = \frac{1}{\rho} = \dv{\theta}{s}\]
+		(since $\rho = \dv{s}{\theta}$)\\
+
+		Curved upward is the positive curvature.\\
+
+		For a small length element $dx$ from distance of length y (upwards) from the neutral axis and $d\theta$ be the angle it subtends at the center of curva (take x axis along the neutral axis). Then the strain in that element is
+		\begin{align*}
+			\sigma_x &= E \epsilon_x \qquad \text{(Assuming Hooke's law)}\\
+					 &= E \frac{(\rho -y)d\theta - dx}{dx}\\
+					 &= E\frac{(dx - yd\theta) - dx}{dx}\\
+					 &= -\frac{Ey}{\rho}\\
+					 &= -E\kappa y
+		\end{align*}	
+		\[\boxed{\sigma_x = - \frac{Ey}\rho} \quad \text{(Assuming Hooke's law)}\]	
 
 
+		Since, the beam is in equilibrium, (in the following calculation, the area (vector) is along x direction - since we want to sum $\sigma_x$)
+		\begin{align*}
+			\int_A \sigma_x dA &= 0\\
+			\implies \int_A -\frac{Ey}{\rho}dA &=0\\
+			\implies \int_A ydA &=0
+		\end{align*}
+		This implies that the neutral axis should pass through the centroid. (or $\int_A ydA = 0$) 
+
+	\subsection{Flexure Formula}
+		Continuing the above case, the sum of all the moments is equal to the bending moment.
+		\begin{align*}
+			M &= - \int_A \sigma_xy dA \qquad \text{(-ve sign because +ve $\sigma$ produces a negative moment)}\\
+			  &= - \int_A \frac{-Ey}{\rho} y dA\\
+			  &= \frac{E}{\rho} I 
+		\end{align*}
+		where $I = \int_A y^2 dA$ is the second moment of area.
+
+		\[\boxed{\kappa = \frac{1}{\rho} = \frac{M}{EI}} \]
+		$EI$ is known as the \textbf{Flexure Rigidity}
+		\[\boxed{\sigma_x = \frac{-My}{I}}\]
+
+		\textbf{Maximum Bending Moment}: It occurs at maximum distance (y) from the neutral axis.\\
+
+		Let $c_1$ and $c_2$ be maximum distances (along y) from the neutral axis in either directions, then \textbf{section modulus} is 
+		\[S_1 = \frac{I}{c_1}\]
+
+		Maximum longitudinal (along x) is
+		\[\boxed{(\sigma_x)_{max} = \frac{M_{max}c}{I}}\]
+
+\section{Non Uniform Bending}
+	\subsection{Transverse Shear Stress}
+		Consider a small element (along lenght) of a rod under stress. Let the bending on left end be M and right be M+dM and shear force V and $V+dV$. Consider the top portion of the element upto y distance from the neutral axis (top to y). Let $\sigma_1$ and $\sigma_2$ be the variation of logitudinal stress.Then, 
+		\begin{align*}
+			\tau dA \text{(along x-z plane}) &= \int (\sigma_2 - \sigma_1) dA \text{(along y-z plane)}\\
+											 &= \int (\frac{(M+dM)y}{I} - \frac{My}{I} dA  )\\
+								\text{Assuming that transverse stress is} & \text{ uniformly distributed along the width}\\
+									\tau bdx &= \frac{dM}{I} \int ydA \\
+										\tau &= \frac{dM}{dx} \frac{1}{Ib} \int ydA\\
+		\end{align*}
+		\[\boxed{\tau = \frac{vQ}{Ib}}\]
+		where, $Q=\int ydA$, area varies from the top portion to the untill plane we want to compute $\tau$. This is called \textbf{shear formula}.\\
 
 
+		For rectangualar cross sections, Consider a portion above the height $y_1$ above the neutral axis,
+		\[Q = \int_{y_1}^{\frac{h}{2}} ybdy = \frac{b}{2}\left(\frac{h^2}{4}- y^2 \right)\]
+		\[\tau= \frac{VQ}{Ib} = \frac{Vb}{2I}\left(\frac{h^2}{4}- y^2 \right)\]
+		At $y=0$,
+		\[\tau_{max} = \frac{3}{2} \frac{V}{A}\]
 
+		(//todo:limitations)
 
+		For circlular cross sections at the center, 
+		\[Q = \frac{\pi r^2}{2}\frac{4r}{3\pi} = \frac{2r^3}{3}\]
+		\[\tau_{max} = \frac{VQ}{Ib} = \frac{V(\frac{2}{3}r^3)}{(\frac{\pi r^4}{4})(2r)} = \frac{4V}{3A}\]
 
+		For hollow cyclinder, 
+		\[\tau_{max} = \frac{V (\frac{2}{3}(r_2^3 -r_1^3))}{(\frac{\pi}{4}(r_2^4 - r_1^4))(2(r_2-r_1))}= \frac{3V}{4A} \left( \frac{r_2^2 + r_1 r_2 + r_1^2}{r_2^2+r_1^2} \right)\]
 
 
 
