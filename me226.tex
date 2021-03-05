@@ -48,7 +48,7 @@
 \begin{document}
 \maketitle
 
-\section{Introduction}
+\section{Introduction and Definitions}
 	\subsection{Why experiments?}
 		\begin{itemize}
 			\item Test hypothesis, theories and models - We need to test the theory or model before it can be used to predict things. We test these by doing experiments.
@@ -66,117 +66,116 @@
 		\end{itemize}
 
 
-\section{Intrusive and Non intrusive based measurement techiques}
-Measurement techniques can be classified into intrusive and non intrusive.
-\begin{itemize}
-	\item \textbf{Thermal inertia}: 
+	\subsection{Intrusive and Non intrusive based measurement techiques}
+	Measurement techniques can be classified into intrusive and non intrusive.
 	\begin{itemize}
-		\item Intrusive techniques have thermal inertia, i.e, the probe takes some time to give the actual reading of the measurements. 
-		\item For example, a thermocouple used to measure the room temperature takes some time to give values near real temperature.
-		\item Non-intrusive techniques are inertia free, i.e, they give near real value readings within negligible time.
-		\item For example, light based/radiation based techniques take negligible time to give reading. It still takes finite time since speed of light is finite but this can be neglected.
-	\end{itemize}
-
-	\item \textbf{Point measurement / Field measurement}:
-	\begin{itemize}
-		\item Intrusive techniques give point measurements, i.e, they take the measurement from a small region.
-		\item For example, a thermocouple inserted in a water bath only measures temperature at which it is inserted. To measure temperatures at different points, we either need to change the position of the thermocouple or insert more number of thermocouples. 
-		\item Non intrusive based techniques give field measurement, i.e, they give the measurement of whole region in a single shot.
-	\end{itemize}
-
-	\item \textbf{Representative Elementary Volume (REV)}:
-	\begin{itemize}
-		\item Intrusive based techniques give the volume averaged reading of small finite region. This region is generally called representative elementary volume (REV).
-		\item Non instrusive based techniques' REV is dependent on the resolution of the detector and lesser compared to intrusive based techniques.
-	\end{itemize}
-
-	\item \textbf{Temporal and Frequency Response}:
-	\begin{itemize}
-		\item As intrusive based techniques have thermal inertia, they have a poor temporal and frequency response, i.e, the rate at which they record data is low.
-		\item In the case of non intrusive based techniques, temporal and frequency response is only limited by the detector or camera.
-	\end{itemize}
-
-	\item \textbf{Cost}:
-	\begin{itemize}
-		\item Non intrusive based technique apparatus are generally costlier than intrusive based techniques.
-		\item Also non intrusive based techniques' data processing is also a bit difficult.
-	\end{itemize}
-
-\end{itemize}
-
-\section{Transducers}
-	\begin{itemize}
-		\item Transducers are devices that converts one physical effect to another by transforming one type of energy to another.
-		\item Most used transducers are electrical transducers, i.e, devices which convert non-eletrical effects (quantities to be measured) into electrical effects. These types of transducers are prefered because the electrical signals can be easily measured and also that we can extract useful information from these signals using computers.
-
-		\item Requirements of transuders:
+		\item \textbf{Thermal inertia}: 
 		\begin{itemize}
-			\item \textbf{Linearity}: It is desired that the input signal and the output signal maintain linearity.
-			\item \textbf{Ruggedness}: Transducers are required to have high electrical and mechanical strength, so that when it gets overloaded it should not deterioate.
-			\item \textbf{Repeatability}: If we perform same experiment under same conditions multiple times, the results should be identical.
-			\item \textbf{High Signal to Noise Ratio}: The transducer should possess high SNR.
-			\item \textbf{Reliability}: It should be reliable.
-			\item \textbf{No hysteresis}: There should be no changes in output due to hysteresis, i.e, if we move from point A to point B or the other way around, there should be no change in the output. Hysteresis can occurr due to thermal effects, magnetic effects etc.
-		\end{itemize} 
-
-		\item These can be classified into - \\
-
-		\textbf{Active transducers}: 
-		\begin{itemize}
-			\item These do not require any external power source. 
-			\item They generate analog voltage or current when stimulated by some form of energy. 
-			\item For instance, thermocouples outputs an voltage that is related to temperature being measured without any external power source. 
-			\item Further amplification is required for active transducers as the output is usually low.
+			\item Intrusive techniques have thermal inertia, i.e, the probe takes some time to give the actual reading of the measurements. 
+			\item For example, a thermocouple used to measure the room temperature takes some time to give values near real temperature.
+			\item Non-intrusive techniques are inertia free, i.e, they give near real value readings within negligible time.
+			\item For example, light based/radiation based techniques take negligible time to give reading. It still takes finite time since speed of light is finite but this can be neglected.
 		\end{itemize}
-		\textbf{Passive transducers}:
+
+		\item \textbf{Point measurement / Field measurement}:
 		\begin{itemize}
-			\item These are extenally powered.
-			\item They provide output in the form of some variation in resistance, capacitance or any other electrical parameter which has to being converted into equivalent electrical current or voltage using external energy. 
-			\item Passive transducers are complex than active transducers for getting required parameters. 
+			\item Intrusive techniques give point measurements, i.e, they take the measurement from a small region.
+			\item For example, a thermocouple inserted in a water bath only measures temperature at which it is inserted. To measure temperatures at different points, we either need to change the position of the thermocouple or insert more number of thermocouples. 
+			\item Non intrusive based techniques give field measurement, i.e, they give the measurement of whole region in a single shot.
+		\end{itemize}
+
+		\item \textbf{Representative Elementary Volume (REV)}:
+		\begin{itemize}
+			\item Intrusive based techniques give the volume averaged reading of small finite region. This region is generally called representative elementary volume (REV).
+			\item Non instrusive based techniques' REV is dependent on the resolution of the detector and lesser compared to intrusive based techniques.
+		\end{itemize}
+
+		\item \textbf{Temporal and Frequency Response}:
+		\begin{itemize}
+			\item As intrusive based techniques have thermal inertia, they have a poor temporal and frequency response, i.e, the rate at which they record data is low.
+			\item In the case of non intrusive based techniques, temporal and frequency response is only limited by the detector or camera.
+		\end{itemize}
+
+		\item \textbf{Cost}:
+		\begin{itemize}
+			\item Non intrusive based technique apparatus are generally costlier than intrusive based techniques.
+			\item Also non intrusive based techniques' data processing is also a bit difficult.
 		\end{itemize}
 
 	\end{itemize}
 
-\section{Definitions in measurement}
-
-	\begin{itemize}
-		\item \textbf{Validity}: It is the degree to which a measuring strategy (instrument, machine, or test) measures what is to be measured. A measurement is valid if it measures the required quantity accurately.
-		\item \textbf{Reliability}: A measuring instrument is reliable if it is consistently gives same result for same experiment performed under identical conditions.
-		\item \textbf{Readability}: Readability is the smallest difference between values that can be read from the instrument. % It is the precision with which a instrument measures a quantity.
-		\item \textbf{Least Count}: It is the smallest difference between indications that can be detected on the instrument scale.
-		\item \textbf{Sensitivity}: It is the ratio of the linear movement of the pointer on an analog instrument to the change in the measured variable causing this motion
-		\item \textbf{Hysteresis}: The system is said to exhibit hysteresis if there is a difference in reading depending on whether it is approached from above or below.
-		\item \textbf{Accuracy}: Indicates the deviation of the reading from a known input. Accuracy is frequently expressed as a percentage of fullscale reading.
-		\item \textbf{Precision}: Indicates its ability to reproduce a certain reading with a given accuracy.
-
-	\end{itemize}
-
-
-\section{Errors}
-	\begin{itemize}
-	\item \textbf{Error in measurement}: It refers to difference between the measurement we obtain and true value of the variable.
-	\item {Sources of Error}:
+	\subsection{Transducers}
 		\begin{itemize}
-			\item \textbf{Spacial resolution}: Probe is never a point, so the value we get is the volume averaged over some volume.
-			\item \textbf{Temporal error}: The reading is not measured instantaneously by the instrument, it requires some finite some time. This can lead to error. 
-			\item \textbf{Dynamic errors}: Working with high frequency lead to this type of error. (//todo: complete this)
-			\item \textbf{Systematic and operational errors}: It is the difference between actual reading and the reading that instrument is showing.
-			\item \textbf{Hardware errors}
-			\item \textbf{Software errors}: Errors during data analysis using computer.
+			\item Transducers are devices that converts one physical effect to another by transforming one type of energy to another.
+			\item Most used transducers are electrical transducers, i.e, devices which convert non-eletrical effects (quantities to be measured) into electrical effects. These types of transducers are prefered because the electrical signals can be easily measured and also that we can extract useful information from these signals using computers.
+
+			\item Requirements of transuders:
+			\begin{itemize}
+				\item \textbf{Linearity}: It is desired that the input signal and the output signal maintain linearity.
+				\item \textbf{Ruggedness}: Transducers are required to have high electrical and mechanical strength, so that when it gets overloaded it should not deterioate.
+				\item \textbf{Repeatability}: If we perform same experiment under same conditions multiple times, the results should be identical.
+				\item \textbf{High Signal to Noise Ratio}: The transducer should possess high SNR.
+				\item \textbf{Reliability}: It should be reliable.
+				\item \textbf{No hysteresis}: There should be no changes in output due to hysteresis, i.e, if we move from point A to point B or the other way around, there should be no change in the output. Hysteresis can occurr due to thermal effects, magnetic effects etc.
+			\end{itemize} 
+
+			\item These can be classified into - \\
+			\textbf{Active transducers}: 
+			\begin{itemize}
+				\item These do not require any external power source. 
+				\item They generate analog voltage or current when stimulated by some form of energy. 
+				\item For instance, thermocouples outputs an voltage that is related to temperature being measured without any external power source. 
+				\item Further amplification is required for active transducers as the output is usually low.
+			\end{itemize}
+			\textbf{Passive transducers}:
+			\begin{itemize}
+				\item These are extenally powered.
+				\item They provide output in the form of some variation in resistance, capacitance or any other electrical parameter which has to being converted into equivalent electrical current or voltage using external energy. 
+				\item Passive transducers are complex than active transducers for getting required parameters. 
+			\end{itemize}
+
 		\end{itemize}
 
-	\item If true value is possible to calculate, then error can be found using
-		\[Error = x_{measured}- x_{true}\]
+	\subsection{Definitions in measurement}
 
-	\item \textbf{Scatter} : If the values recorded from the a no of runs are taken, then the values deviate from the their mean, this is called scatter. The extent of scatter (standard deviation of the readings) is called uncertainity.
-	\item \textbf{Confidence interval} is the percentage of the readings that lie in the range $mean \pm 2 \sigma$ (or whatever we specify).
-	\item Types of experimental errors
 		\begin{itemize}
-		\item \textbf{Gross blunders} : The apparatus or instrument contruction invalidates the data, i.e, wrong construction.
-		\item \textbf{Fixed errors} : This will cause error to be shifted by a approximately same amount. This are also called as bias error or systematic error. We can model these types of errors and correct the measured values.
-		\item \textbf{Random errors} : Human errors, random electronic fluctuations in instruments. This \emph{generally} a statistical distribution.
+			\item \textbf{Validity}: It is the degree to which a measuring strategy (instrument, machine, or test) measures what is to be measured. A measurement is valid if it measures the required quantity accurately.
+			\item \textbf{Reliability}: A measuring instrument is reliable if it is consistently gives same result for same experiment performed under identical conditions.
+			\item \textbf{Readability}: Readability is the smallest difference between values that can be read from the instrument. % It is the precision with which a instrument measures a quantity.
+			\item \textbf{Least Count}: It is the smallest difference between indications that can be detected on the instrument scale.
+			\item \textbf{Sensitivity}: It is the ratio of the linear movement of the pointer on an analog instrument to the change in the measured variable causing this motion
+			\item \textbf{Hysteresis}: The system is said to exhibit hysteresis if there is a difference in reading depending on whether it is approached from above or below.
+			\item \textbf{Accuracy}: Indicates the deviation of the reading from a known input. Accuracy is frequently expressed as a percentage of fullscale reading.
+			\item \textbf{Precision}: Indicates its ability to reproduce a certain reading with a given accuracy.
+
 		\end{itemize}
-	\end{itemize}
+
+
+	\subsection{Errors}
+		\begin{itemize}
+		\item \textbf{Error in measurement}: It refers to difference between the measurement we obtain and true value of the variable.
+		\item {Sources of Error}:
+			\begin{itemize}
+				\item \textbf{Spacial resolution}: Probe is never a point, so the value we get is the volume averaged over some volume.
+				\item \textbf{Temporal error}: The reading is not measured instantaneously by the instrument, it requires some finite some time. This can lead to error. 
+				\item \textbf{Dynamic errors}: Working with high frequency lead to this type of error. (//todo: complete this)
+				\item \textbf{Systematic and operational errors}: It is the difference between actual reading and the reading that instrument is showing.
+				\item \textbf{Hardware errors}
+				\item \textbf{Software errors}: Errors during data analysis using computer.
+			\end{itemize}
+
+		\item If true value is possible to calculate, then error can be found using
+			\[Error = x_{measured}- x_{true}\]
+
+		\item \textbf{Scatter} : If the values recorded from the a no of runs are taken, then the values deviate from the their mean, this is called scatter. The extent of scatter (standard deviation of the readings) is called uncertainity.
+		\item \textbf{Confidence interval} is the percentage of the readings that lie in the range $mean \pm 2 \sigma$ (or whatever we specify).
+		\item Types of experimental errors
+			\begin{itemize}
+			\item \textbf{Gross blunders} : The apparatus or instrument contruction invalidates the data, i.e, wrong construction.
+			\item \textbf{Fixed errors} : This will cause error to be shifted by a approximately same amount. This are also called as bias error or systematic error. We can model these types of errors and correct the measured values.
+			\item \textbf{Random errors} : Human errors, random electronic fluctuations in instruments. This \emph{generally} a statistical distribution.
+			\end{itemize}
+		\end{itemize}
 
 \section{Uncertainity analysis}
 Let $x_1, x_2, \hdots, x_n$ be independent variables and they are used calculate $R(x_1,x_2,\hdots,x_n)$. Let the uncertainties in the variables be $w_1,w_2,\hdots,w_n$. Then the uncertainity in the calcuated result is given by
@@ -205,9 +204,9 @@ Let $x_1, x_2, \hdots, x_n$ be independent variables and they are used calculate
 	\[a_n \dv[n]{x}{t} + a_{n-1} \dv[n-1]{x}{t} + \hdots + a_1 \dv{x}{t} + a_0 x= F(t)\]
 	where $F(t)$ is the force imposed on the system.
 
-	The order of system is defined as the order of the above differential equation.
+	The \textbf{order of system} is defined as the order of the above differential equation.
 
-	\subsection{Zero Order systems}
+\section{Zero Order systems}
 	\[a_0 x = F(t)\]
 	Here, $x = \frac{1}{a_0} F(t)$ variable x instants tracks the change in $F(t)$, $\frac{1}{a_0}$ is called the static sensitivity.\\
 	The real measurements strictly do not follow the zeroth order system 
@@ -269,27 +268,42 @@ Let $x_1, x_2, \hdots, x_n$ be independent variables and they are used calculate
 	\begin{enumerate}
 		\item \textbf{Law of Homogeneous circuits}: It states that the thermal emf generated in the theromocouple is independent of the temperature distribution along the wire and only dependent on end temperatures. 
 
-		\item \textbf{Law of successive temperatures}: The sum of emf generated by the junctions at $T_1$ and $T_2$ and emf generated by the junctions $T_2$ and $T_3$ is equal to emf generated by the junctions at $T_1$ and $T_3$. 
+		\item \textbf{Law of Intermediate Temperatures}: The sum of emf generated by the junctions at $T_1$ and $T_2$ and emf generated by the junctions $T_2$ and $T_3$ is equal to emf generated by the junctions at $T_1$ and $T_3$. 
 		\[e_{13} = e_{12} + e_{23}\]
 
-		\item \textbf{Law of Intermediate temperatures}: A third metal wire inserted into the junction will have no effect on the emf produced by two metals iff the junctions with the third metal are kept at the same temperature.
-
-
-
-
-
-
-
+		\item \textbf{Law of Intermediate Metal}: A third metal wire inserted into the junction will have no effect on the emf produced by two metals iff the junctions with the third metal are kept at the same temperature.
 	\end{enumerate}
 
 
+\section{RTD sensors}
+\begin{itemize}
+	\item In RTD sensors, we quantify the change in temperature using the change of resistance of the sensing element.
+	\[R = R_0 (1+ \gamma_1 T + \gamma_2 T^2 + \hdots + \gamma_n T^n)\]
+	where $R_0$ is the resistance of the sensising element at $0^o C$
+
+	\item Assuming linear variation of resistance wrt temperature, we can calculate temperature as 
+	\[\Delta R = \gamma R_0 \Delta T\]
+	\[T = T_{ref} + \frac{\Delta R}{\gamma R_0}\]
+
+	\item Usually, Pt, Ni, Cu are used as sensing elements. They representes as $XR_0$. For example, $Pt100$ is the RTD sensor which has $100\Omega$ at $0^o C$,
+	\item They have a range of $-250^o C \text{ to } 1000^o C$
+
+	\item Major source of error is self heating ($Joule's heating$), this is quantified using dissipation constant ($P_d$).\\
+	\textbf{Dissipation constant}: It is the power to raise the temperature of RTD by 1K (or $1^o C$).\\
+	\[\text{Temperature change due to self heating } \Delta T = \frac{P}{P_d}\]
+
+	\item In the RTD, 3 lead wires (two are connected in parallel) are used instead of 2 lead wires because this will lead to reduction in internal resistance due to lead wires. 
+
+\end{itemize}
 
 
 
 
-	% \subsection{Second Order Systems}
 
-	% \[\dv[2]{x}{t} + a_1 \dv{x}{t} + a_0 x  = F(t)\]
+
+
+
+
 
 
 
