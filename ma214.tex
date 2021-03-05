@@ -416,7 +416,7 @@
 							&= \frac{1}{192} ||f''||{(b-a)^4}
 		\end{align*}
 
-		(//todo: stricter bound for siemsons rule)
+		% (//todo: stricter bound for siemsons rule)
 
 	\subsection{Convergence of the approximation}
 	\begin{itemize}
@@ -459,10 +459,6 @@
 						&= \frac{1}{12} ||f''|| h^2 (b-a)
 	\end{align*}
 	\end{itemize}
-
-
-
-
 
 
 
@@ -547,6 +543,87 @@
 		\[|e_{i,h}| \leq \frac{Ch^2}{\lambda} \left( \left( \frac{1 + \frac{\lambda h}{2}}{1 - \frac{\lambda h}{2}}\right)^i -1 \right) \qquad \text{for i } = 0,1,\hdots, [\frac{T}{h}]\]
 
 		Since, $|e_{i,h}| = O(h^2)$, so $\lim_{h\rightarrow} |e_{i,h}| =0$ and hence trapezoidal method is convergent. Since the global error converges to zero at the rate of $h^2$, the order of convergence of trapezoidal method is said to be 2.
+
+
+
+\pagebreak
+
+
+	\subsection{Multistep Methods}
+	\begin{itemize}
+		\item \textbf{Simpson's Rule}
+			We have 
+			\begin{align*}
+				y(t_{i+1})- y(t_{i-1}) &= \int_{t_{i-1}}^{t_{i+1}} f(t,y)dt
+			\end{align*}
+
+			We use the simpsons rule to approximate the integral,
+			\begin{equation*}
+				\boxed{y_{t_{i+1}} = y_{t_{i-1}} + \frac{h}{3}\left( f(t_{i-1},y_{i-1} + 4 f(t_i,y_i)+ f(t_{i+1},y_{i+1}) \right)}
+			\end{equation*}
+
+		\textbf{Note:} Here, $h = t_{i+2}- t_i$
+
+		\item \textbf{Adam Bashfort Method:} (Explicit 4 step method)
+		\[y_{i+4} = y_{i+3} + \frac{h}{24}(55f(t_{i+3},y_{i+3})- 59 f(t_{i+2},y_{i+2}+ 37 f(t_{i+1},y_{i+1}-9f(t_i,y_i)))) \]
+		\item \textbf{Adam Moulton Method:} (Implicit 3 step method)
+		\[y_{i+3} = y_{i+2} + \frac{h}{24}(9f(t_{i+3},y_{i+3})+ 19 f(t_{i+2},y_{i+2}-5 f(t_{i+1},y_{i+1}-9f(t_i,y_i)))) \]
+
+	\end{itemize}
+
+	\subsection{General multistep method}
+		Any s step method is of the form 
+		\[\sum_{m=0}^s a_m y_{i+m} = h\sum_{m=0}^s b_m f(t_{i+m},y_{i+m}) \qquad\text{for i}=0,1,2,\hdots\]
+
+		Here, $a_m, b_m, s$ are constants (independent of h,i and f)\\
+		For any s step method we need s starting points ($y_0,y_1,y_2,\hdots,y_{s-1}$)
+
+	\subsection{Constructing s step method}
+		Adams method of constructing s step method: 
+		\begin{enumerate}
+			\item Take the s points $t_i,t_{i+1},\hdots,t_{i+s-1}$ and corresponding values (approximated by using $y_i$ instead of $y(t_i)$) $f(t_i,y_i), f(t_{i+1},y_{i+1}), \hdots,f(t_{i+s-1},y_{i+s-1})$ and find the interpolating polynomial
+			\item Integrate the obtained polynomial between $t_{i+s-1}$ to $t_{i+s}$ for obtaining $y_{i+s}- y_{i+s-1}$, i.e,
+			\[y_{i+s}- y_{i+s-1} = \int_{t_{i+s-1}}^{t_{i+s}} \sum_{m=0}^{s-1} f(t_{i+m},y_{i+m}) \prod_{p=0,p\neq m}^{s-1} \left( \frac{t-t_{i+p}}{t_{i+m} - t_{i+p}}\right)dt \]
+			On simplifying we have 
+			\[y_{i+s}- y_{i+s-1} =  h\sum_{m=0}^{s-1} b_m f(t_{i+m},y_{i+m}) \]
+			where $b_m = \int_{s-1}^{s}\prod_{p=0,p\neq m}^{s-1} \left( \frac{x-p}{m - p}\right)dx$
+		\end{enumerate}
+
+	\subsection{Order of s step method}
+	\begin{theorem}
+		The order of s step method is p if
+		\begin{enumerate}
+			\item \begin{flalign*}
+				&\sum_{m=0}^s a_m =0&
+			\end{flalign*}
+			\item \begin{flalign*}
+				&\sum_{m=0}^s a_m m^k = k \sum_{m=0}^s b_m m^{k-1} \qquad \text{for }k =1,2,\hdots,p&
+			\end{flalign*}
+			\item \begin{flalign*}
+				&\sum_{m=0}^s a_m m^{p+1} \neq (p+1) \sum_{m=0}^s b_m m^{p} &
+			\end{flalign*}
+		\end{enumerate}
+	\end{theorem}
+	So to compute order, we keep on checking if $\sum_{m=0}^s a_m m^k = k \sum_{m=0}^s b_m m^{k-1}$ while increasing, if this condition is not satisfied for k (first time), then $k-1$ is the required order.
+
+	\subsection{Convergence}
+	Consider the general s step method
+	\[\sum_{m=0}^s a_m y_{i+m} = h\sum_{m=0}^s b_m f(t_{i+m},y_{i+m}) \qquad\text{for i}=0,1,2,\hdots\]
+	The associated characteristics polynomials are
+	\[\rho(z) = \sum_{m=0}^s a_m z^m \qquad\qquad \sigma(z) = \sum_{m=0}^s b_m z^m\]
+
+	\begin{theorem}[Dahlquist equivalence theorem]
+	A s-step method is convergent iff
+	\begin{enumerate}
+		\item The method is of order $p\geq0$
+		\item The roots of the characteristic polynomial $\rho(z)$ lies in the closed unit disc in the complex plane, with any roots that lie on the unit circle being simple.
+	\end{enumerate}
+	
+	\end{theorem}
+
+
+
+
 
 
 
