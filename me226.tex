@@ -288,13 +288,82 @@ Let $x_1, x_2, \hdots, x_n$ be independent variables and they are used calculate
 	\item Usually, Pt, Ni, Cu are used as sensing elements. They representes as $XR_0$. For example, $Pt100$ is the RTD sensor which has $100\Omega$ at $0^o C$,
 	\item They have a range of $-250^o C \text{ to } 1000^o C$
 
-	\item Major source of error is self heating ($Joule's heating$), this is quantified using dissipation constant ($P_d$).\\
-	\textbf{Dissipation constant}: It is the power to raise the temperature of RTD by 1K (or $1^o C$).\\
-	\[\text{Temperature change due to self heating } \Delta T = \frac{P}{P_d}\]
+	\item Sources of Errors -
+	\begin{enumerate}
+		\item \textbf{Self heating} (Joule's heating): Major source of error is  , this is quantified using dissipation constant ($P_d$).\\
+		\textbf{Dissipation constant}: It is the power to raise the temperature of RTD by 1K (or $1^o C$).\\
+		\[\text{Temperature change due to self heating } \Delta T = \frac{P}{P_d}\]
+		Usually, excitation voltage should be limited to 0.25V and excitation power to 2mW.\\
+		For higher sensitivity, voltage supplied should be higher. In this case, sensors with large surface area (more heat dissipation) should be employed.
+		\item \textbf{Lead wires resistance}: In the wheatstone bridge we actually measure the resistance of the RTD along with the resistance of lead wires. This causes a zero shift and reduction in sensitivity. Possible solution is to make the lead wires as short as possible.
+		\item \textbf{Stability}: Stability becomes an issue when the upper limit of sensor is exceeded.
+	\end{enumerate}
 
 	\item In the RTD, 3 lead wires (two are connected in parallel) are used instead of 2 lead wires because this will lead to reduction in internal resistance due to lead wires. 
 
 \end{itemize}
+
+\section{Thermistors}
+	\begin{itemize}
+		\item Heat sensitive devices whose resistances changes rapidly with temperature. 
+		\item They \textit{usually} have a negative temperature coefficient (NTC). (As temperature increases, resistance decreases) 
+		\item Resistance - temperature for thermistors can be expressed as
+		\[R = R_0 e^{\beta(\frac{1}{T}-\frac{1}{T_0})}\]
+		\item Since the value of $R_0$ is high (around $3000\Omega$), lead wire resistance is negligible.
+		\item Thermistors can measure upto $125^{o}C$ with an accuracy of $0.01^{o}C$. 
+	\end{itemize}
+
+\section{Basic Heat Transfer}
+	\begin{itemize}
+		\item \textbf{Stefan - Boltzmann Law}: Rate of radiation emitted by a surface of area A at a temperature T is 
+		\[\dot{Q} = \epsilon \sigma A T^4\]
+		where $\sigma = 5.67 \times 10^8 Wm^{-2}K^{-4}$ and $ 0 \leq \epsilon\leq 1$ is the emissivity of the surface.
+		% \item \textbf{Absortivity}: It is fraction of energy absorbed by the surface. 
+		% \[ 0 \leq \alpha\leq 1\]
+		\item The sum of absortivity, reflectivity and transmissivity is always 1.
+		\[\alpha + \rho + \tau =1\]
+		\item \textbf{Blackbody Spectral Emissive Power}: It is the energy emitted by a blackbody at temperature T per unit time, per unit surface area  and per unit wavelenght. 
+		\[E_{b\lambda}(T, \lambda) = \frac{c_1}{\lambda^5 (e^{\frac{c_2}{\lambda T}}-1)} \] 
+		where $c_1 = 2\pi h c^2$, $c_2 = \frac{hc}{k}$
+		\item \textbf{Wien's Displacement Law}: The blackbody radiation curve (spectral energy density vs wavelenght) for different temperatures has a peak at wavelengths inversely proportional to temperature. 
+		\[\lambda_{max} = \frac{b}{T}\]
+		where $b= 2897.8 \mu mK$
+	\end{itemize}
+
+\section{Optical Pyrometer}
+	\begin{itemize}
+		% \item High temperatures can be difficult to measure using conventional temperature measurement techniques due to instability and break down insulation. 
+		\item Optical pyrometer is non contact temperature measurement technique which can provide field measurement of the region of interest. 
+		\item In optical pyrometer, we compare the brightness of a filament whose brightness can be varied with the source brightness. The brightness of the filament is adjusted untill the brightness of the filament and the source is equal. 
+		\item The absorption screen is places before the filament to reduce the intensity of the light reaching the filament and appropriate calliberations are to made in the measured temperature.
+		\item The bandpass filter allows only certain wavelength of light to pass through, so that we can compare the intensity at only that wavelength.
+		\item When the brightness of the actual surface and the brightness of the filament are equal then,
+		\begin{align*}
+			(E_{\lambda}(\lambda, T))_{source} &= (E_{\lambda}(\lambda, T))_{filament}\\
+			\frac{\epsilon_s c_1}{\lambda^5 (e^{\frac{c_2}{\lambda T_s}}-1)} &= \frac{c_1}{\lambda^5 (e^{\frac{c_2}{\lambda T_f}}-1)}\\
+			\intertext{Assuming the filament to be a black body and ignoring 1 in the denominator, since in the temperature range we are working, it is negligible}
+			\frac{1}{T_s}-\frac{1}{T_f} &= \frac{\lambda }{c_2}\log(\epsilon_s)
+		\end{align*} 
+
+	\end{itemize}
+
+\section{Infrared Camera Based Temperature Measurement}
+	\begin{itemize}
+		\item A photon detector produces an electrical signal after being irradiated with photon flux. 
+		\item Based on the type of material of the sensor, their sensivity to the spectral range differs. This is due to difference in the band gap between conduction band and valence band between the materials.
+		\item Based on their sensitivity to range they can be classified as 
+		\begin{itemize}
+			\item Near infrared (0.75-3 $\mu m$)
+			\item Mid infrared (3-6 $\mu m$)
+			\item Long infrared (7.5 - 15 $\mu m$)
+		\end{itemize}
+		\item Energy striking the camera (per unit area and per unit time) from a surface is given by 
+		\begin{align*}
+			E_c &= E_{emitted} + E_{reflected}\\
+				&= \epsilon_s E^b_{\lambda_1-\lambda_2}(T_s) + \rho \epsilon_{\infty} E^b_{\lambda_1-\lambda_2}(T_\infty)\\
+				&= \epsilon_s F_{\lambda_1-\lambda_2} \sigma T_s^4 + \rho_s \epsilon_{\infty} F_{\lambda_1-\lambda_2} \sigma T_\infty^4
+		\end{align*}
+	\end{itemize}	
 
 
 
