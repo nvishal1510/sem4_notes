@@ -439,40 +439,183 @@
 			% MIG weldding 	Large to medium
 		\end{itemize}
 	
+\pagebreak
 
 
+\section{Metal Forming}
+	\begin{itemize}
+		\item In many manufacturing processes, plastic deformation is used to shape the work piece.
+		\item A tool (usually called die) applies stresses more than the yield stress of the metal and less than the fractures strength of the material.
+		\item Stresses used to deform the work piece are usually compressive. Tensile stresses may also applied be on the work piece to stretch the metal. 
+		\item \textbf{Sheet Metal working} : In sheet metal working, the ratio $\frac{V}{S}$ is lower (thickness is low), i.e, it is typically done on metal sheets, strips or coils. 
+		\item Desirable material properties (for metal forming):
+			\begin{itemize}
+				\item Low yield strength (easy to deform)
+				\item High ductile
+			\end{itemize}
+	\end{itemize}
 
+	\subsection{Bulk Deformation Processes}
+		\begin{itemize}
+			\item Bulk refers to point that the ratio $\frac{V}{S}$ is higher (thickness is higher). 
+			\item Rolling : Plate is squeezed between the rolls
+			\item Forging : Work is squeezed between opposing dies
+			\item Extrusion : sqeezed through a die opening. Workpiece takes the shape of the opening.
+			\item Wire and bar drawing : Diameter is reduced by pulling through the die opening.
+			\item If the working temperature is below recrystallation temperature, it is called cold forming and if the working temperature is more than the recrystalisation temperature then it is called hot forming. 
+			\item If the direction of the flow of material and the piston is same, then the extrusion is called direct extrusion, if it is opposite, it is called indirect extrusion.
+		\end{itemize}
 
+	\begin{itemize}
+		\item \textbf{Strain hardening}: Strain Hardening is when a metal is strained beyond the yield point. An increasing stress is required to produce additional plastic deformation and the metal apparently becomes stronger and more difficult to deform. This is mainly seen in cold forming process. 
 
+		\item Behaviour in metal forming:
+			\begin{itemize}
+				\item In plastic region, metal's behavior is expressed by the flow curve, 
+					\[\boxed{\sigma_f = K \epsilon^n}\]
+				where $\sigma_f$ = flow strength, K = strength coefficient and n = strain hardening exponent. 
+				\item Average flow stress (${\bar \sigma_f}$)
+					\[{\bar{\sigma_f}= \frac{\int_0^{\epsilon_f} K \epsilon^n d\epsilon}{\epsilon_f} = \frac{K \epsilon_f^n}{n+1}}\]
+				where $\epsilon_f$ = maximum strain during deformation
+			\end{itemize}
 
+		\item Strain Rate:
+			\begin{itemize}
+				\item As the strain rate increases, yield strength increases. 
+				\item At room temperature, the effect of strain rate is negligible. 
+			\end{itemize}
 
+		\item \textbf{Recrystallization temperature}: Temperature at which recrystallization just reaches completion in 1 h.
+		\[0.3T_m < T_R < 0.6T_m\]
+		\item \textbf{Annealing} is a heat treatment that alters the physical and sometimes chemical properties of a material to increase its ductility and reduce its hardness, making it more workable.
 
+		\item Effect of temperature:
+			\begin{itemize}
+				\item Temperature ranges for deformation:
+					\begin{enumerate}
+						\item Cold working : Below recrystallisation temperature ($<0.3 T_m$)
+						\item Warm working $(0.3 T_m - 0.5 T_m$)
+						\item Hot working : Above recrystallisation temperature ($0.5 T_m - 0.7 T_m$)
+					\end{enumerate}
+				\item As temperature increases, ductility increases and yield strength decreases. 
+				\item At higher temperature, the effect of roughness of roll or die increases, ie., since the metal is soft at higher temperature the roughness on the die or roll gets printed on the work piece. 
+			\end{itemize}
 
+		\item \textbf{Cold working} : 
+			\begin{itemize}
+				\item Performed at room temperature or slightly above. 
+				\item Important for mass production
+				\item No machining is required
+				\item Strain hardening is dominant and strength increases.
+				\item Pros:
+					\begin{itemize}
+						\item Better accuracy
+						\item No heating required
+						\item Strain hardening increases strength
+					\end{itemize}
+				\item Cons:
+					\begin{itemize}
+						\item High forces required
+						\item Ductility and strain hardening limit the deformation that can be performed
+					\end{itemize}
+				\item \textbf{Percentage of cold working}
+				\[\text{\% Cold working }= \frac{Initial Area - Final Area}{Initial Area} \times 100\%\]
+				\item As cold working increases, yield strength increases and ductility decreases. 
+			\end{itemize}
 
+		\item \textbf{Hot working}:
+			\begin{itemize}
+				\item Performed above recrystallisation temperature
+				\item Capability of hot working to perform deformation is lot more than cold working
+				\item Pros:
+					\begin{itemize}
+						\item Low forces and power required
+						\item Large amount of deformation can be carried
+						\item Strength properties are generally isotropic
+					\end{itemize}
+				\item Cons:
+					\begin{itemize}
+						\item Work piece suseptible to oxidation due to higher temperature
+						\item Shorter tool life
+					\end{itemize}
+			\end{itemize}
 
+		\item If perform annealing on cold worked work piece (heat the material slowly), the ductility increases and tensile strength of the material decreases. As the temperature increases, the elongated grains dissolve to form new grains which combine to grow bigger grains. 
+	\end{itemize}
 
+		\subsection{Rolling}
+		\begin{itemize}
+			\item Types of rolling:
+			\begin{itemize}
+				\item Flat rolling: used to reduce thickness
+				\item Shaping rolling : used to shape the workpiece, for instance, into I-shaped beam
+			\end{itemize}
 
+			\item Types of rolling
+			\begin{itemize}
+				\item Hot rolling: large of deformation is required
+				\item Cold rolling : Dimensional accuracy and finishing is important
+			\end{itemize}
 
+			\item Rolling mill configurations:
+			\begin{itemize}
+				\item Two-high : Two large opposing rolls
+				\item Three-high : work passes through rolls in both directions
+				\item Four-high : Two large rolls supporting the smaller rolls
+				\item Cluster mill – multiple backing rolls on smaller rolls
+				\item Tandem rolling mill – sequence of two-high mills
+			\end{itemize}
 
+			\item \textbf{Flat rolling}:
+			\begin{itemize}
+				\item Contact length: The length of the work piece that is in contact with the material
+				\item Bite angle: The angle subtended by contact length at center of the roll.
+				\item Using geometry, we can derive that
+				\[R(1-\cos\theta) = \frac{t_i - t_f}{2}\]
+				\item As the work piece rolls through the roller, the velocity of the work piece increases since its volume remains the same but the length increases. 
+				\[v_0<v_r<v_f\]
+				\item There is a point on the roller whose velocity is equal to the roller velocity. This point is called neutral point.
+				\item Smaller-diameter rolls produce less contact length for a given reduction and therefore require lower force and less energy to produce a given change in shape but they are also more suseptible to deformation themselves. Hence, they supported by larger rolls.
+			\end{itemize}
+			
+			\item \textbf{Thread rolling}: 
+			\begin{itemize}
+				\item Die on which thread like intrusions are made is used to thread like structures on the bolts and and screws. 
+				\item They are produced faster than the machining process using rolling.
+			\end{itemize}
 
+			\item \textbf{Ring rolling}: 
+			\begin{itemize}
+				\item In this a ring of smaller diameter is rolled into a thin-walled ring of larger diameter.
+				\item The ring is passed between a idler roller and a main roller which apply stresses to elongate it, increasing the diameter. 
+				\item This is used to produce steel tires for railroad wheels, rings for pipes, pressure vessels, and rotating machinery.
+			\end{itemize}
+		\end{itemize}
 
+		\subsection{Failure theories}:
+			Let $\sigma_1\geq \sigma_2 \geq \sigma_3$ be the principal stresses and uniaxial yield stress be $\sigma_Y$.\\
+			Maximum shear stress = $\frac{\sigma_1 - \sigma_3}{2}$.\\
+			Maximum shear in uniaxial tensile test = $\frac{\sigma_Y}{2}$
 
+			\begin{enumerate}
+				\item \textbf{Maximum principal stress theory} (Rankine' theory - for brittle materials): \\
+					Material will fail if maximum principal stress exceeds maximum stress in unaxial tensile test.
+					\[\boxed{\sigma_1 \geq \sigma_Y}\]
+				\item \textbf{Maximum shear stress theory} (Teresca theory - for ductile materials): \\
+					Material will fail if maximum shear stress exceeds maximum shear stress in unaxial tensile test.
+					\[\boxed{\frac{\sigma_1 - \sigma_3}{2} \geq \frac{\sigma_Y}{2}}\]
 
+				\item Maximum principal strain theory (St Venants) :\\
+				If the maximum principal strain exceed strain in uniaxial tensile test, then the material will fail i.e, if
+				\[\epsilon_Y = \frac{1}{E}(\sigma_1 - \nu (\sigma_2 +\sigma_3)) \geq \frac{\sigma_Y}{E}\]
 
+				\item Total strain energy theory:\\
+					The material fails if the strain energy with the principal stresses exceed the strain energy from the uniaxial tensile test, i.e, 
+				\[\frac{1}{2E}[\sigma_1^2 + \sigma_2^2 + \sigma_3^2 - 2\nu(\sigma_1 \sigma_2 + \sigma_2 \sigma_3 + \sigma_3 \sigma_1)] > \frac{1}{2E} \sigma_Y^2\]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+				\item \textbf{Distortional theory }(Von-Mises theory - for ductile materials):\\
+					 \[\boxed{(\sigma_1-\sigma_2)^2 + (\sigma_2 -\sigma_3)^2 + (\sigma_3-\sigma_1)^2 \geq 2 \sigma_Y^2}\]
+			\end{enumerate}
 
 
 
