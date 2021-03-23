@@ -54,7 +54,6 @@
 \subsection{Introduction}
 
 \begin{itemize}
-
 	\item Given finite set of points, reconstructing the original curve is interpolation.
 	\item There will be obviously infinitely many curve.
 
@@ -124,11 +123,9 @@
 		\[||f(x)-p||<\epsilon\]
 	\end{theorem}
 
-
 	\noindent\textbf{Using Langrange's recipe to approximate}\\
 	Take $n+1$ interpolation points in the [a,b] and collect the function values at all the points. We have $n+1$ data points. Using Lagrange polynomials, find the interpolant\\
 		
-
 	\begin{theorem}[Error equation]
 	\label{error}
 		Let $f\in C^k[a,b]$, $x_0,x_1,\hdots,x_n \in [a,b]$ and $p\in \mathbb{P}_n$ be the interpolant using these points, then for all $x$, there exists a $\zeta = \zeta(x) \in (a,b)$ such that
@@ -154,7 +151,6 @@
 	\noindent\textbf{Chebyshef interpolation points}:
 		\[x_k= \frac{a+b}{2}+\frac{b-a}{2}cos\left(\frac{j\pi}{n}\right)\]
 	\noindent These points minimise $max_{x \in [a,b]}\prod_{k=0}^n(x-x_k)$ and therefore prefered over equally spaced points on real line. These points can be visualised as projections of equally spaced points on the arc of the semicircle with $\frac{a+b}{2}$ as center and $\frac{(b-a)}{2}$ as radius.
-
 
 
 \subsection{Some more methods for calculating interpolant}
@@ -203,8 +199,6 @@
 		\[p_{k+1}(x)=f[x_0]+f[x_0,x_1](x-x_0)+ \hdots +f[x_0,x_1,\hdots,x_{k+1}] \prod_{j=0}^{k}(x-x_j)\]
 		By PMI,
 		\[p(x)=f[x_0]+f[x_0,x_1](x-x_0)+ \hdots +f[x_0,x_1,\hdots,x_n] \prod_{j=0}^{n-1}(x-x_j)\]
-
-
 	\end{proof}
 
 
@@ -225,7 +219,6 @@
 		\[\lim_{n\rightarrow \infty} \text{degree of }p{(n)} = 0\]
 		% To prove this (crudely), assume that there exist a non-polynomial function f such that $||f-p^{(n)}||=0$, then $f=p^{(n)}$ which contradicts the assumtion that f is not a polynomial.
 \end{itemize}
-
 
 
 \subsection{Spline Interpolation}
@@ -359,10 +352,6 @@
 	\end{proof}
 
 
-
-
-
-
 \section{Numerical Integration}
 	\subsection{Introduction}
 		\begin{itemize}
@@ -459,9 +448,6 @@
 						&= \frac{1}{12} ||f''|| h^2 (b-a)
 	\end{align*}
 	\end{itemize}
-
-
-
 
 
 \section{Ordinary Differential Equation}
@@ -620,6 +606,75 @@
 	\end{enumerate}
 	
 	\end{theorem}
+
+
+
+\pagebreak
+
+\section{Numerical Solutions to system of Linear Equations}
+	
+	\subsection{Gauss Elimination}
+	({I skipped some details})
+		\begin{enumerate}
+			\item We transform the given matrix (augumented matrix) into row echelon form using elementary row transformations, i.e, we eliminate the variable $x_i$ from all the equations below it by multiplying with appropriate factor and subtracting. 
+			\item Solve the system by back substitution, i.e, start from the last row variable and work your way up.
+			\[x_i = \frac{b_i - \sum_{j=i+1}^n a_{ij}}{a_{ii}}\]
+		\end{enumerate}
+
+	\subsection*{Factorisation Methods}
+		Instead of solving $Ax = B$, we factorise $A=BC$, then solve for $y\in R^n$ in $By = b$ and then $x\in R^n$ in $Cx = y$. The trick is that B and C should be "simple" matrices, so that we can simplify our problem.
+
+	\subsection{LU Factorisation}
+
+		\textbf{Lower and Upper triangular matrices}
+		\begin{itemize}
+			\item If a lower triangular matrix is invertible, then the inverse is also a lower triangular matrix with diagonal entries being reciprocals of the original diagonal entries. Same goes with upper triangular matrices
+			\item The product of two lower triangualar matrices is also a lower triangular matrix. Same goes with upper triangular.
+		\end{itemize}
+
+		We factorise A into 
+			\[A = LU\]
+		$L$ is lower triangular matrix with diagonal entries equal to 1 and $U$ is upper-triangular matrix.
+
+		\begin{itemize}
+			\item This is same as Gauss elimination method.
+			\item We obtain the $L$ matrix and $U$ matrix from the process. 
+			\item L matrix is the matrix of multipliers, i.e, the numbers we multiply the above rows to get rid of the rows below. $m_{ij}$ is the number we multiply the above row to get rid of $j$th variable in the $i$th column.
+		\end{itemize}
+
+		\begin{theorem}
+		Let A be a matrix such that all of its diagonal submatrices are invertible. Then there {exists} a unique pair of matrices L and U with L being lower-triangular with diagonal entries equal to unity and U being upper-triangular such that
+		\[A= LU\]
+		\end{theorem}
+
+	\subsection{Chelosky Factorisation}
+		\textbf{Positive Definite}:\\
+		Let A be a real, symmetric matrix, then the following conditions are equivalent:
+		\begin{enumerate}
+		\item A is positive definite
+		\item $\langle Ay, y \rangle \geq 0$  for all $y\in R^n$ 
+		\item All the eigen values of A are positive.
+		\item All the pivots are positive
+		\item The determinates of all the diagonal submatrices are positive
+		\end{enumerate}
+		Ref : \href{http://slpl.cse.nsysu.edu.tw/chiaping/la/pdm.pdf}{Positive definite matrices}
+
+		\begin{theorem}
+			Let A be a \emph{real, symmetric and positive definite matrix}, then there exists a unique lower triangular matrix B with positive diagonal entries such that 
+			\[A = BB^T\]
+			B is called the Chelosky factor
+		\end{theorem}
+
+		\textbf{Practical approach}: Take matrix B in terms of variables $b_{ij}$ and multiply with $B^T$. Compare the terms to find the unknowns (prefably left to right).
+
+	\subsection{QR Factorisation}
+		In this we factor as 
+		\[A = QR\]
+		where Q is a orthogonal matrix ($Q^T = Q$) and R is a upper triangular matrix
+
+		\begin{theorem}
+			Every invertible matrix can be factorised as $A= QR$
+		\end{theorem}
 
 
 
