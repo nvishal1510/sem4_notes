@@ -323,7 +323,7 @@ Let $x_1, x_2, \hdots, x_n$ be independent variables and they are used calculate
 		\item The sum of absortivity, reflectivity and transmissivity is always 1.
 		\[\alpha + \rho + \tau =1\]
 		\item \textbf{Blackbody Spectral Emissive Power}: It is the energy emitted by a blackbody at temperature T per unit time, per unit surface area  and per unit wavelenght. 
-		\[E_{b\lambda}(T, \lambda) = \frac{c_1}{\lambda^5 (e^{\frac{c_2}{\lambda T}}-1)} \] 
+		\[\boxed{E_{b\lambda}(T, \lambda) = \frac{c_1}{\lambda^5 (e^{\frac{c_2}{\lambda T}}-1)}} \] 
 		where $c_1 = 2\pi h c^2$, $c_2 = \frac{hc}{k}$
 		\item \textbf{Wien's Displacement Law}: The blackbody radiation curve (spectral energy density vs wavelenght) for different temperatures has a peak at wavelengths inversely proportional to temperature. 
 		\[\lambda_{max} = \frac{b}{T}\]
@@ -367,7 +367,43 @@ Let $x_1, x_2, \hdots, x_n$ be independent variables and they are used calculate
 
 
 
+\section{Strain Gauge}
+	\begin{itemize}
+		\item Resistance $R = \frac{\rho L}{A}$, as L increases R increases. This principal is used to measure the strain. 
+		\item \textbf{Gauge Factor}: 
+		% It is defined as the ratio of per unit change in resistance per unit strain.
+			\[S_G = \frac{\frac{\Delta R}{R}}{\frac{\Delta L}{L}} = \frac{\frac{\Delta R}{R}}{\epsilon}\]
+			\begin{align*}
+				S_G &= \frac{\frac{d\rho}{\rho} + \frac{dL}{L} - \frac{dA}{A}}{\frac{dL}{L}}\\
+				   &= \frac{\frac{d\rho}{\rho} + \frac{dL}{L} + 2 \nu \frac{dL}{L}}{\frac{dL}{L}}
+			\end{align*}
 
+			\[\boxed{GF = 1+ 2\nu +\frac{\frac{\Delta \rho}{\rho}}{\epsilon}}\]
+
+			where $\frac{\frac{\Delta \rho}{\rho}}{\epsilon}$ is called the piezo resitive sensitivity
+
+		\item In metal piezo resitive sensitivity, piezo resitive sensitivity is very small. Hence, for metals, $S_G = 1+2\nu$
+
+		\item For a wheat stone bridge consisting of resistances $R_1$, $R_2$ and $R_3$, $R_4$, 
+		\[E_o = \frac{R_1 R_4 - R_3 R_2}{(R_1 + R_2)(R_3+R_4)}E_i\]
+		\[{\Delta E_o} = \frac{r}{(1+r)^2} \left( \frac{\Delta R_1}{R_1} - \frac{\Delta R_2}{R_2} - \frac{\Delta R_3}{R_3} + \frac{\Delta R_4}{R_4} \right ) (1-\eta) E_i\]
+		where $\eta$ denotes the non linearity and $r=\frac{R_2}{R_1}$
+
+		\item \textbf{Bridge sensitivity}: 
+		(Assuming that the change in resistance is only in $R_1$)
+		% It is the ratio of change in output voltage to unit change in resistance.
+		\begin{align*}
+			S_B &= \frac{\Delta E_o}{\epsilon}\\
+				&= \frac{r}{(1+r)^2}E_i\\
+		\end{align*}
+		\[\boxed{S_B = \frac{r}{1+r} \sqrt{P_1R_1}}\]
+		where $r=\frac{R_2}{R_1}$
+
+		\item The ratio $\frac{r}{1+r}$ is called circuit efficiency.
+
+		\item \textbf{Sensitivity}:
+		\[S_{sg} = \frac{\Delta E_o}{\frac{\Delta R}{R}} = S_G S_B\]
+	\end{itemize}
 
 
 
