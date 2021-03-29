@@ -675,59 +675,182 @@
 		\begin{theorem}
 			Every invertible matrix can be factorised as $A= QR$
 		\end{theorem}
+	(//todo: Practical approach)
+
+\section{Norms}
+
+\subsection{Norms on $R^n$}
+	\begin{itemize}
+	\item $l^p$ norm for $p \in [1,\infty]$
+		\[||x||_{l^p} = (\sum_{i=1}^n|x_i|^p)^{\frac{1}{p}} \]
+	\item $l^\infty$ norm 
+		\[||x||_{l^\infty} = \max_{1\leq i\leq n} |x_i|\]
+	\item Two norms $||.||$ and $||.||'$ are said to be equivalent if there exist positive constants such that
+	\[C' ||x|| \leq ||x||' \leq C ||x|| \qquad \text{for all }x\in R^n\]
+
+	\item All norms are equivalent on $R^n$
+	\[||x||_{l^\infty} \leq ||x||_{l^p} \leq n^\frac{1}{p} ||x||_{l^\infty} \]
+	\[||x||_{l^2} \leq ||x||_{l^1} \leq \sqrt{n}||x||_{l^2} \]
+
+	\end{itemize}
+
+\subsection{Norms on matrix $M_{m\times n}$}
+	\begin{itemize}
+	\item Treating matrix as a $mn$ vector, 
+	\[||A||_{l^p} = \left( \sum_{i=1}^m \sum_{j=1}^n |A_{ij}|^p \right)^\frac{1}{p} \]
+	\[||A||_{l^\infty} = \max_{1\leq i\leq m, 1 \leq j \leq n} |A_{ij}| \]
+
+	\item norm can be defined as ($l^{p}$ norm on each column and $l^q$ norm on the resultant vector)
+	\[||A||_{L_{p,q}} = \left( \sum_{j=1}^n \left(\sum_{i=1}^m |A_{ij}|^p \right)^\frac{q}{p} \right)^\frac{1}{q} \]
+
+	\item Taking $p=2$, we get \textbf{frobenius norm}
+		\[||A||_{l^2} = \left( \sum_{j=1}^n \sum_{i=1}^m |A_{ij}|^2  \right)^\frac{1}{2}  \]
+
+	\item \textbf{Matrix Norm}: A norm $||.||$ is said to be matrix norm if 
+		\[||AB|| \leq ||A|| ||B|| \qquad \text{for all } A,B\in M_n(R)\]
+	Frobenius norm is a matrix norm
+	\[||AB||_{l^2} \leq ||A||_{l^2} ||B||_{l^2}\]
+
+	\item \textbf{Subordinate Matrix Norm}: Let A be a $M_n$ matrix, then 
+		\[\boxed{||A||_p = \sup_{x\in R^n-\{0\}} \frac{||Ax||_{l^p}}{||x||_{l^p}} =  \sup_{y\in R^n, ||y||=1} {||Ay||_{l^p}}} \]
+	\item Subordinate Matrix norm is a matrix norm
+
+	\item Subordinate matrix norm of identity matrix is always 1
+		\[||I_n|| = \sup_{x\in R^n-\{0\}} \frac{||I_nx||}{||x||} =1\]
+
+	\item Frobenius norm is a matrix norm but not a subordinate matrix norm (since frobenius norm of identity matrix is not 1)
+
+	\item Subordinate matrix norm of unitary matrix ($A^T = A^{-1}$) is 1
+
+	\item $||.||_2$ norm is invariant is invariant under multiplication by unitary matrices ($A^T = A^{-1} $)
+		\[||AB||_2 = ||BA||_2 = ||B||_2 \]
+
+	\item For a diagonal matrix $A = diag(a_1,a_2,\hdots,a_n)$
+		\[||A||_2 = \max_{1 \leq i\leq n} |a_i|\]
+
+	\end{itemize}
+
+\subsection{Normal Matrices}
+	A matrix $A\in M(C)$ is called a normal matrix
+	\[AA^* = A^*A\]
+	where $A^*$ is the adjoint of A 
+
+	\begin{theorem}
+		A matrix $A \in M(C)$ is a normal matrix iff it can be expressed as 
+		\[A = U diag(\lambda_1,\lambda_2,\hdots,\lambda_n) U^*\]
+		where $\lambda_1,\lambda_2,\hdots,\lambda_n$ are eigenvalues of A and U is a unitary matrix
+	\end{theorem}
+
+	\begin{itemize}
+	\item For a normal matrix $A\in M_n(C)$
+	\[||A||_2 = ||Udiag(\lambda_1,\lambda_2,\hdots,\lambda_n) U^*||_2 = \max_{1\leq i\leq n} |\lambda_i|\]
+	\end{itemize}
+
+\subsection{Spectral Radius}
+	The maximum of the eigen values of a matrix $A$ is calle the spectral radius
+		\[\rho(A) = \max_{1\leq i\leq n} |\lambda_i|\]
+
+	\begin{itemize}
+	\item For a normal matrix A, $||A||_2 = \rho(A)$
+	\item For any \textbf{matrix norm} $||.||$ on $M(C)$, we have
+		\[\rho(A)\leq ||A||\]
+
+	\item Note : The above inequality may not hold for non matrix norm
+
+	\begin{theorem}
+	For any matrix $A\in M_n$ and for any $\epsilon > 0$, there exists a subordinate matrixnorm $||.||$ such that
+		\[||A|| \leq \rho(A) + \epsilon\]
+	This matrix norm depends on A and $\epsilon$
+	\end{theorem}
+
+	\end{itemize}
 
 
+\subsection{Hermitian Matrix}
+	\begin{itemize}
+	\item A matrix is said to be hermitian if
+		\[A = A^*\]
+	\item A matrix is hermitian iff there exist unitary matrix U and real eigenvalues $\lambda_1,\lambda_2,\hdots,\lambda_n$, such that 
+		\[A = Udiag(\lambda_1,\lambda_2,\hdots,\lambda_n) U^*\]
 
+	\item For any matrix A, $AA^*$ is a hermitian matrix and also its eigenvalues are always positive. 
+	\item \textbf{Singular Values}: The singular values of a matrix are the square roots of eigenvalues of $AA^*$.
+	\item For a normal matrix, singular values are the modulli of its eigenvalues.
 
+	\end{itemize}
 
+\subsection{Subordinate matrix norm computation}
+	\begin{itemize}
+	\item Subordinate matrix norm $||.||_1$ (also called column sum)
+		\[||A||_1 = \max_{1\leq j\leq n} (\sum_{i=0}^n A_{ij})\]
+	i.e, $||.||$ is same as the maximum column sum (absolute values)
 
+	\item Subordinate matrix norm $||.||_\infty$ 
+		\[||A||_\infty = \max_{1\leq i\leq n} (\sum_{j=0}^n A_{ij})\]
+	i.e, $||.||$ is same as the maximum row sum (absolute values)
 
+	\item For any matrix $A \in M_n(C)$, subordinate $||A||_2$ norm is
+		\[||A||_2 = \text{largest singular value of A} \]
 
+	\end{itemize}
 
+\section{Matrix Sequences}
+	\subsection{Convergence}
+	A sequence $A_k$ is said to converge to a limit A if
+		\[\lim_{k\rightarrow \infty} ||A^{(k)}-A|| =0\]
+	The choice of norm is irrelevant as all norms are equivalent
 
+	\begin{theorem}
+		The following are equivalent
+		\begin{enumerate}
+			\item $\lim_{k\rightarrow \infty} A^k = 0$
+			\item $\lim_{k\rightarrow \infty} A^kx = 0$
+			\item The spectral radius of $\rho(A) \leq 1$
+			\item there exists at least one subordinate matrix such that $||A|| \leq 1$
+		\end{enumerate}
+	\end{theorem}
 
+	\begin{theorem}
+		\begin{enumerate}
+		\item The geometric series $\sum_{k=0}^\infty A^k$ converges iff the $\rho(A)<1$
+		\item If the geometric series converges, then 
+			\[\sum_{k=0}^\infty A^k = (I-A)^{-1}\]
+		\end{enumerate}
+	\end{theorem}
 
+	Miscellaneous note: If all the eigen values are non zero, then the matrix is invertible
 
+	\begin{theorem}
+		\item For any matrix B in the neighbourhood of A, i.e,
+			\[||A-B|| < \frac{1}{||A^{-1}||}\]
+		then B is invertible
+	\end{theorem}
 
+	\subsection{Relative Error}
+	For a vector $y \in C^n$ and $\tilde{y}\in C^n$ its pertubed value, relative is error is defined as
+		\[\text{Relative Error } = \frac{||y-\tilde{y}||}{||y||}\]
 
+	\subsection{Condition Number}
+	For a invertible matrix A, condition number is defined as
+		\[cond(A) = ||A|| ||A^{-1}||\]
 
+	\begin{itemize}
+		\item $cond(A) \geq 1$
+		\item $cond(A)= cond(A^{-1})$
+		\item $cond(\alpha A) = cond(A)$ for all $\alpha \neq 0$\\
 
+		% \item Suppose A is invertible and (A+B) is invertible then 
+		% 	\[(A+B)^{-1} = (I_n+A^{-1}B)^{-1}A^{-1} \]
 
+		\item Condition number acts as a amplifying factor - Let $A_\epsilon = A + \epsilon B$ for some B and $\epsilon << 1$, $b_\epsilon = b + \epsilon c$ for some $c\in C^n$
+			\[\frac{||x_\epsilon - x||}{||x||} \leq ||A|| ||A^{-1}|| \left( \frac{||b_\epsilon - b||}{||b||} + \frac{||A_\epsilon - A||}{||A||}  \right) + O(\epsilon^2) \]
 
+		\item A matrix is said to be well conditioned if $cond(A) \approx 1$ and ill conditioned if $cond(A) >>1$
 
+		\item Consider a matrix A with $\mu_{max}$ and $\mu_{min}$ be its maximum and minimum singular value, then
+			\[cond_2(A) = \frac{\mu_{max}}{\mu_{min}}\]
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	\end{itemize}
 
 
 
