@@ -607,6 +607,20 @@
 	
 	\end{theorem}
 
+	\subsection{Range-Kutta Method}
+		To compute $y_{n+1}$ using $y_n$ we approximate the integral $\int_{t_n}^{t_{n+1}}$. From the interval $[t_n,t_{n+1}]$, we take some data points $t_n + c_1 h$, $t_n + c_2 h$, $\hdots$, $t_n + c_n h$ (note that the last point may not be equal to $t_{n+1}$) and compute the value using quadrature weights (similar to the case when we used a 2 data points in trapezoidal rule, 3 in simpsons rule etc). 
+			\[y_{n+1} = y_n + \sum_{i=1}^\nu b_i f(c_i h, \zeta_i) \qquad \qquad \zeta_i \approx y(c_i,h)\]
+		Here, we compute the $\zeta_\nu$ using the data points in the interval before $t_n + c_i h$, i.e, we use the points $t_n + c_1 h, t_n + c_2 h, \hdots, t_n + c_{\nu - 1}h$ to compute $\zeta_\nu$
+			\[\zeta_\nu = y_n + h \sum_{i=0}^{\nu -1} a_{\nu,i} f(t_n + c_i h, \zeta_i) \]
+			\\
+
+		To control the order of the of a numerical method
+		\begin{enumerate}
+		\item We will compute $y_{n+1} - y_n$ and $y(t_{n+1})- y(t_n)$. 
+		\item We will assume that the error is zero upto the nth step, i.e, $y_n = y(t_n)$, then the difference of the above two terms is the error in the (n+1)th step
+		\item For the order to be p, we should adjust the all the terms of order p and less than p to zero, so that $y_{n+1}- y(n+1) = O(h^{p+1})$
+		\end{enumerate}
+
 
 
 \pagebreak
@@ -675,7 +689,7 @@
 		\begin{theorem}
 			Every invertible matrix can be factorised as $A= QR$
 		\end{theorem}
-	(//todo: Practical approach)
+		Ref: \href{https://www.math.ucla.edu/~yanovsky/Teaching/Math151B/handouts/GramSchmidt.pdf}{Some theory and example}
 
 \section{Norms}
 
