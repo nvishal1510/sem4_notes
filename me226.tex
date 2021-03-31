@@ -324,7 +324,7 @@ Let $x_1, x_2, \hdots, x_n$ be independent variables and they are used calculate
 		\[\alpha + \rho + \tau =1\]
 		\item \textbf{Blackbody Spectral Emissive Power}: It is the energy emitted by a blackbody at temperature T per unit time, per unit surface area  and per unit wavelenght. 
 		\[\boxed{E_{b\lambda}(T, \lambda) = \frac{c_1}{\lambda^5 (e^{\frac{c_2}{\lambda T}}-1)}} \] 
-		where $c_1 = 2\pi h c^2$, $c_2 = \frac{hc}{k}$
+		where $c_1 = 2\pi h c^2 = 3.742 \times 10^{-16} Wm^2$,    $c_2 = \frac{hc}{k} = 1.439 \times 10^{-2}mK$
 		\item \textbf{Wien's Displacement Law}: The blackbody radiation curve (spectral energy density vs wavelenght) for different temperatures has a peak at wavelengths inversely proportional to temperature. 
 		\[\lambda_{max} = \frac{b}{T}\]
 		where $b= 2897.8 \mu mK$
@@ -370,7 +370,7 @@ Let $x_1, x_2, \hdots, x_n$ be independent variables and they are used calculate
 \section{Strain Gauge}
 	\begin{itemize}
 		\item Resistance $R = \frac{\rho L}{A}$, as L increases R increases. This principal is used to measure the strain. 
-		\item \textbf{Gauge Factor}: 
+		\item \textbf{Gauge Factor}: It is the ratio of relative change in resistance of the strain gauge to its strain. 
 		% It is defined as the ratio of per unit change in resistance per unit strain.
 			\[S_G = \frac{\frac{\Delta R}{R}}{\frac{\Delta L}{L}} = \frac{\frac{\Delta R}{R}}{\epsilon}\]
 			\begin{align*}
@@ -378,7 +378,7 @@ Let $x_1, x_2, \hdots, x_n$ be independent variables and they are used calculate
 				   &= \frac{\frac{d\rho}{\rho} + \frac{dL}{L} + 2 \nu \frac{dL}{L}}{\frac{dL}{L}}
 			\end{align*}
 
-			\[\boxed{GF = 1+ 2\nu +\frac{\frac{\Delta \rho}{\rho}}{\epsilon}}\]
+			\[\boxed{S_G = 1+ 2\nu +\frac{\frac{\Delta \rho}{\rho}}{\epsilon}}\]
 
 			where $\frac{\frac{\Delta \rho}{\rho}}{\epsilon}$ is called the piezo resitive sensitivity
 

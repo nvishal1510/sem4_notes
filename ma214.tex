@@ -734,7 +734,8 @@
 
 	\item Frobenius norm is a matrix norm but not a subordinate matrix norm (since frobenius norm of identity matrix is not 1)
 
-	\item Subordinate matrix norm of unitary matrix ($A^T = A^{-1}$) is 1
+	\item Subordinate matrix norm ($p=2$) of unitary matrix ($A^T = A^{-1}$) is 1
+		\[||A||_2 = 1 \qquad \text{ if A is a unitary matrix}\]
 
 	\item $||.||_2$ norm is invariant is invariant under multiplication by unitary matrices ($A^T = A^{-1} $)
 		\[||AB||_2 = ||BA||_2 = ||B||_2 \]
@@ -796,11 +797,11 @@
 \subsection{Subordinate matrix norm computation}
 	\begin{itemize}
 	\item Subordinate matrix norm $||.||_1$ (also called column sum)
-		\[||A||_1 = \max_{1\leq j\leq n} (\sum_{i=0}^n A_{ij})\]
+		\[||A||_1 = \max_{1\leq j\leq n} (\sum_{i=0}^n |A_{ij}|)\]
 	i.e, $||.||$ is same as the maximum column sum (absolute values)
 
 	\item Subordinate matrix norm $||.||_\infty$ 
-		\[||A||_\infty = \max_{1\leq i\leq n} (\sum_{j=0}^n A_{ij})\]
+		\[||A||_\infty = \max_{1\leq i\leq n} (\sum_{j=0}^n |A_{ij}|)\]
 	i.e, $||.||$ is same as the maximum row sum (absolute values)
 
 	\item For any matrix $A \in M_n(C)$, subordinate $||A||_2$ norm is
