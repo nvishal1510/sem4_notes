@@ -302,7 +302,7 @@
 		\item If there is a sudden discontinuity in the cross section such as holes, , then local torsional stresses will develop and usual torsional formula cannot be applied.
 		\item The maximum stress found near the discontinuity can be found using
 		\[\tau_{max} = K \frac{Tc}{J}\]
-		where K is the torsional stress concentration factor, r is the fillet radius and c is the radius of the smaller section at the shaft.
+		where K is the torsional stress concentration factor, r is the fillet radius and c and J are the radius and polar moment of inertia of the \textbf{smaller section} at the shaft.
 		\item K values for various values of $\frac{r}{d}$ and $\frac{D}{d}$ are empirically (or using advaced theory) are determined and tabulated, where r is the fillet radius, d is the smaller diameter and D is the larger diameter
 		\item Ref: \href{https://classes.mst.edu/civeng110/concepts/06/concentration/index.html#:~:text=The%20ratio%20of%20the%20true,of%20stress%20raiser%20in%20question.}{Torsion Stress Concentrations in Circular Shafts}
 	\end{itemize}
@@ -416,7 +416,8 @@
 		\end{align*}
 		where $I = \int_A y^2 dA$ is the second moment of area.
 
-		\[\boxed{\kappa = \frac{1}{\rho} = \frac{M}{EI}} \]
+		% \[\boxed{\kappa = \frac{1}{\rho} = \frac{M}{EI}} \]
+		\[ {M} = \frac{EI}{\rho} \]
 		$EI$ is known as the \textbf{Flexure Rigidity}
 		\[\boxed{\sigma_x = \frac{-My}{I}}\]
 
@@ -428,8 +429,7 @@
 		Maximum longitudinal (along x) is
 		\[\boxed{(\sigma_x)_{max} = \frac{M_{max}c}{I}}\]
 
-\section{Non Uniform Bending}
-	\subsection{Transverse Shear Stress}
+\section{Transverse Shear Stress}
 		Consider a small element (along lenght) of a rod under stress. Let the bending on left end be M and right be M+dM and shear force V and $V+dV$. Consider the top portion of the element upto y distance from the neutral axis (top to y). Let $\sigma_1$ and $\sigma_2$ be the variation of logitudinal stress.Then, 
 		\begin{align*}
 			\tau dA \text{(along x-z plane}) &= \int (\sigma_2 - \sigma_1) dA \text{(along y-z plane)}\\
@@ -441,6 +441,8 @@
 		\[\boxed{\tau = \frac{vQ}{Ib}}\]
 		where, $Q=\int ydA$, area varies from the top portion to the untill plane we want to compute $\tau$. This is called \textbf{shear formula}.\\
 
+		Ref : \href{https://www.youtube.com/watch?v=4x0E9yvzfCM}{Youtube video}\\
+
 
 		For rectangualar cross sections, Consider a portion above the height $y_1$ above the neutral axis,
 		\[Q = \int_{y_1}^{\frac{h}{2}} ybdy = \frac{b}{2}\left(\frac{h^2}{4}- y^2 \right)\]
@@ -448,7 +450,7 @@
 		At $y=0$,
 		\[\tau_{max} = \frac{3}{2} \frac{V}{A}\]
 
-		(//todo:limitations)
+		% (//todo:limitations)
 
 		For circlular cross sections at the center, 
 		\[Q = \frac{\pi r^2}{2}\frac{4r}{3\pi} = \frac{2r^3}{3}\]
@@ -458,18 +460,131 @@
 		\[\tau_{max} = \frac{V (\frac{2}{3}(r_2^3 -r_1^3))}{(\frac{\pi}{4}(r_2^4 - r_1^4))(2(r_2-r_1))}= \frac{3V}{4A} \left( \frac{r_2^2 + r_1 r_2 + r_1^2}{r_2^2+r_1^2} \right)\]
 
 
+\pagebreak
+
+\section{Neutral Axis}
+	\begin{itemize}
+		\item For moments along y and z with resultant moment making an angle of $\theta$ with the z axis then the angle made by neutral axis with the z axis $\beta$ is given by
+		\[ \tan \beta = \frac{I_z}{I_y} tan\theta\]
 
 
 
 
+	\end{itemize}
+
+\section{Shear Center}
+	\begin{itemize}
+		\item If the line of action of any shear force is passes through the shear center, then it does not cause any twisting. 
+		\item This point is unique.
+		\item It need not always lie inside the material.
+		\item Shear stress for a load applied along y axis for any open section cut with thin cross section from a distance s from the free edge is 
+		\[\tau = \frac{V_yQ_y}{I_zt}\]
+		where $Q_y = \int_0^s y dA$ is the first moment of the area computed from the free end to the point along the material wrt neutral axis
+
+		\item Shear flow can be thought of as a fluid, if the shear flow from 2 branches join, then the new shear flow is sum of the two shear flows.
+		\item To calculate shear force along a direction, we should calculate first moment of area using the distance from the axis perpendicular to that axis.
+
+
+	\end{itemize}
+
+\section{Combined Loading}
+	\subsection{Spherical vessel}
+	\begin{itemize}
+		\item Suppose that there is uniform pressure p inside a hollow spherical vessel of radius r and thickness t. Then cutting the sphere along any cross section and equating the forces to zero. Then the normal stress in the hollow spherical vessel is
+		\[\sigma = \frac{pr}{2t}\]
+		\item (In plane shear stress) This normal stress $\sigma$ is uniform in all directions and hence, $\tau_{xy} = 0$
+		\item (Out of plane shear stress) If we consider z direction along with x/y direction, then the maximum shear stress can be found out using mohr circle as 
+		\[\tau_{xz} = \frac{pr}{4t}\]
+
+		\item These conclusions were by assuming the ratio $\frac{r}{t} >> 1$. (or else $\sigma_z = -p$ would affect the result)
+	\end{itemize}
+
+
+	\subsection{Cylindrical vessel}
+	\begin{itemize}
+		\item For a cylindrical vessel, there are two different tensile stresses, i.e, along the curved surface and along the height
+		\item (Circumferential stress) Making a cut along the height to calculate the tensile stress along the curved surface, we have
+			\[\sigma_1 = \frac{pr}{t}\]
+
+		\item (Longitudinal stress) Similarly cut along the radial direction to calculate tensile stress along the height gives us
+			\[\sigma_2 = \frac{pr}{2t}\]
+			\[\sigma_1 = 2 \sigma_2\]
+
+		\item (In plane shear stress) The maximum shear stress calculated along in the x-y plane (x-y plane has the small cylindrical part) is not zero and can be calculated using mohr's circle
+			\[\tau_{xy} = \frac{\sigma_1 - \sigma_2}{2} = \frac{pr}{4t}\]
+
+		\item (Out of plane shear stress) The maximum shear stress considering the x-z (z is perpendicular to the small cylindrical part) is 
+			\[\tau_{xy} = \frac{\sigma}{2} = \frac{pr}{2t}\]
+
+	\end{itemize}
+
+\section{Deflection}
+
+	\begin{itemize}
+		\item For a linearly elastic following Hooke's law beam under with moment of inertia I, radius of curvature $\rho = \frac{1}{\kappa}$ under a moment M, the beam gets deflected by a deflection $v$, then
+			\[\dv[2]{v}{x} = \kappa = \frac{M}{EI}\]
+		\item For small deflections, these equations hold good
+			\[EI v'' = M \qquad EI v''' = V \qquad EI v'''' = -q\]
+
+		\item For large deflections, 
+			\[\kappa = \frac{v''}{(1+v'^2)^{\frac{3}{2}}}\]
+
+		\item Calculation of Strain Energy using bending moment - 
+			\[ U = \int \frac{M^2 dx}{2EI}\]
+
+		\item Castigliano's first theorem
+			\[ P = \dv{U}{\delta} \]
+		\item Castigliano's second theorem
+			\[\delta = \dv{U}{P} \]
+
+		\item Modified costigliano's theorem - In this instead of integrating for energy then differentiating, we first differentiate and then integrate
+			\[ \delta = \int \frac{M}{EI}\pdv{M}{P} dx\]
+
+		\item Temperature Effect
+			\[\dv{\theta}{x} = \dv[2]{v}{x} = \frac{\alpha (T_2 - T_1)}{h}\]
+
+		\item Longitudinal displacement effect
+			\[ \lambda = \frac{1}{2} \int_0^L (\dv{v}{x})^2 dx\]
+
+	\end{itemize}
 
 
 
 
+\section{Buckling}
+	\subsection{Uniform beam in compression}
+	\begin{itemize}
+		\item For buckling to happen, the force P has to be more than $P_0$, 
+				\[\sqrt{\frac{P}{EI}} L = n \pi \]
+
+		\item For buckling to occur, critical stresses
+				\[P = \frac{n^2 \pi^2 EI}{L^2}\]
+
+		\item When unconstained at all points, the buckling will take place at $n=1$, or
+				\[P_0 = \frac{\pi^2 EI}{L^2}\]
+
+		\item Critical stress
+			\[\sigma_{cr} = \frac{\pi^2 EI}{A L^2} = \frac{\pi^2 E}{(L/r)^2}\]
+
+		where radius of gyration $r = \frac{I}{A}$,\\
+		and Slenderness ratio = $\frac{L}{r}$
+	\end{itemize}
 
 
+\section{Second Moment of Inertias}
+	\begin{itemize}
+		\item For circle of radius $r$
+			\[I_x = \frac{\pi}{4} r^4\]
+			\[I_z = \frac{\pi}{2} r^4\]
+		\item For circle of hollow circle radius $r_1$ and $r_2$
+			\[I_x = \frac{\pi}{4} (r_1^4 - r_2^4)\]
+			\[I_z = \frac{\pi}{2} (r_1^4 - r_2^4)\]
 
+		\item For a rectangle with base b and height h
+			\[I_x = \frac{bh^3}{12}\]
+			\[I_y = \frac{b^3h}{12}\]
 
+	\end{itemize}
 
 
 
